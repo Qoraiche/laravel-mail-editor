@@ -56,9 +56,9 @@ If you discover any security related issues, please email author email [qoraiche
 
 license. Please see the [license file](LICENSE) for more information.
 
-## Donate
+## Donate :heart:
 
-If you think this package is helpful for you, you can can buy me a coffe [Paypal.me](paypal.me/streamaps), thank you!
+If you think this package is helpful for you, you can can buy me a coffe [Paypal.me](https://www.paypal.me/streamaps), thank you!
 
 [ico-version]: https://img.shields.io/packagist/v/qoraiche/maileclipse.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/qoraiche/maileclipse.svg?style=flat-square
