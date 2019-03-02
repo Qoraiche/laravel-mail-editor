@@ -8,9 +8,10 @@ This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/Jogg
 ## Features
 
 * View/edit all your mailables at a single place.
-* Manage mail templates (more than 20+ ready to use mail template).
+* Beautiful & responsive front-end.
+* Templates Editor (more than 20+ ready to use email templates).
 * Suitable for laravel beginners.
-* and you will discover many more... (i promise).
+* You will discover many more... (promise).
 
 ## Requirements
 
@@ -54,6 +55,10 @@ If you discover any security related issues, please email author email (qoraiche
 ## License
 
 license. Please see the [license file](LICENSE) for more information.
+
+## Donate
+
+If you think this package is helpful for you, you can can buy me a coffe [Paypal.me](paypal.me/streamaps), thank you!
 
 [ico-version]: https://img.shields.io/packagist/v/qoraiche/maileclipse.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/qoraiche/maileclipse.svg?style=flat-square
