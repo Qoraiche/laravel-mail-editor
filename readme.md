@@ -50,7 +50,7 @@ Please see the [changelog](changelog.md) for more information on what has change
 
 ## Security
 
-If you discover any security related issues, please email author email (qoraicheofficiel@hotmail.com) instead of using the issue tracker.
+If you discover any security related issues, please email author email [qoraicheofficiel@hotmail.com](mailto:qoraicheofficiel@hotmail.com) instead of using the issue tracker.
 
 ## License
 
