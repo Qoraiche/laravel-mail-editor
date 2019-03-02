@@ -6,4 +6,4 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 
 ### Added
 - Everything
-- fix error "Call to a member function sortBy() on null" that happens when mailables directory not created yet.
+- fix error `Call to a member function sortBy() on null` that happens when mailables directory not created yet.
