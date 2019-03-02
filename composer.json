@@ -1,7 +1,7 @@
 {
-    "name": "laravel-mail-editor",
+    "name": "qoraiche/laravel-mail-editor",
     "description": ":Laravel Mailable Editor",
-    "license": "MIT",
+    "license": "license",
     "authors": [
         {
             "name": "yassine qoraiche",
@@ -9,8 +9,8 @@
             "homepage": "https://github.com/qoraiche"
         }
     ],
-    "homepage": "https://github.com/maileclipse/laravel-mail-editor",
-    "keywords": ["Laravel", "mailEclipse", "mailable-editor", "laravel-mail", "laravel-mailable", "mailable", "markdown", ""],
+    "homepage": "https://github.com/Qoraiche/laravel-mail-editor",
+    "keywords": ["Laravel", "mailEclipse", "mailable-editor", "laravel-mail", "laravel-mailable", "mailable", "markdown"],
     "require": {
         "illuminate/support": "~5"
     },
