@@ -1,7 +1,7 @@
 {
     "name": "qoraiche/laravel-mail-editor",
     "description": ":Laravel Mailable Editor",
-    "license": "license",
+    "license": "MIT",
     "authors": [
         {
             "name": "yassine qoraiche",
