@@ -1,4 +1,4 @@
-# mailEclipse
+# laravel-mail-editor (Known as mailEclipse)
 
 [![Total Downloads](https://poser.pugx.org/qoraiche/laravel-mail-editor/downloads)](https://packagist.org/packages/qoraiche/laravel-mail-editor)
 [![License](https://poser.pugx.org/qoraiche/laravel-mail-editor/license)](https://packagist.org/packages/qoraiche/laravel-mail-editor)
