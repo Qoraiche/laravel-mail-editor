@@ -1,6 +1,6 @@
 {
     "name": "qoraiche/laravel-mail-editor",
-    "description": ":Laravel Mailable Editor",
+    "description": "Laravel Mailable Editor",
     "license": "MIT",
     "authors": [
         {

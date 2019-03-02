@@ -19,7 +19,6 @@ class mailEclipseServiceProvider extends ServiceProvider
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'maileclipse');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'maileclipse');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->registerRoutes();
         $this->registerMigrations();
 
@@ -100,28 +99,8 @@ class mailEclipseServiceProvider extends ServiceProvider
             __DIR__.'/../config/maileclipse.php' => config_path('maileclipse.php'),
         ], 'maileclipse.config');
 
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/qoraiche'),
-        ], 'maileclipse.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/qoraiche'),
-        ], 'maileclipse.views');*/
-
         $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/maileclipse'),
             ], 'public');
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/qoraiche'),
-        ], 'maileclipse.views');*/
-
-        // Registering package commands.
-        /*$this->commands([
-             Console\MakeContract::class,
-        ]);*/
     }
 }
