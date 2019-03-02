@@ -1,0 +1,323 @@
+// Add additional styles here. For example, overwrite certain styles or add new components.
+// Tip: You can use bootstrap's powerful mixins here!
+
+
+//.alert-myalert {
+//  @include alert-variant(#60667d, #1d1d1d, #f4fdff);
+//}
+
+//@each $color, $value in $theme-colors {
+//  .alert-#{$color} {
+//    box-shadow: 3px 3px theme-color-level($color, -3);
+//  }
+//}
+//
+//
+//
+
+/*svg {
+	overflow: hidden;
+	vertical-align: middle;
+}*/
+
+
+/*.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #f1f7fa;
+}*/
+
+a {
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.header {
+	svg {
+		&.logo {
+			width: 2.1rem;
+			height: 2.1rem;
+		}
+	}
+}
+
+.card {
+    -webkit-box-shadow: 0 2px 3px #cdd8df;
+    box-shadow: 0 2px 3px #cdd8df;
+    border: none;
+
+	.nav-pills {
+		&.btn-pills {
+			font-size: 13px;
+			font-weight: 600 !important;
+		}
+	}
+	
+    .nav-pills:not(.btn-pills) {
+
+    	.nav-link {
+
+    		font-size: 0.9rem;
+			border-radius: 0;
+			padding: 0.75rem 1.25rem;
+			color: #2a5164;
+
+    		&.active {
+    			background: none;
+				color: $primary;
+				border-bottom: solid 2px $primary;
+    		}
+
+    	}
+
+    }
+
+    .card-header {
+	    padding-top: 0.7rem;
+	    padding-bottom: 0.7rem;
+	    background-color: #fff;
+	    border-bottom: none;
+
+	    h5 {
+	    	margin: 0;
+	    }
+	}
+
+	.table-action {
+		svg {
+			fill: #ccd2df;
+	    	width: 1.2rem;
+	    	height: 1.2rem;
+
+	    	&:hover {
+				fill: $primary;
+			}
+
+
+			&.remove {
+				&:hover {
+					fill: #dc3545;
+				}
+			}
+		}
+	}
+
+	.table {
+
+		&.table-hover {
+			tbody {
+				tr {
+					&:hover {
+						td, th {
+							background-color: #f1f7fa;
+						}
+					}
+				}
+			}
+		}
+
+		th {
+			background-color: #F3F4F6;
+		    font-weight: 400;
+		    padding: .5rem 1.25rem;
+		    border-bottom: 0;
+		}
+
+		td.table-fit {
+			width: 1%;
+			white-space: nowrap;
+		}
+
+		&:not(.table-borderless) td {
+			border-top: 1px solid #EFEFEF;
+			color:#000;
+		}
+
+		&.table-sm {
+			th, td {
+				padding: 1rem 1.25rem;
+			}
+
+			td:nth-last-child(2) {
+				text-align: right;
+			}
+		}
+ 
+	}
+}
+
+.card-bg-secondary, .main-bg-secondary {
+    background: #f1f7fa;
+}
+
+.fill-text-color {
+    fill: #d4e1e7;
+}
+
+
+.sidebar {
+	border:none;
+	.nav-item {
+		a {
+
+			&.active {
+				color: $primary;
+
+				svg {
+					fill: $primary;
+				}
+			}
+
+			color: #2a5164;
+
+			svg {
+				width: 1.3rem;
+				height: 1.3rem;
+				margin-right: 15px;
+				fill: #c3cbd3;
+			}
+
+		}
+	}
+}
+
+
+.statistics-items {
+	> div:last-child {
+		border-right:0 !important;
+	}
+}
+
+// Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
+
+@include media-breakpoint-down(md) {
+  .sidebar {
+    border-bottom: solid 1px #d5dfe9;
+  }
+
+  .statistics-items {
+		> div {
+			border-right:0 !important;
+		}
+	}
+}
+
+
+.font-weight-sixhundred {
+	font-weight: 600;
+}
+
+
+.badge {
+	font-size: 0.95rem;
+}
+
+.badge-info {
+    color: #212529;
+    background-color: #BCDEFA;
+
+}
+
+.badge-info[href]:hover, .badge-info[href]:focus {
+    color: #212529;
+    text-decoration: none;
+    background-color: #8dc7f6;
+}
+
+.language-selector {
+	cursor: pointer;
+}
+
+// templates image hover
+
+.content {
+
+  position: relative;
+  overflow: hidden;
+
+  .content-overlay {
+	  background: rgba(0, 123, 255, .7);
+	  position: absolute;
+	  height: 100%;
+	  width: 100%;
+	  left: 0;
+	  top: 0;
+	  bottom: 0;
+	  right: 0;
+	  opacity: 0;
+	  -webkit-transition: all 0.4s ease-in-out 0s;
+	  -moz-transition: all 0.4s ease-in-out 0s;
+	  transition: all 0.4s ease-in-out 0s;
+  }
+
+  &:hover {
+  	.content-overlay {
+		opacity: 1;
+  	}
+  }
+
+}
+
+.content-image{
+  width: 100%;
+}
+
+.content-details {
+  position: absolute;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.content{
+
+&:hover {
+	.content-details {
+	  top: 50%;
+	  left: 50%;
+	  opacity: 1;
+	}
+}
+
+}
+
+.content-details {
+
+h4 {
+  	color: #fff;
+  	text-transform: uppercase;
+}
+
+p {
+	color: #fff;
+  	font-size: 0.8em;
+
+}
+
+}
+
+.template-item {
+	cursor: pointer;
+}
+
+
+@include media-breakpoint-up(sm) {
+	.template-item {
+	  .content-title {
+			font-size: 18px;
+		}
+	}
+}
+
+.nav-link.disabled {
+    color: #6c757d !important;
+}

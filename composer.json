@@ -1,0 +1,43 @@
+{
+    "name": "qoraiche/maileclipse",
+    "description": ":Laravel Mailable Editor",
+    "license": "license",
+    "authors": [
+        {
+            "name": "yassine qoraiche",
+            "email": "qoraicheofficiel@hotmail.com",
+            "homepage": "https://github.com/maileclipse/laravel-mail-editor"
+        }
+    ],
+    "homepage": "https://github.com/qoraiche/maileclipse",
+    "keywords": ["Laravel", "mailEclipse"],
+    "require": {
+        "illuminate/support": "~5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3.0",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "qoraiche\\mailEclipse\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "qoraiche\\mailEclipse\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "qoraiche\\mailEclipse\\mailEclipseServiceProvider"
+            ],
+            "aliases": {
+                "mailEclipse": "qoraiche\\mailEclipse\\Facades\\mailEclipse"
+            }
+        }
+    }
+}

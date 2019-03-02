@@ -1,0 +1,34 @@
+{
+  "name": "MailEclipse",
+  "version": "1.0.1",
+  "description": "Manage all the mailables in your laravel app at a single place",
+  "repository": "https://github.com/maileclipse/laravel-mail-editor",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bootstrap",
+    "themes"
+  ],
+  "author": "Yassine Qoraiche",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-scss-lint": "^0.7.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1"
+  }
+}
