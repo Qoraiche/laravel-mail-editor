@@ -25,7 +25,7 @@ class MailablesController extends Controller
 
 		$mailables = mailEclipse::getMailables();
 
-		$mailables = $mailables->sortBy('name');
+		$mailables = (null !== $mailables) ? $mailables->sortBy('name') : collect([]);
 
     	return view(mailEclipse::$view_namespace.'::sections.mailables', compact('mailables'));
 
