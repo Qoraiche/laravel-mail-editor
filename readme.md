@@ -41,7 +41,7 @@ php artisan migrate
 
 ## Usage
 
-After setting up the package as described above, you can now access the application by visiting the /maileclipse route (considering the default url is 'maileclipse' in the config file). You can modify it to whatever you want as per your needs.
+After setting up the package as described above, you can now access the application by visiting the `/maileclipse` route (considering the default url is `maileclipse` in the config file). You can modify it to whatever you want as per your needs.
 
 ## Change log
 
