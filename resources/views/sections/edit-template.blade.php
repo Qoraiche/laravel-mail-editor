@@ -410,7 +410,7 @@ $(document).ready(function(){
 	}
 
 	$('.save-template').click(function(){
-		$.ajax({
+		/*$.ajax({
 		  method: "POST",
 		  url: "{{ route('parseTemplate') }}",
 		  data: { markdown: simplemde.codemirror.getValue(), viewpath: "{{ $template['slug'] }}", template: true }
@@ -421,7 +421,15 @@ $(document).ready(function(){
 		    } else {
 		    	$('.template-edit-status').removeClass('alert-success d-none').addClass('alert-warning').text('Error, cannot save the template');
 		    }
-		  });
+		  });*/
+
+		notie.confirm({
+
+	        text: 'Are you sure you want to do that?',
+
+	    	submitCallback: function () {}
+	    });
+
 	});
 
 	$('.preview-toggle').click(function(){
@@ -467,7 +475,7 @@ $(document).ready(function(){
 
 
 	$('.save-template').click(function(){
-		$.ajax({
+		/*$.ajax({
 		  method: "POST",
 		  url: "{{ route('parseTemplate') }}",
 		  data: { markdown: tinymce.get('template_editor').getContent(), viewpath: "{{ $template['slug'] }}", template: true }
@@ -480,7 +488,39 @@ $(document).ready(function(){
 		    } else {
 		    	$('.template-edit-status').removeClass('alert-success d-none').addClass('alert-warning').text('Error, cannot save the template');
 		    }
-		  });
+		  });*/
+
+		 notie.confirm({
+
+	        text: 'Are you sure you want to do that?',
+
+	    	submitCallback: function () {
+
+	    		axios.post('{{ route('parseTemplate') }}', {
+	    			markdown: tinymce.get('template_editor').getContent(), viewpath: "{{ $template['slug'] }}", template: true
+	    		})
+
+		    .then(function (response) {
+		        
+		    	if (response.data.status == 'ok'){
+				    	
+		    		notie.alert({ type: 1, text: 'Template updated', time: 3 })
+
+				    localStorage.removeItem(templateID);
+			    } else {
+			    	
+			    	notie.alert({ type: 'error', text: 'Template not updated', time: 3 })
+			    }
+		        
+		    })
+
+		    .catch(function (error) {
+		        notie.alert({ type: 'error', text: error, time: 3 })
+		    });
+
+		   }
+		});
+
 	});
 
 	$('.save-draft').click(function(){
