@@ -12,7 +12,7 @@ This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/Jogg
 * Templates (more than 20+ ready to use email templates).
 * WYSIWYG Email HTML/Markdown editor.
 * Suitable for laravel beginners.
-* You will discover more... (promise).
+* and many more... (promise).
 
 ## Requirements
 
