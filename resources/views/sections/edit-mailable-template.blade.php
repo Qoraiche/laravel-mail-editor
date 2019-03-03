@@ -401,10 +401,10 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         
             localStorage.removeItem(templateID);
 
-            notie.alert({ type: 1, text: 'Updated', time: 3 })
+            notie.alert({ type: 1, text: 'Template updated', time: 3 })
 
         } else {
-            notie.alert({ type: 'error', text: 'Not updated', time: 3 })
+            notie.alert({ type: 'error', text: 'Template not updated', time: 3 })
         }
 
         
@@ -562,10 +562,10 @@ $('.save-template').click(function(){
         
             localStorage.removeItem(templateID);
 
-            notie.alert({ type: 1, text: 'Updated', time: 3 })
+            notie.alert({ type: 1, text: 'Template updated', time: 3 })
 
         } else {
-            notie.alert({ type: 'error', text: 'Not updated', time: 3 })
+            notie.alert({ type: 'error', text: 'Template not updated', time: 3 })
         }
 
         
