@@ -11,7 +11,7 @@ This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/Jogg
 * Beautiful & responsive front-end.
 * Templates Editor (more than 20+ ready to use email templates).
 * Suitable for laravel beginners.
-* You will discover many more... (promise).
+* You will discover more... (promise).
 
 ## Requirements
 
