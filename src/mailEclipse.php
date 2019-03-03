@@ -19,60 +19,16 @@ use Validator;
 class mailEclipse
 {
 
-	/**
-	 *
-	 * @var [type] [<description>]
-	 * 
-	 */
-
 	public static $view_namespace = 'maileclipse';
-
-	/**
-	 *
-	 * @var [type] [<description>]
-	 * 
-	 */
 
 	protected static $templates_table = 'maileclipse_templates';
 
-	/**
-	 *
-	 * @var [type] [<description>]
-	 * 
-	 */
-
-	// protected static $mail_config = 'mail';
-
-
-	/**
-	 * 
-	 * 
-	 * 
-	 */
-
-	/*static public function loadConfig()
-	{
-
-		$config = DB::table(self::$options_table)->pluck('option_config');
-
-		return $config;
-
-	}*/
-
-	/**
-	 * 
-	 * 
-	 * 
-	 */
 
 	static public function getMailables()
 	{
 		return self::mailablesList();
 	}
 
-	/**
-	 * 
-	 */
 	
 	static public function getMailable($key, $name)
 	{
