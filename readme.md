@@ -60,7 +60,7 @@ license. Please see the [license file](LICENSE) for more information.
 
 ## Donate :heart:
 
-If you think this package is helpful for you, you can can buy me a coffe [Paypal.me](https://www.paypal.me/streamaps), thank you!
+If this package helps you, so why not buy me a coffe [Paypal.me](https://www.paypal.me/streamaps), thank you!
 
 [ico-version]: https://img.shields.io/packagist/v/qoraiche/maileclipse.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/qoraiche/maileclipse.svg?style=flat-square
