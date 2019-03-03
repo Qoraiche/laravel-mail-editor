@@ -65,8 +65,8 @@
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Type:</b> {{ ucfirst($template['template_type']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Name:</b> {{ ucfirst($template['template_view_name']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Skeleton:</b> {{ ucfirst($template['template_skeleton']) }}</p>
-                            <p class="text-primary edit-template"><i class="fas fa-trash"></i> Edit Details</p>
-                            <p class="text-danger delete-template"><i class="fas fa-trash "></i> Delete Template</p>
+                            <p class="text-primary edit-template" style="cursor:pointer;"><i class="fas fa-trash"></i> Edit Details</p>
+                            <p class="text-danger delete-template" style="cursor:pointer;"><i class="fas fa-trash "></i> Delete Template</p>
                         </div>
                         </div>
                       </div>
@@ -106,8 +106,8 @@
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Type:</b> {{ ucfirst($template['template_type']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Name:</b> {{ ucfirst($template['template_view_name']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Skeleton:</b> {{ ucfirst($template['template_skeleton']) }}</p>
-                            <p class="text-primary edit-template"><i class="fas fa-trash"></i> Edit Details</p>
-                            <p class="text-danger delete-template"><i class="fas fa-trash"></i> Delete Template</p>
+                            <p class="text-primary edit-template" style="cursor:pointer;"><i class="fas fa-trash"></i> Edit Details</p>
+                            <span class="text-danger delete-template" style="cursor:pointer;"><i class="fas fa-trash "></i> Delete Template</p>
                         </div>
                     </div>
                 </div>
@@ -123,58 +123,89 @@ $(document).ready(function(){
 
 	 $('.edit-template').click(function(){
 
-		var title = prompt('Title');
+		notie.input({
+                  text: 'New template name:',
+                  type: 'text',
+                  placeholder: 'e.g. Weekly Newsletter',
+                  allowed: new RegExp('[^a-zA-Z0-9 ]', 'g'),
+                  submitCallback: function (templatename) {
 
-		if ( title !== null ){
+                    notie.input({
 
-		var description = prompt('Description');
+                  text: 'NEW template description:',
+                  type: 'text',
+                  submitText: 'Update Template',
+                  cancelText: 'Cancel',
+                  allowed: new RegExp('[^a-zA-Z0-9 ]', 'g'),
+                  submitCallback: function (templatedescription) {
+                    
+	                  axios.post('{{ route('updateTemplate') }}', {
+					  	templateslug: '{{ $template['slug'] }}',
+					  	title: templatename,
+					  	description: templatedescription,
+					  })
 
-			if (confirm('Update?')){
-				$.ajax({
-				  method: "POST",
-				  url: "{{ route('updateTemplate') }}",
-				  data: {
-				  	templateslug: '{{ $template['slug'] }}',
-				  	title: title,
-				  	description: description,
-				  }
-				
-			}).done(function( data ) {
-			    if (data.status == 'ok'){
+                    .then(function (response) {
 
-		    		window.location.replace(data.template_url);
+                        if (response.data.status == 'ok'){
 
-			    } else {
-			    	alert(data.message);
-			    }
-			});
-			}
-		}
+		    				window.location.replace(response.data.template_url);
+
+					    } else {
+					    	alert(response.data.message);
+					    }
+
+                    })
+
+                    .catch(function (error) {
+                        notie.alert({ type: 'error', text: error, time: 2 })
+                    });
+
+                  }
+
+              });
+
+             },
+
+            });
+
 	});
 
 	$('.delete-template').click(function(){
 
-		if (confirm('Are you sure you want to delete?')){
+		notie.confirm({
 
-		$.ajax({
-				  method: "POST",
-				  url: "{{ route('deleteTemplate') }}",
-				  data: { 
+	        text: 'Are you sure you want to do that?',
+
+	    	submitCallback: function () {
+
+	    		axios.post('{{ route('deleteTemplate') }}', { 
 				  	templateslug: '{{ $template['slug'] }}',
-				  }
-				
-			}).done(function( data ) {
-			    if (data.status == 'ok'){
+				  })
 
-		    	alert('Deleted!');
-		    	window.location.replace('{{ route('templateList') }}');
+		    .then(function (response) {
+		        
+		    	if (response.data.status == 'ok'){
+				    	
+		    		notie.alert({ type: 1, text: 'Template Deleted <br><small>Redirecting...</small>', time: 3 })
+
+				    setTimeout(function(){
+                                window.location.replace('{{ route('templateList') }}');
+                    }, 3000);
 
 			    } else {
-			    	alert(data.message);
+			    	
+			    	notie.alert({ type: 'error', text: 'Template not deleted', time: 3 })
 			    }
-			});
+		        
+		    })
 
-		}
+		    .catch(function (error) {
+		        notie.alert({ type: 'error', text: error, time: 3 })
+		    });
+
+		   }
+		});
 
 	});
 
@@ -446,7 +477,6 @@ $(document).ready(function(){
 		simplemde.togglePreview();
 		$(this).toggleClass('active');
 	});
-
 
 	@else
 

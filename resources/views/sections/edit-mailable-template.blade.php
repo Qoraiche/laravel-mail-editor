@@ -125,9 +125,7 @@
 
 <script type="text/javascript">
     
-
 $(document).ready(function(){
-
 
 @if ( isset($templateData['template']) )
 
@@ -507,31 +505,6 @@ $('.view_data_param').click(function(){
     tinymce.activeEditor.selection.setContent(output);
 });
 
-/*var htmlEditor = CodeMirror.fromTextArea(document.getElementById("code"), {
-    lineNumbers: false,
-    mode: 'htmlmixed',
-    // theme: 'default',
-});*/
-
-/*htmlEditor.on("change", function(){
-    
-    $.ajax({
-      method: "POST",
-      {{-- url: "{{ route('previewMarkdownView') }}", --}}
-      data: { 
-        markdown: htmlEditor.getValue(), 
-        {{-- namespace: '{{ addslashes($templateData['namespace']) }}',  --}}
-        {{-- viewdata: "{{ serialize($templateData['view_data']) }}",  --}}
-        {{-- name: '{{ $name }}'  --}}
-      }
-    
-}).done(function( HtmledTemplate ) {
-        $('#view-preview').html(HtmledTemplate);
-    });
-
-});
-
-*/
 
 $('.save-template').click(function(){
 
