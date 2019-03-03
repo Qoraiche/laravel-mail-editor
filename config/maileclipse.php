@@ -7,8 +7,7 @@ return [
     | MailEclipse Path
     |--------------------------------------------------------------------------
     |
-    | Neque porro quisquam est qui dolorem ipsum quia 
-    | dolor sit amet, consectetur, adipisci velit...
+    | This is the URL where you can access mailEclipse
     |
     */
 
@@ -19,9 +18,6 @@ return [
     | Laravel Mail Directory
     |--------------------------------------------------------------------------
     |
-    | Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, 
-    | consectetur, adipisci velit...
-    |
     */
 
     'mail_dir' => app_path('Mail/'),
@@ -31,8 +27,9 @@ return [
     | Laravel Mail Directory
     |--------------------------------------------------------------------------
     |
-    | Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, 
-    | consectetur, adipisci velit...
+    | If you don't want to use this package in production env
+    | at all, you can restrict that using this option
+    | rather than by using a middleware.
     |
     */
 
@@ -43,8 +40,8 @@ return [
     | MailEclipse Route Middleware
     |--------------------------------------------------------------------------
     |
-    | Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-    | consectetur, adipisci velit...
+    | The value should be an array of fully qualified
+    | class names of the middleware classes.
     |
     */
    
@@ -52,11 +49,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | MailEclipse Route Middleware
+    | Templates
     |--------------------------------------------------------------------------
     |
-    | Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-    | consectetur, adipisci velit...
+    | List of pre-defined templates used by maileclipse (HTML/Markdown)
+    |
     |
     */
    
