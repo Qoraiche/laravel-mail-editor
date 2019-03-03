@@ -131,7 +131,6 @@ $(document).ready(function(){
                   submitCallback: function (templatename) {
 
                     notie.input({
-
                   text: 'NEW template description:',
                   type: 'text',
                   submitText: 'Update Template',

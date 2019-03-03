@@ -15,8 +15,7 @@ This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/Jogg
 
 ## Requirements
 
-* Laravel 5.7+ (may work on 5.5+ but not tested).
-* Lumen (will added soon).
+* Laravel 5.6+.
 
 ## Installation
 
