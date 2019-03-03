@@ -27,13 +27,13 @@ $ composer require qoraiche/laravel-mail-editor
 
 The package will automatically register itself.
 
-Publish configuration file and public assets.
+Publish configuration file and public assets:
 
 ``` bash
 php artisan vendor:publish --provider="qoraiche\mailEclipse\mailEclipseServiceProvider"
 ```
 
-Migrate database
+Migrate database:
 
 ```bash
 php artisan migrate
