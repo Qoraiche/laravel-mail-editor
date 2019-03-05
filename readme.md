@@ -1,5 +1,6 @@
 # laravel-mail-editor (Known as mailEclipse)
 
+[![Latest Stable Version](https://poser.pugx.org/qoraiche/laravel-mail-editor/v/stable)](https://packagist.org/packages/qoraiche/laravel-mail-editor)
 [![Total Downloads](https://poser.pugx.org/qoraiche/laravel-mail-editor/downloads)](https://packagist.org/packages/qoraiche/laravel-mail-editor)
 [![License](https://poser.pugx.org/qoraiche/laravel-mail-editor/license)](https://packagist.org/packages/qoraiche/laravel-mail-editor)
 
