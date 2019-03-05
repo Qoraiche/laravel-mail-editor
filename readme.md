@@ -7,7 +7,6 @@ This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/Jogg
 
 ## Features
 
-* Beautiful & responsive front-end.
 * View/edit all your mailables at a single place.
 * Templates (more than 20+ ready to use email templates).
 * WYSIWYG Email HTML/Markdown editor.
