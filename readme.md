@@ -43,6 +43,9 @@ php artisan migrate
 
 ## Usage
 
+[![Package tutorial](https://www.youtube.com/watch?v=QFgEGNBY3FI)](https://i.imgur.com/sBCiFyt.png)
+
+
 After setting up the package as described above, you can now access the application by visiting the `/maileclipse` route (considering the default url is `maileclipse` in the config file). You can modify it to whatever you want as per your needs.
 
 ![maileclipse-img](https://i.imgur.com/cWD5odh.png)
