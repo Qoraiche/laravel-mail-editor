@@ -230,10 +230,6 @@ return [
                 'user-invitation',
                 'welcome',
             ],
-            'plain' => [
-                'full-width',
-                'fixed-width',
-            ]
         ]
    ]
 
