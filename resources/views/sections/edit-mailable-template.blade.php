@@ -465,7 +465,7 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
 
 tinymce.init({
 selector: "textarea#template_editor",
-menubar : true,
+menubar : false,
 visual: false,
 height:560,
 plugins: [

@@ -485,7 +485,7 @@ $(document).ready(function(){
 
 		tinymce.init({
 	        selector: "textarea#template_editor",
-	        menubar : true,
+	        menubar : false,
 	        visual: false,
 	        height:600,
 	        plugins: [
