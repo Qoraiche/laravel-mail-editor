@@ -36,8 +36,6 @@
 
      </style>
 
-     {{-- {{ dd($template) }} --}}
-
 <div class="col-lg-12 col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -62,6 +60,9 @@
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Name:</b> {{ ucfirst($template['name']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Slug:</b> {{ $template['slug'] }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Description:</b> {{ $template['description'] }}</p>
+                            
+                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template View:</b> {{ 'maileclipse::templates.'.$template['slug'] }}</p>
+
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Type:</b> {{ ucfirst($template['template_type']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Name:</b> {{ ucfirst($template['template_view_name']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Skeleton:</b> {{ ucfirst($template['template_skeleton']) }}</p>
@@ -103,6 +104,9 @@
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Name:</b> {{ ucfirst($template['name']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Slug:</b> {{ $template['slug'] }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Description:</b> {{ $template['description'] }}</p>
+
+                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template View:</b> {{ 'maileclipse::templates.'.$template['slug'] }}</p>
+
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Type:</b> {{ ucfirst($template['template_type']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Name:</b> {{ ucfirst($template['template_view_name']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Skeleton:</b> {{ ucfirst($template['template_skeleton']) }}</p>

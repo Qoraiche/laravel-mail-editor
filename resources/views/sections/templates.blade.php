@@ -88,6 +88,7 @@
 
                                 <td class="table-fit"><span>{{ ucfirst($template->template_view_name) }}</td>
 
+
                                 <td class="table-fit text-muted"><span>{{ ucfirst($template->template_skeleton) }}</td>
 
                                 <td class="table-fit text-center"><span>{{ ucfirst($template->template_type) }}</td>
