@@ -7,7 +7,8 @@ This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/Jogg
 
 ## Features
 
-* View/edit all your mailables at a single place.
+* Create mailables without using command line.
+* Preview/Edit all your mailables at a single place.
 * Templates (more than 20+ ready to use email templates).
 * WYSIWYG Email HTML/Markdown editor.
 * Suitable for laravel beginners.
@@ -56,6 +57,14 @@ If you discover any security related issues, please email author email [qoraiche
 ## License
 
 license. Please see the [license file](LICENSE) for more information.
+
+## Screenshots
+
+![maileclipse-new-mailable](https://i.imgur.com/AiMEtY0.png)
+
+![maileclipse-templates](https://i.imgur.com/siqxWVa.png)
+
+![maileclipse-templates-create](https://i.imgur.com/8OQrEIS.png)
 
 ## Donate :heart:
 
