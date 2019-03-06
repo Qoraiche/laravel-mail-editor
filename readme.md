@@ -69,6 +69,13 @@ license. Please see the [license file](LICENSE) for more information.
 
 ![maileclipse-templates-create](https://i.imgur.com/8OQrEIS.png)
 
+## TODO
+
+__Contributions are welcome__
+
+* Frontend enhancement (jquery to vue.js).
+* Add more templates
+
 ## Donate :heart:
 
 If this package helps you, so why not buy me a coffe [Paypal.me](https://www.paypal.me/streamaps), thank you!
