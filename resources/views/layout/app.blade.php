@@ -38,9 +38,10 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/display/placeholder.js"></script>
-
+    <!-- Place this tag in your head or just before your close body tag. -->
     @endif
 
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="{{ asset('vendor/maileclipse/js/maileclipse-app.js') }}"></script>
 
 </head>
