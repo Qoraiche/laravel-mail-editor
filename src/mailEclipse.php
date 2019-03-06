@@ -191,22 +191,6 @@ class mailEclipse
 	static public function createTemplate($request)
 	{
 
-		// preg_match('/^[a-zA-Z0-9_-\\s]+$/', 'dscsdc dscdsc')
-
-		/*$validator = Validator::make($request->all(), [
-		    'template_name' => 'required|regex:/^[a-zA-Z0-9_-\s]+$/u',
-		    'template_description' => 'string|nullable',
-		])->validate();
-
-
-		if (!is_array($validator)) {
-			if ($validator->fails()){
-				return response()->json([ 
-					'errors' => $validator->errors()->all() 
-				]);
-			}
-		}*/
-
 		if ( !preg_match( "/^[a-zA-Z0-9-_\s]+$/", $request->template_name ) ) {
 			return response()->json([
 
@@ -666,8 +650,6 @@ class mailEclipse
 
             $reflector = new ReflectionClass($mailable);
 
-            // return $reflector->newInstanceArgs($filteredparams);
-
 			if (!$args->isEmpty()){
 
 				$foo = $reflector->newInstanceArgs($filteredparams);
@@ -675,8 +657,6 @@ class mailEclipse
 
 			}
     	}
-
-    	// return collect([]);
 
     }
 
@@ -740,11 +720,6 @@ class mailEclipse
     	return true;
     }
 
-    /**
-	 * 
-	 * 
-	 */
-
     static protected function getMarkdownViewName($mailable)
     {
 
@@ -760,17 +735,6 @@ class mailEclipse
 
 	    return $property->getValue($mailable);
     }
-
-    /**
-     *
-     *
-     *
-     * 
-	 * ERRORS : MailablesController: 114/129 - mailEclipse: 699
-	 *
-	 * 
-	 * 
-	 */
 
 
     static public function buildMailable($instance, $type = 'call')
@@ -789,33 +753,6 @@ class mailEclipse
 
     	return Container::getInstance()->make($instance);
     }
-
-    /**
-     *
-     *
-     * 
-     */
- 
-
-    /*static public function previewTemplate($view, $data = []){
-    	try {
-
-    		$_md = self::buildMailable(Markdown::class, 'make');
-
-	    	$renderer_html = $_md->render($view , $data);
-
-	    	return $renderer_html;
-
-	    } catch(ErrorException $e) {
-
-	    	return '<div class="alert alert-warning">'.$e->getMessage().'</div>';
-	    }
-    }*/
-
-    /**
-	 * 
-	 * 
-	 */
 
     static public function renderPreview($simpleview = false, $view, $template = false, $instance = null)
     {
