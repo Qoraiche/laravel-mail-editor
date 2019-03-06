@@ -38,7 +38,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/display/placeholder.js"></script>
-    <!-- Place this tag in your head or just before your close body tag. -->
     @endif
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -52,25 +51,6 @@
         
     <div class="container mt-5">
         <div class="row">
-            <!-- <div class="col-12 d-block d-sm-none mb-5">
-                <div class="pos-f-t">
-                    <div class="collapse" id="navbarToggleExternalContent">
-                        <div class="bg-light p-4">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item active">Mailables</li>
-                                <li class="list-group-item">Templates</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <nav class="navbar navbar-light bg-light">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </nav>
-                </div>
-            </div> -->
-
-            {{-- {{ dd( request()->route()->getName() === 'newTemplate') }} --}}
 
             @if ( request()->route()->getName() !== 'newTemplate' && 
                   request()->route()->getName() !== 'editMailable' &&
@@ -83,57 +63,10 @@
 
             @yield('content')
             
-        <!-- <div class="alert alert-success" role="alert">
-            A simple success alert—check it out!
-        </div> -->
 
         </div>
         @include('maileclipse::layout.footer')
     </div>
-
-    <!-- Modal -->
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-<!-- JS here -->
-
-<script type="text/javascript">
-/*const el = document.querySelector('img');
-const observer = lozad(el); // passing a `NodeList` (e.g. `document.querySelectorAll()`) is also valid
-observer.observe();
-
-$(function () {
-    $('[data-toggle="popover"]').popover();
-})
-
-$(document).on('click', function (e) {
-    $('[data-toggle="popover"],[data-original-title]').each(function () {
-        //the 'is' for buttons that trigger popups
-        //the 'has' for icons within a button that triggers a popup
-        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {                
-            (($(this).popover('hide').data('bs.popover')||{}).inState||{}).click = false  // fix for BS 3.3.6
-        }
-
-    });
-});*/
-</script>
 
 </body>
 
