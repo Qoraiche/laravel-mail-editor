@@ -1,6 +1,6 @@
 {
   "name": "MailEclipse",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Manage all the mailables in your laravel app at a single place",
   "repository": "https://github.com/maileclipse/laravel-mail-editor",
   "main": "",
