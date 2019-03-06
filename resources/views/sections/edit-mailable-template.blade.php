@@ -36,6 +36,8 @@
 
      </style>
 
+     {{-- {{ dd($templateData) }} --}}
+
 <div class="col-lg-12 col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">

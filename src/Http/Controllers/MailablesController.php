@@ -54,7 +54,7 @@ class MailablesController extends Controller
 
 		$resource = $mailable->first();
 
-		$instance = new $resource['namespace'];
+		// $instance = new $resource['namespace'];
 
 		return view(mailEclipse::$view_namespace.'::sections.view-mailable')->with( compact('resource') );
 	}
@@ -111,7 +111,16 @@ class MailablesController extends Controller
 		}
 
 		$resource = $mailable->first();
-		$instance = new $resource['namespace'];
+
+		if ( !is_null(mailEclipse::handleMailableViewDataArgs($resource['namespace'])) ){
+			// $instance = new $resource['namespace'];
+			// 
+			$instance = mailEclipse::handleMailableViewDataArgs($resource['namespace']);
+
+		} else {
+			$instance = new $resource['namespace'];
+		}
+
 
 		if (collect($resource['data'])->isEmpty())
 		{
@@ -126,7 +135,7 @@ class MailablesController extends Controller
 
 			try {
 
-				$html = new $instance;
+				$html = $instance;
 
 				return $html->render();
 

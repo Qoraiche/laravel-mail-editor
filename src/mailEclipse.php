@@ -390,7 +390,25 @@ class mailEclipse
 		if ( file_exists($dir) )
 		{
 			file_put_contents($dir. "/{$viewName}.blade.php", $previewtoset);
-			$instance = $template ? null : new $namespace;
+
+			if ($template)
+			{
+
+				$instance = null;
+
+			} else {
+
+				if ( !is_null(mailEclipse::handleMailableViewDataArgs($namespace)) ){
+
+					$instance = mailEclipse::handleMailableViewDataArgs($namespace);
+
+				} else {
+
+					$instance = new $namespace;
+				}
+
+			}
+
 			return self::renderPreview($simpleview, self::$view_namespace.'::draft.'.$viewName, $template, $instance);
 		}
 
@@ -402,7 +420,8 @@ class mailEclipse
 	 * 
 	 */
 
-	static public function previewMarkdownHtml($instance, $view){
+	static public function previewMarkdownHtml($instance, $view)
+	{
 
 		return self::renderPreview($instance, $view);
 	}
@@ -544,11 +563,16 @@ class mailEclipse
 	                if ( !self::mailable_exists($mailableClass)) {
 	                	continue;
 	                }
+					
+					if ( !is_null(self::handleMailableViewDataArgs($mailableClass)) )
+					{
+						$mailable_view_data = self::getMailableViewData(self::handleMailableViewDataArgs($mailableClass));
+					} else {
+						$mailable_view_data = self::getMailableViewData(new $mailableClass);
+					}
 
-	                $mailable_view_data = self::getMailableViewData(new $mailableClass);
+
 	                $mailable_data = self::buildMailable($mailableClass);
-
-	                
 	                
 	                $fqcns[$i]['data'] = $mailable_data;
 	                $fqcns[$i]['markdown'] = self::getMarkdownViewName($mailable_data);
@@ -558,6 +582,7 @@ class mailEclipse
 	                $fqcns[$i]['modified'] = $phpFile->getCTime();
 	                $fqcns[$i]['viewed'] = $phpFile->getATime();
 	                $fqcns[$i]['view_data'] = $mailable_view_data;
+	                // $fqcns[$i]['view_data'] = [];
 	                $fqcns[$i]['path_name'] = $phpFile->getPathname();
 	                $fqcns[$i]['readable'] = $phpFile->isReadable();
 	                $fqcns[$i]['writable'] = $phpFile->isWritable();
@@ -589,7 +614,8 @@ class mailEclipse
 	        }
 	    }
 
-	    $collection = collect($fqcns)->map(function( $mailable ){
+	    $collection = collect($fqcns)->map(function( $mailable )
+	    {
 	    	return $mailable;
 
 	    })->reject(function($object){
@@ -602,6 +628,56 @@ class mailEclipse
 
 	endif;
     	
+    }
+
+    /**
+     * 
+     * Handle Mailable Constructor arguments and pass the fake ones
+     * 
+     */
+
+
+    static public function handleMailableViewDataArgs($mailable)
+    {
+
+    	if (method_exists($mailable, '__construct'))
+    	{
+    		$reflection = new ReflectionClass($mailable);
+			$params = $reflection->getConstructor()->getParameters();
+
+			// dd($params);
+
+			$args = collect($params)->map(function( $param ){
+				$types = $param->getType() !== null ? [
+					'typehint' => true, 'instance' => $param->getType()->getName()
+				] : $param->name;
+				return $types;
+			});
+
+			$filteredparams = [];
+
+			foreach ($args->all() as $arg) {
+				if ( is_array($arg) ){
+					$filteredparams[] = new $arg['instance'];
+					continue;
+				}
+				$filteredparams[] = $arg;
+			}
+
+            $reflector = new ReflectionClass($mailable);
+
+            // return $reflector->newInstanceArgs($filteredparams);
+
+			if (!$args->isEmpty()){
+
+				$foo = $reflector->newInstanceArgs($filteredparams);
+				return $foo;
+
+			}
+    	}
+
+    	// return collect([]);
+
     }
 
 
@@ -686,6 +762,12 @@ class mailEclipse
     }
 
     /**
+     *
+     *
+     *
+     * 
+	 * ERRORS : MailablesController: 114/129 - mailEclipse: 699
+	 *
 	 * 
 	 * 
 	 */
@@ -694,6 +776,14 @@ class mailEclipse
     static public function buildMailable($instance, $type = 'call')
     {
     	if ($type == 'call'){
+
+    		if ( !is_null(self::handleMailableViewDataArgs($instance)) )
+			{
+
+				return Container::getInstance()->call( [ self::handleMailableViewDataArgs($instance), 'build' ] );
+
+			}
+
     		return Container::getInstance()->call( [ new $instance, 'build' ] );
     	}
 
