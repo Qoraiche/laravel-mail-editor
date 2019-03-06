@@ -208,7 +208,7 @@
         })
 
     .catch(function (error) {
-        // notie.alert({ type: 'error', text: error, time: 2 })
+        notie.alert({ type: 'error', text: error, time: 2 })
     });
 
     });

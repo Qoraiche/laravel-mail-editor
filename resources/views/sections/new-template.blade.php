@@ -35,7 +35,6 @@
 @foreach( $skeletons->get('html') as $name => $subskeleton )
 
 <div class="card">
-<!-- <img class="card-img-top" src="https://1rj8i398ld62y6ih02fyvv4k-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/mantra-welcome.png" alt="Card image cap"> -->
     <div class="content template-item" data-toggle="modal" data-target="#select{{ $name }}Modal">
       <div class="content-overlay"></div>
 
@@ -120,7 +119,6 @@
 
       <div class="content-details">
         <h4 class="content-title mb-3">{{ $name }}</h4>
-        <!-- <p class="content-text">This is a short description</p> -->
       </div>
 
 </div>

@@ -96,7 +96,6 @@
                                     <td class="table-fit font-weight-sixhundred">bcc</td>
                                     <td>
                                     	@foreach( $resource['data']->bcc as $bcc )
-                                        {{-- {{ collect($resource['data']->cc)->implode('address', ', ') }} --}}
                                         <a href="mailto:{{ $bcc['address'] }}" class="badge badge-info mr-1 font-weight-light">{{ $bcc['address'] }}</a>
                                         @endforeach
                                     </td>

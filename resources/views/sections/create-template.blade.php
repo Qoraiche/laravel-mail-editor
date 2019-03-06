@@ -4,14 +4,6 @@
 
 @section('content')
 
-<!-- <span class="badge font-weight-light badge-secondary">
-                GET
-     </span> -->
-
-     {{-- {{ dd($templates->all()) }} --}}
-
-     {{-- {{ dd($skeleton) }} --}}
-
      <style type="text/css">
          
         .CodeMirror {
@@ -47,7 +39,6 @@
 <div class="col-lg-12 col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        {{-- <li class="breadcrumb-item"><a href="#">Home</a></li> --}}
         <li class="breadcrumb-item"><a href="{{ route('templateList') }}">Templates</a></li>
         <li class="breadcrumb-item active">{{ ucfirst($skeleton['type']) }}</li>
         <li class="breadcrumb-item active">{{ ucfirst($skeleton['name']) }}</li>
@@ -56,37 +47,13 @@
     </nav>
         <div class="container">
             <div class="row my-4">
-                {{-- <div class="col-12 mb-2 d-block d-lg-none">
-                    <div id="accordion">
-                      <div class="card">
-                        <div class="card-header" id="headingOne">
-                          <h5 class="mb-0 dropdown-toggle" style="cursor: pointer;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Details
-                          </h5>
-                        </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                          <div class="card-body">
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Status:</b> Published</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Last edit:</b> 1 minute ago</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Revisions:</b> 3</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Published on:</b> Apr 14,2015 @ 11:04</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Source:</b> index.markdown.lala</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Mailable:</b> <a href="#sexymail">SexyMail</a></p>
-                            <!-- <p class="text-danger"><i class="fas fa-trash align-middle"></i><a href="#">Send to trash</a></p> -->
-                            <p class="text-danger"><i class="fas fa-trash"></i> Send to trash</p>
-                        </div>
-                        </div>
-                      </div>
-                    </div>
-                </div> --}}
+                
                 <div class="col-md-12">
 
                     <div class="card mb-2">
                         <div class="card-header p-3" style="border-bottom:1px solid #e7e7e7e6;">
                             <button type="button" class="btn btn-primary float-right save-template">Create</button>
                             <button type="button" class="btn btn-secondary float-right preview-toggle mr-2"><i class="far fa-eye"></i> Preview</button>
-                            {{-- <button type="button" class="btn btn-light float-right mr-2 save-draft">Save Draft</button> --}}
                         </div>
                     </div>
 
@@ -111,172 +78,14 @@
 
                     </div>
                 </div>
-               {{--  <div class="col-lg-3 d-none d-lg-block">
-                    <div class="card">
-                        <div class="card-header"><h5>Details</h5></div>
-                        <div class="card-body">
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Status:</b> Published</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Last edit:</b> 1 minute ago</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Revisions:</b> 3</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Published on:</b> Apr 14,2015 @ 11:04</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Source:</b> index.markdown.lala</p>
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Mailable:</b> <a href="#sexymail">SexyMail</a></p>
-                            <!-- <p class="text-danger"><i class="fas fa-trash align-middle"></i><a href="#">Send to trash</a></p> -->
-                            <p class="text-danger"><i class="fas fa-trash"></i> Send to trash</p>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>       
  </div>
-
-                <!-- <div class="card mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between"><h5>Mailable Details</h5>
-                    </div>
-                    <div class="card-body card-bg-secondary">
-                        <table class="table mb-0 table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td class="table-fit font-weight-sixhundred">Time</td>
-                                    <td>
-                                        January 14th 2019, 3:40:00 PM (14m ago)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-fit font-weight-sixhundred">Hostname</td>
-                                    <td>
-                                        MacBook-Pro-de-Mac.local
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-fit font-weight-sixhundred">Command</td>
-                                    <td>
-                                        make:mail
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-fit font-weight-sixhundred">Exit Code</td>
-                                    <td>
-                                        <a href="#">hahahha</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-fit font-weight-sixhundred">Tags</td>
-                                    <td><a href="/telescope/mail?tag=yassine%40hotmail.com" class="badge badge-info mr-1 font-weight-light">
-                            yassine@hotmail.com
-                        </a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div> -->
-
-                <!-- Card with pills navigation 6-->
-                <!-- <div class="card mb-4">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item"><a href="#" class="nav-link active">Log Message</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Context</a></li>
-                    </ul>
-                </div> -->
-                <!-- /Card-->
-
-                <!--- STATISTICS -->
-
-                <!-- <div class="card mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between"><h5>Statistics</h5>
-                        <ul class="nav nav-pills btn-pills justify-content-center">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Daily</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Weekly</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Monthly</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="d-flex flex-row flex-wrap justify-content-between p-4 bottom-radius card-bg-secondary statistics-items text-center">
-                        <div class="flex-fill p-2 border-right">
-                            <h5 class="mb-3">Delivered</h5>
-                            <h4 class="font-weight-bold mb-3">16 <span style="font-size: 0.5em;" class="badge font-weight-normal badge-success ml-1 align-middle">
-                <i class="fas fa-angle-up"></i> 20%
-            </span></h4>
-                            <span>Yesterday <strong>5</strong></span>
-                        </div>
-                        <div class="flex-fill p-2 border-right">
-                            <h5 class="mb-3">Opened</h5>
-                            <h4 class="font-weight-bold mb-3">16 <span style="font-size: 0.5em;" class="badge font-weight-normal badge-danger ml-1 align-middle">
-                <i class="fas fa-angle-down"></i> 20%
-            </span></h4>
-                            <span>Yesterday <strong>5</strong></span>
-                        </div>
-                        <div class="flex-fill p-2 border-right">
-                            <h5 class="mb-3">Clicked</h5>
-                            <h4 class="font-weight-bold mb-3">16 <span style="font-size: 0.5em;" class="badge font-weight-normal badge-success ml-1 align-middle">
-                <i class="fas fa-angle-up"></i> 20%
-            </span></h4>
-                            <span>Yesterday <strong>5</strong></span>
-                        </div>
-                        <div class="flex-fill p-2 border-right">
-                            <h5 class="mb-3">Top Mailable</h5>
-                            <h5 class="mb-3 text-secondary">App/Mail/<span class="text-primary">Verification</span></h5>
-                            <span>Yesterday <strong>Welcome</strong></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4 card-bg-secondary">
-                    <canvas id="myChart"></canvas>
-                </div> -->
-
-
-
-
-                
-                
-                <!-- <div class="d-flex flex-wrap">
-                    <h5 class="mr-auto mb-sm-4">
-                  E-mail Templates
-                  <small class="text-muted">Select a template and create something beautiful</small>
-                </h5> -->
-                <!-- <p class="bd-highlight text-muted">3 Templates found</p> -->
-                <!-- <div><a href="#" class="btn btn-primary btn-md">New Template</a></div>
-                </div>
-                <div class="d-flex flex-row flex-wrap justify-content-center mt-4">
-                    <div class="card flex-fill" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Sparkdown</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Genrate Sparkdown</a>
-                        </div>
-                    </div>
-                    <div class="card flex-fill" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Markdown Editor</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-secondary">Create Markdown</a>
-                        </div>
-                    </div>
-                    <div class="card flex-fill" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">E-Mail Editor</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-secondary">Create Template</a>
-                        </div>
-                    </div>
-                </div> -->
-            
 
 <script type="text/javascript">
 
     
 $(document).ready(function(){
-
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     },
-            // });
 
             @if ($skeleton['type'] === 'markdown')
             
@@ -315,12 +124,7 @@ $(document).ready(function(){
                         className: "fa fa-code",
                         title: "Code",
                 },
-                /*{
-                        name: "quote",
-                        action: SimpleMDE.toggleBlockquote,
-                        className: "fa fa-quote-left",
-                        title: "Quote",
-                },*/
+
                 "|",
                 {
                         name: "unordered-list",

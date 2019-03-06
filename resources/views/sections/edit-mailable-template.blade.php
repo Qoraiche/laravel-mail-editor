@@ -36,8 +36,6 @@
 
      </style>
 
-     {{-- {{ dd($templateData) }} --}}
-
 <div class="col-lg-12 col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -167,12 +165,6 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
                 className: "fa fa-code",
                 title: "Code",
         },
-        /*{
-                name: "quote",
-                action: SimpleMDE.toggleBlockquote,
-                className: "fa fa-quote-left",
-                title: "Quote",
-        },*/
         "|",
         {
                 name: "unordered-list",
@@ -449,18 +441,6 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
             cm.replaceSelection(output);
         });
 
-    /**
-     * 
-     *
-     * ########################################
-     *
-     * ----------- IF NOT MARKDOWN ------------
-     *
-     * ########################################
-     *
-     * 
-     */
-
         @else
 
 tinymce.init({
@@ -550,23 +530,6 @@ $('.save-template').click(function(){
   }
 })
 
-
-    /*$.ajax({
-      method: "POST",
-      url: "{{ route('parseTemplate') }}",
-      data: { 
-        markdown: tinymce.get('template_editor').getContent(),
-        viewpath: "{{ $templateData['view_path'] }}"
-     }
-    })
-      .done(function( data ) {
-        if (data.status == 'ok'){
-$('.template-edit-status').removeClass('alert-warning d-none').addClass('alert-success').html('Saved successfully <a href="{{ route('viewMailable', ['name' => $name]) }}" class="float-right">View Mailable</a>');
-        localStorage.removeItem(templateID);
-        } else {
-            $('.template-edit-status').removeClass('alert-success d-none').addClass('alert-warning').text('Error, cannot save the template');
-        }
-      });*/
 });
 
 
