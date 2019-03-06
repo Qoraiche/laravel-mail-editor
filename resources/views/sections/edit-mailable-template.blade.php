@@ -373,7 +373,7 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         localStorage.setItem(templateID, simplemde.codemirror.getValue());
         $('.save-draft').addClass('disabled').text('Draft Saved');
 
-        if (plaintextEditor.getValue() !== ''){
+        if (typeof plaintextEditor !== 'undefined' && plaintextEditor.getValue() !== ''){
                 axios.post('{{ route('parseTemplate') }}', {
                 markdown: plaintextEditor.getValue(),
                 viewpath: "{{ $templateData['text_view_path'] }}"
@@ -497,7 +497,7 @@ $('.save-template').click(function(){
         localStorage.setItem(templateID, tinymce.get('template_editor').getContent());
         $('.save-draft').addClass('disabled').text('Draft Saved');
 
-        if (plaintextEditor.getValue() !== ''){
+        if (typeof plaintextEditor !== 'undefined' && plaintextEditor.getValue() !== ''){
                 axios.post('{{ route('parseTemplate') }}', {
                 markdown: plaintextEditor.getValue(),
                 viewpath: "{{ $templateData['text_view_path'] }}"
