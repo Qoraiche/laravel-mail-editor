@@ -74,7 +74,8 @@ license. Please see the [license file](LICENSE) for more information.
 __Contributions are welcome__
 
 * Frontend enhancement (jquery to vue.js).
-* Add more templates
+* Add more templates (HTML/Markdown).
+* Expand documentation pages.
 
 ## Donate :heart:
 
