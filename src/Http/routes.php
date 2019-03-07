@@ -1,7 +1,5 @@
 <?php
 
-use App\Mail\Csdcsdc;
-
 Route::get('/', function(){
 
 	return redirect()->route('mailableList');
