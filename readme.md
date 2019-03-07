@@ -5,6 +5,10 @@
 
 This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/JoggApp/laravel-mail-viewer) & [laravel/telescope](https://github.com/laravel/telescope) (Design).
 
+## WORK IN PROGRESS
+
+Please note that this package is still under active development. We encourage everyone to try it and give feedback.
+
 ## Features
 
 * Create mailables without using command line.
