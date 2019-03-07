@@ -10,17 +10,16 @@ use Illuminate\Support\Facades\View;
 
 class MailablesController extends Controller
 {
-
-
+	
 	public function __construct()
-    {
-        abort_unless(
-            App::environment(config('maileclipse.allowed_environments', ['local'])),
-            403
-        );
-    }
+	    {
+	  abort_unless(
+		    App::environment(config('maileclipse.allowed_environments', ['local'])),
+		    403
+	  );
+	}
 
-    public function toMailablesList()
+    	public function toMailablesList()
 	{
 		return redirect()->route('mailableList');
 	}
