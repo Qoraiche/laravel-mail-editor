@@ -59,7 +59,7 @@ If you discover any security related issues, please email author email [qoraiche
 
 ## License
 
-license. Please see the [license file](LICENSE) for more information.
+MIT license. Please see the [license file](LICENSE) for more information.
 
 ## Screenshots
 
