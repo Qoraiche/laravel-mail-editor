@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\View;
 class MailablesController extends Controller
 {
 
+
 	public function __construct()
     {
         abort_unless(
@@ -19,6 +20,11 @@ class MailablesController extends Controller
         );
     }
 
+    public function toMailablesList()
+	{
+		return redirect()->route('mailableList');
+	}
+	
 
 	public function index()
 	{

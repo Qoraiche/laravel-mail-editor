@@ -1,10 +1,6 @@
 <?php
 
-Route::get('/', function(){
-
-	return redirect()->route('mailableList');
-});
-
+Route::get('/', 'MailablesController@toMailablesList');
 Route::get('/templates', 'TemplatesController@index')->name('templateList');
 Route::get('/templates/new', 'TemplatesController@select')->name('selectNewTemplate');
 Route::get('/templates/new/{type}/{name}/{skeleton}', 'TemplatesController@new')->name('newTemplate');
