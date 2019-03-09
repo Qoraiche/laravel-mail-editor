@@ -7,6 +7,7 @@ use Illuminate\Container\Container;
 use Illuminate\Support\Facades\View;
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\Facades\DB;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
@@ -625,26 +626,57 @@ class mailEclipse
 
     	if (method_exists($mailable, '__construct'))
     	{
+
     		$reflection = new ReflectionClass($mailable);
+
 			$params = $reflection->getConstructor()->getParameters();
 
-			// dd($params);
-
+			$eloquentFactory = app(EloquentFactory::class);
+			
 			$args = collect($params)->map(function( $param ){
-				$types = $param->getType() !== null ? [
-					'typehint' => true, 'instance' => $param->getType()->getName()
-				] : $param->name;
-				return $types;
+
+			if ( $param->getType() !== null )
+			{
+				if ( class_exists( $param->getType()->getName() ) )
+				{
+					$parameters = [
+						'is_instance' => true,
+						'instance' => $param->getType()->getName()
+					];
+
+				} else {
+
+					$parameters = $param->name;
+				}
+
+				return $parameters;
+			}
+
+				return $param->name;
 			});
 
 			$filteredparams = [];
 
 			foreach ($args->all() as $arg) {
-				if ( is_array($arg) ){
-					$filteredparams[] = new $arg['instance'];
-					continue;
-				}
+
+				$factoryStates = [];
+
+				if ( is_array($arg) && $arg['is_instance'] ){
+
+					if ( isset($eloquentFactory[$arg['instance']]) ) {
+
+                    	$filteredparams[] = factory($arg['instance'])->states($factoryStates)->create();
+
+                	} else {
+                		$filteredparams[] = app($arg['instance']);
+                	}
+
+			} else {
+
 				$filteredparams[] = $arg;
+
+			}
+
 			}
 
             $reflector = new ReflectionClass($mailable);
@@ -766,10 +798,13 @@ class mailEclipse
 	    	$_data = array_merge($instance->buildViewData(), $viewData);
 
 	    	foreach ($_data as $key => $value) {
-		        $_data[$key] = '{{'.$key.'}}';
+		        if (!is_object($value)){
+		        	$_data[$key] = "{{ $key }}";
+		        }
 		    }
 
     	 } else {
+    	 	
     	 	$_data = [];
     	 }
 

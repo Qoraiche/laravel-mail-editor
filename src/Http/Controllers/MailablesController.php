@@ -59,8 +59,6 @@ class MailablesController extends Controller
 
 		$resource = $mailable->first();
 
-		// $instance = new $resource['namespace'];
-
 		return view(mailEclipse::$view_namespace.'::sections.view-mailable')->with( compact('resource') );
 	}
 
