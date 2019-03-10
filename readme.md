@@ -83,7 +83,7 @@ __Contributions are welcome__
 
 ## Donate :heart:
 
-If this package helps you, so why not buy me a coffe [Paypal.me](https://www.paypal.me/streamaps), thank you!
+If you benefit from and/or like using MailEclipse then please help drive the future development of the project by [donating today](https://www.paypal.me/streamaps)!
 
 ### Donators list:
 
