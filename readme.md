@@ -78,21 +78,13 @@ MIT license. Please see the [license file](LICENSE) for more information.
 __Contributions are welcome__
 
 * Frontend enhancement (jquery to vue.js).
-* Add more templates (HTML/Markdown).
+* Add more email templates (HTML/Markdown).
 * Expand documentation pages.
 
 ## Donate :heart:
 
 If this package helps you, so why not buy me a coffe [Paypal.me](https://www.paypal.me/streamaps), thank you!
 
-[ico-version]: https://img.shields.io/packagist/v/qoraiche/maileclipse.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/qoraiche/maileclipse.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/qoraiche/maileclipse/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
+### Donators list:
 
-[link-packagist]: https://packagist.org/packages/qoraiche/maileclipse
-[link-downloads]: https://packagist.org/packages/qoraiche/maileclipse
-[link-travis]: https://travis-ci.org/qoraiche/maileclipse
-[link-styleci]: https://styleci.io/repos/12345678
-[link-author]: https://github.com/qoraiche
-[link-contributors]: ../../contributors
+- No donators yet :disappointed:.
