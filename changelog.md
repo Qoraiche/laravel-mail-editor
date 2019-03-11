@@ -19,3 +19,9 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 - fix mailable with multiple constructor args type error ([issue](https://github.com/Qoraiche/laravel-mail-editor/issues/1)).
 - Replace route closure with controller based route
 - other minor fixes
+
+## Version 1.1.0
+
+- look for the equivalent factory and check if the dependency is an eloquent model.
+- Resolve all other non-eloquent objects.
+- Markdown editor will output no object variables in the following format: {{ varname }}.
