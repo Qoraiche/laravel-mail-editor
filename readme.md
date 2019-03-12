@@ -87,4 +87,4 @@ If you benefit from and/or like using MailEclipse then please help drive the fut
 
 ### Donators list:
 
-- No donators yet :disappointed:.
+1. Flavius Borlovan (6,99 $ USD) - #teamcookie says HELLOO 🥳😉 Thanks for this really helpful Package (MailEclipse) bro. 😉💪🏽
