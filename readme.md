@@ -1,7 +1,15 @@
-# laravel-mail-editor (Known as mailEclipse)
+<h6 align="center">
+    <img src="https://i.imgur.com/QpAJLql.png" width="150"/>
+</h6>
 
-[![Latest Stable Version](https://poser.pugx.org/qoraiche/laravel-mail-editor/v/stable)](https://packagist.org/packages/qoraiche/laravel-mail-editor)
-[![License](https://poser.pugx.org/qoraiche/laravel-mail-editor/license)](https://packagist.org/packages/qoraiche/laravel-mail-editor)
+<h2 align="center">
+    laravel Mail Editor (Aka MailEclipse)
+</h2>
+
+<p align="center">
+<a href="https://packagist.org/packages/qoraiche/laravel-mail-editor" alt="sponsors on Open Collective"><img src="https://poser.pugx.org/qoraiche/laravel-mail-editor/v/stable" /></a> <a href="https://packagist.org/packages/qoraiche/laravel-mail-editor" alt="Sponsors on Open Collective"><img src="https://poser.pugx.org/qoraiche/laravel-mail-editor/license" /></a> 
+</p>
+<br/><br/>
 
 This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/JoggApp/laravel-mail-viewer) & [laravel/telescope](https://github.com/laravel/telescope) (Design).
 
