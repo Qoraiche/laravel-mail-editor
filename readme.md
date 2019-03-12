@@ -3,7 +3,7 @@
 </h6>
 
 <h2 align="center">
-    laravel Mail Editor (Aka MailEclipse)
+    Laravel Mail Editor (Aka MailEclipse)
 </h2>
 
 <p align="center">
