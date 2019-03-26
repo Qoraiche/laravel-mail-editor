@@ -378,13 +378,13 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         if (typeof plaintextEditor !== 'undefined' && plaintextEditor.getValue() !== ''){
                 axios.post('{{ route('parseTemplate') }}', {
                 markdown: plaintextEditor.getValue(),
-                viewpath: "{{ $templateData['text_view_path'] }}"
+                viewpath: "{{ base64_encode($templateData['text_view_path']) }}"
             })
         }
 
         axios.post('{{ route('parseTemplate') }}', {
             markdown: simplemde.codemirror.getValue(),
-            viewpath: "{{ $templateData['view_path'] }}"
+            viewpath: "{{ base64_encode($templateData['view_path']) }}"
         })
         
     .then(function (response) {
@@ -502,13 +502,13 @@ $('.save-template').click(function(){
         if (typeof plaintextEditor !== 'undefined' && plaintextEditor.getValue() !== ''){
                 axios.post('{{ route('parseTemplate') }}', {
                 markdown: plaintextEditor.getValue(),
-                viewpath: "{{ $templateData['text_view_path'] }}"
+                viewpath: "{{ base64_encode($templateData['text_view_path']) }}"
             })
         }
 
         axios.post('{{ route('parseTemplate') }}', {
             markdown: tinymce.get('template_editor').getContent(),
-            viewpath: "{{ $templateData['view_path'] }}"
+            viewpath: "{{ base64_encode($templateData['view_path']) }}"
         })
 
     .then(function (response) {
