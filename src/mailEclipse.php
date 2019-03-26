@@ -637,11 +637,20 @@ class mailEclipse
 
 			if ( $param->getType() !== null )
 			{
+
 				if ( class_exists( $param->getType()->getName() ) )
 				{
 					$parameters = [
 						'is_instance' => true,
 						'instance' => $param->getType()->getName()
+					];
+
+
+				} elseif ($param->getType()->getName() == 'array') {
+					
+					$parameters = [
+						'is_array' => true,
+						'arg' => $param->getName()
 					];
 
 				} else {
@@ -661,15 +670,28 @@ class mailEclipse
 
 				$factoryStates = [];
 
-				if ( is_array($arg) && $arg['is_instance'] ){
+				if ( is_array($arg) ){
 
-					if ( isset($eloquentFactory[$arg['instance']]) ) {
+					if ( isset($arg['is_instance']) ){
 
-                    	$filteredparams[] = factory($arg['instance'])->states($factoryStates)->create();
+						if ( isset($eloquentFactory[$arg['instance']]) ) {
 
-                	} else {
-                		$filteredparams[] = app($arg['instance']);
-                	}
+	                    	$filteredparams[] = factory($arg['instance'])->states($factoryStates)->create();
+
+	                	} else {
+	                		$filteredparams[] = app($arg['instance']);
+	                	}
+
+	                } elseif( isset($arg['is_array']) ){
+
+	                	$filteredparams[] = [];
+
+	                } else {
+
+	                	return;
+	                }
+
+	                
 
 			} else {
 
@@ -691,11 +713,6 @@ class mailEclipse
 
     }
 
-
-    /**
-	 * 
-	 * 
-	 */
 
     static private function getMailableViewData($mailable)
     {
