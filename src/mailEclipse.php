@@ -28,7 +28,6 @@ class mailEclipse
 	{
 		return self::mailablesList();
 	}
-
 	
 	static public function getMailable($key, $name)
 	{
@@ -39,7 +38,6 @@ class mailEclipse
 	static public function deleteTemplate($templateSlug)
 	{
 
-		
 		$template = DB::table(self::$templates_table)
 		            ->where('template_slug', $templateSlug)->first();
 
@@ -49,8 +47,6 @@ class mailEclipse
 
 			$template_view = self::$view_namespace.'::templates.'.$templateSlug;
 			$template_plaintext_view = $template_view.'_plain_text';
-
-			// return $template_plaintext_view;
 
 			if ( View::exists( $template_view ) )
 			{
@@ -631,6 +627,8 @@ class mailEclipse
 
 			$params = $reflection->getConstructor()->getParameters();
 
+			DB::beginTransaction();
+
 			$eloquentFactory = app(EloquentFactory::class);
 			
 			$args = collect($params)->map(function( $param ){
@@ -709,6 +707,8 @@ class mailEclipse
 				return $foo;
 
 			}
+
+			DB::rollBack();
     	}
 
     }
