@@ -91,7 +91,10 @@ __Contributions are welcome__
 
 ## Donate :heart:
 
-If you benefit from and/or like using MailEclipse then please help drive the future development of the project by [donating today](https://www.paypal.me/streamaps)!
+If you benefit from and/or like using MailEclipse then please help drive the future development of the project by 
+
+* [donating today](https://www.paypal.me/streamaps)!.
+* Star the project :star:.
 
 ### Donators list:
 
