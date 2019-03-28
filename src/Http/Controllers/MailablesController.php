@@ -86,7 +86,9 @@ class MailablesController extends Controller
 
 		$template = $request->has('template') ? $request->template : false;
 
-		if( mailEclipse::markdownedTemplateToView(true, $request->markdown, base64_decode($request->viewpath), $template) ){
+		$viewPath = $request->has('template') ? $request->viewpath : base64_decode($request->viewpath);
+
+		if( mailEclipse::markdownedTemplateToView(true, $request->markdown, $viewPath, $template) ){
 
 			return response()->json([
 			    'status' => 'ok',
@@ -94,8 +96,8 @@ class MailablesController extends Controller
 		}
 
 		return response()->json([
-			    'status' => 'error',
-			]);
+		    'status' => 'error',
+		]);
 
 	}
 
