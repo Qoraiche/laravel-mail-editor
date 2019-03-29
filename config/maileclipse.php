@@ -36,7 +36,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel Environments Directory
+    | Laravel Environments
     |--------------------------------------------------------------------------
     |
     | If you don't want to use this package in production env
