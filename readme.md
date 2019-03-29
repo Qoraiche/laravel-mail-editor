@@ -11,6 +11,8 @@
 </p>
 <br/><br/>
 
+MailEclipse is a mailable editor package for your Laravel applications to create and manage mailables using a web UI. You can use this package to develop mailables without using the command line, and edit templates associated with mailables using a WYSIWYG editor, among other features.
+
 This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/JoggApp/laravel-mail-viewer) & [laravel/telescope](https://github.com/laravel/telescope) (Design).
 
 ## WORK IN PROGRESS
@@ -96,7 +98,8 @@ If you benefit from and/or like using MailEclipse then please help drive the fut
 * [donating today](https://www.paypal.me/streamaps)!.
 * Star the project :star:.
 
-### Donators list:
+### Donors list:
 
-1. **Flavius Borlovan** (6,99 $ USD) - `#teamcookie says HELLOO 🥳😉 Thanks for this really helpful Package (MailEclipse) bro. 😉💪🏽` - 12 March 2019
-2. **Maik Kasper** - (6,99 $ USD) - `We {teamcookie:github. com/flavius-constantin} 💥 love to support good developers and their awesome work! 🌪🔥` - 13 March 2019
+1. **WebArt Design** - (10,00 $ USD) - `Donation made with love by BuiltByPanda. com from Australia who support developers and their excellent work` - 
+2. **Flavius Borlovan** (6,99 $ USD) - `#teamcookie says HELLOO 🥳😉 Thanks for this really helpful Package (MailEclipse) bro. 😉💪🏽` - 12 March 2019
+3. **Maik Kasper** - (6,99 $ USD) - `We {teamcookie:github. com/flavius-constantin} 💥 love to support good developers and their awesome work! 🌪🔥` - 13 March 2019
