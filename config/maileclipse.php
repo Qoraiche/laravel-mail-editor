@@ -24,7 +24,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel Mail Directory
+    | Environment
     |--------------------------------------------------------------------------
     |
     | If you don't want to use this package in production env
