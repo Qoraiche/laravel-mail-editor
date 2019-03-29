@@ -2,7 +2,7 @@
 
 return [
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | MailEclipse Path
     |--------------------------------------------------------------------------
@@ -11,9 +11,9 @@ return [
     |
     */
 
-	'path' => 'maileclipse',
+    'path' => 'maileclipse',
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Laravel Mail Directory
     |--------------------------------------------------------------------------
@@ -24,7 +24,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel Mail Directory
+    | Laravel View Config
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'view' => [
+        'dir' => resource_path('views/mail/'),
+        'namespace' => 'mail'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laravel Environments Directory
     |--------------------------------------------------------------------------
     |
     | If you don't want to use this package in production env
@@ -44,7 +56,7 @@ return [
     | class names of the middleware classes.
     |
     */
-   
+
     'middleware' => [],
 
     /*
@@ -56,98 +68,98 @@ return [
     |
     |
     */
-   
-   'skeletons' => [
+
+    'skeletons' => [
 
         'html' => [
 
             'airmail' => [
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'ping', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'upsell', 
+                'confirm',
+                'invite',
+                'invoice',
+                'ping',
+                'progress',
+                'reignite',
+                'survey',
+                'upsell',
                 'welcome',
             ],
 
             'cerberus' => [
-                'fluid', 
-                'hybrid', 
+                'fluid',
+                'hybrid',
                 'responsive',
             ],
 
             'cleave' => [
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'ping', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'upsell', 
+                'confirm',
+                'invite',
+                'invoice',
+                'ping',
+                'progress',
+                'reignite',
+                'survey',
+                'upsell',
                 'welcome',
             ],
 
             'go' => [
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'ping', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'upsell', 
+                'confirm',
+                'invite',
+                'invoice',
+                'ping',
+                'progress',
+                'reignite',
+                'survey',
+                'upsell',
                 'welcome',
             ],
 
             'goldstar' => [
-                'birthday', 
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'update', 
+                'birthday',
+                'confirm',
+                'invite',
+                'invoice',
+                'progress',
+                'reignite',
+                'survey',
+                'update',
                 'welcome',
             ],
 
             'mantra' => [
-                'activation', 
-                'birthday', 
-                'coupon', 
-                'progress', 
-                'rating', 
-                'receipt', 
-                'shipped', 
-                'update', 
+                'activation',
+                'birthday',
+                'coupon',
+                'progress',
+                'rating',
+                'receipt',
+                'shipped',
+                'update',
                 'welcome',
             ],
 
             'meow' => [
-                'confirmation', 
-                'coupon', 
-                'digest-left', 
-                'digest-right', 
-                'progress', 
-                'receipt', 
-                'survey', 
-                'two-column', 
+                'confirmation',
+                'coupon',
+                'digest-left',
+                'digest-right',
+                'progress',
+                'receipt',
+                'survey',
+                'two-column',
                 'welcome'
             ],
 
             'narrative' => [
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'ping', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'upsell', 
+                'confirm',
+                'invite',
+                'invoice',
+                'ping',
+                'progress',
+                'reignite',
+                'survey',
+                'upsell',
                 'welcome',
             ],
 
@@ -231,6 +243,6 @@ return [
                 'welcome',
             ],
         ]
-   ]
+    ]
 
 ];

@@ -2,16 +2,15 @@
 
 namespace qoraiche\mailEclipse\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use qoraiche\mailEclipse\mailEclipse;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\View;
+use qoraiche\mailEclipse\mailEclipse;
 
 class TemplatesController extends Controller
 {
 
-	public function __construct()
+    public function __construct()
     {
         abort_unless(
             App::environment(config('maileclipse.allowed_environments', ['local'])),
@@ -19,86 +18,86 @@ class TemplatesController extends Controller
         );
     }
 
-	public function index()
-	{
+    public function index()
+    {
 
-		$skeletons = mailEclipse::getTemplateSkeletons();
+        $skeletons = mailEclipse::getTemplateSkeletons();
 
-		$templates = mailEclipse::getTemplates();
+        $templates = mailEclipse::getTemplates();
 
-		return View(mailEclipse::$view_namespace.'::sections.templates', compact('skeletons', 'templates'));
-	}
+        return View(mailEclipse::$view_namespace . '::sections.templates', compact('skeletons', 'templates'));
+    }
 
-	public function new($type, $name, $skeleton)
-	{
+    public function new($type, $name, $skeleton)
+    {
 
-		$type = $type === 'html' ? $type : 'markdown';
+        $type = $type === 'html' ? $type : 'markdown';
 
-		$skeleton = mailEclipse::getTemplateSkeleton($type, $name, $skeleton);
+        $skeleton = mailEclipse::getTemplateSkeleton($type, $name, $skeleton);
 
-		return View(mailEclipse::$view_namespace.'::sections.create-template', compact('skeleton'));
-	}
+        return View(mailEclipse::$view_namespace . '::sections.create-template', compact('skeleton'));
+    }
 
-	public function view($templateslug = null)
-	{
-
-
-		$template = mailEclipse::getTemplate($templateslug);
-
-		if (is_null($template)){
-
-			return redirect()->route('templateList');
-		}
+    public function view($templateslug = null)
+    {
 
 
-		return View(mailEclipse::$view_namespace.'::sections.edit-template', compact('template'));
-	}
+        $template = mailEclipse::getTemplate($templateslug);
 
-	public function create(Request $request)
-	{
+        if (is_null($template)) {
 
-		return mailEclipse::createTemplate($request);
-	}
+            return redirect()->route('templateList');
+        }
 
 
-	public function select(Request $request)
-	{
-		$skeletons = mailEclipse::getTemplateSkeletons();
+        return View(mailEclipse::$view_namespace . '::sections.edit-template', compact('template'));
+    }
 
-		return View(mailEclipse::$view_namespace.'::sections.new-template', compact('skeletons'));
-	}
+    public function create(Request $request)
+    {
 
-	public function previewTemplateMarkdownView(Request $request)
-	{
-
-		return mailEclipse::previewMarkdownViewContent(false,  $request->markdown, $request->name, true );
-	}
+        return mailEclipse::createTemplate($request);
+    }
 
 
-	public function delete(Request $request)
-	{
+    public function select(Request $request)
+    {
+        $skeletons = mailEclipse::getTemplateSkeletons();
 
-		if ( mailEclipse::deleteTemplate($request->templateslug) ){
+        return View(mailEclipse::$view_namespace . '::sections.new-template', compact('skeletons'));
+    }
 
-			return response()->json([
-				'status' => 'ok',
-			]);
+    public function previewTemplateMarkdownView(Request $request)
+    {
 
-		} else {
+        return mailEclipse::previewMarkdownViewContent(false, $request->markdown, $request->name, true);
+    }
 
-			return response()->json([
-				'status' => 'error',
-			]);
 
-		}
+    public function delete(Request $request)
+    {
 
-	}
+        if (mailEclipse::deleteTemplate($request->templateslug)) {
 
-	public function update(Request $request)
-	{
+            return response()->json([
+                'status' => 'ok',
+            ]);
 
-		return mailEclipse::updateTemplate($request);
+        } else {
 
-	}
+            return response()->json([
+                'status' => 'error',
+            ]);
+
+        }
+
+    }
+
+    public function update(Request $request)
+    {
+
+        return mailEclipse::updateTemplate($request);
+
+    }
 
 }

@@ -17,8 +17,9 @@ class mailEclipseServiceProvider extends ServiceProvider
     {
         Route::middlewareGroup('maileclipse', config('maileclipse.middleware', []));
 
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'maileclipse');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'maileclipse');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'maileclipse');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'maileclipse');
+        $this->loadViewsFrom(config('maileclipse.view.dir', resource_path('views/mail')), config('maileclipse.view.namespace', 'mail'));
         $this->registerRoutes();
         $this->registerMigrations();
 
@@ -27,7 +28,7 @@ class mailEclipseServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
     }
-    
+
     /**
      * Register the package routes.
      *
@@ -36,14 +37,14 @@ class mailEclipseServiceProvider extends ServiceProvider
     private function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
+            $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
         });
     }
 
     private function registerMigrations()
     {
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         }
     }
 
@@ -68,7 +69,7 @@ class mailEclipseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/maileclipse.php', 'maileclipse');
+        $this->mergeConfigFrom(__DIR__ . '/../config/maileclipse.php', 'maileclipse');
 
         // Register the service the package provides.
         $this->app->singleton('maileclipse', function ($app) {
@@ -86,7 +87,7 @@ class mailEclipseServiceProvider extends ServiceProvider
     {
         return ['maileclipse'];
     }
-    
+
     /**
      * Console-specific booting.
      *
@@ -96,11 +97,11 @@ class mailEclipseServiceProvider extends ServiceProvider
     {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__.'/../config/maileclipse.php' => config_path('maileclipse.php'),
+            __DIR__ . '/../config/maileclipse.php' => config_path('maileclipse.php'),
         ], 'maileclipse.config');
 
         $this->publishes([
-                __DIR__.'/../public' => public_path('vendor/maileclipse'),
-            ], 'public');
+            __DIR__ . '/../public' => public_path('vendor/maileclipse'),
+        ], 'public');
     }
 }
