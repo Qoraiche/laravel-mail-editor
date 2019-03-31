@@ -47,9 +47,8 @@ class mailEclipse
 
             DB::table(self::$templates_table)->where('template_slug', '=', $templateSlug)->delete();
 
-            $template_view = self::$self::getViewNamespace() . '::' . $templateSlug;
+            $template_view = self::getViewNamespace() . '::' . $templateSlug;
             $template_plaintext_view = $template_view . '_plain_text';
-
             if (View::exists($template_view)) {
                 unlink(View($template_view)->getPath());
 
@@ -340,9 +339,9 @@ class mailEclipse
     static public function markdownedTemplateToView($save = true, $content = '', $viewPath = '', $template = false)
     {
 
-        if ($template && View::exists(self::getViewNamespace() . '::templates.' . $viewPath)) {
+        if ($template && View::exists(self::getViewNamespace() . "::" . $viewPath)) {
 
-            $viewPath = View(self::getViewNamespace() . '::templates.' . $viewPath)->getPath();
+            $viewPath = View(self::getViewNamespace() . "::" . $viewPath)->getPath();
         }
 
         $replaced = self::templateComponentReplace($content);
@@ -358,7 +357,7 @@ class mailEclipse
     {
 
         $previewtoset = self::markdownedTemplateToView(false, $content);
-        $dir = dirname(__FILE__, 2) . '/resources/views/draft';
+        $dir = realpath(config('maileclipse.mail.dir') . '/draft');
         $viewName = $template ? $viewName . '_template' : $viewName;
 
         if (file_exists($dir)) {

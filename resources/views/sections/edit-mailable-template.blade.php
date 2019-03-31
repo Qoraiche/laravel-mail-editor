@@ -47,8 +47,7 @@
         <li class="breadcrumb-item active">Edit template</li>
       </ol>
     </nav>
-        <div class="container">
-            <div class="row my-4">
+        <div class="row my-4">
                 <div class="col-12 mb-2 d-block d-lg-none">
                     <div id="accordion">
                       <div class="card">
@@ -120,7 +119,6 @@
                     </div>
                 </div>
             </div>
-        </div>       
  </div>
 
 <script type="text/javascript">

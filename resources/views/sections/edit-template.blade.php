@@ -43,8 +43,7 @@
         <li class="breadcrumb-item active">{{ ucfirst($template['name']) }}</li>
       </ol>
     </nav>
-        <div class="container">
-            <div class="row my-4">
+		<div class="row my-4">
                 <div class="col-12 mb-2 d-block d-lg-none">
                     <div id="accordion">
                       <div class="card">
@@ -60,7 +59,7 @@
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Slug:</b> {{ $template['slug'] }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Description:</b> {{ $template['description'] }}</p>
                             
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template View:</b> {{ $template['slug'] }}</p>
+                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template View:</b> {{ $template['view'] }}</p>
 
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Type:</b> {{ ucfirst($template['template_type']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Name:</b> {{ ucfirst($template['template_view_name']) }}</p>
@@ -104,7 +103,7 @@
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Slug:</b> {{ $template['slug'] }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Description:</b> {{ $template['description'] }}</p>
 
-                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template View:</b> {{ $template['slug'] }}</p>
+                            <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template View:</b> {{ $template['view'] }}</p>
 
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Type:</b> {{ ucfirst($template['template_type']) }}</p>
                             <p style="font-size: .9em;"><b class="font-weight-sixhundred">Template Name:</b> {{ ucfirst($template['template_view_name']) }}</p>
@@ -115,7 +114,6 @@
                     </div>
                 </div>
             </div>
-        </div>       
  </div>
 
 <script type="text/javascript">
