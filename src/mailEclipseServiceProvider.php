@@ -102,5 +102,10 @@ class mailEclipseServiceProvider extends ServiceProvider
         $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/maileclipse'),
             ], 'public');
+
+        $this->publishes([
+                __DIR__.'/../resources/views/templates' => $this->app->resourcePath('views/vendor/maileclipse/templates'),
+            ], 'maileclipse.templates');
+
     }
 }
