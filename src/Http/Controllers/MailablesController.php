@@ -6,7 +6,6 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use qoraiche\mailEclipse\mailEclipse;
-use Illuminate\Support\Facades\View;
 
 class MailablesController extends Controller
 {
