@@ -6,7 +6,6 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use qoraiche\mailEclipse\mailEclipse;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\View;
 
 class TemplatesController extends Controller
 {

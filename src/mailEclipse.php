@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\View;
 use Illuminate\Mail\Markdown;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\Facades\DB;
 use RecursiveIteratorIterator;
@@ -15,7 +14,6 @@ use RegexIterator;
 use ReflectionClass;
 use ReflectionProperty;
 use ErrorException;
-use Validator;
 
 class mailEclipse
 {
