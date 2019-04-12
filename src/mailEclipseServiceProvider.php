@@ -19,7 +19,6 @@ class mailEclipseServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'maileclipse');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'maileclipse');
         $this->registerRoutes();
-        $this->registerMigrations();
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
@@ -37,13 +36,6 @@ class mailEclipseServiceProvider extends ServiceProvider
         Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
         });
-    }
-
-    private function registerMigrations()
-    {
-        if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        }
     }
 
     /**
@@ -101,5 +93,10 @@ class mailEclipseServiceProvider extends ServiceProvider
         $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/maileclipse'),
             ], 'public');
+
+        $this->publishes([
+                __DIR__.'/../resources/views/templates' => $this->app->resourcePath('views/vendor/maileclipse/templates'),
+            ], 'maileclipse.templates');
+
     }
 }
