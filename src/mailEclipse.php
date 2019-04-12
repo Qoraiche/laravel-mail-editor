@@ -21,8 +21,6 @@ class mailEclipse
 
     public static $view_namespace = 'maileclipse';
 
-    protected static $templates_table = 'maileclipse_templates';
-
     static public function getMailables()
     {
         return self::mailablesList();
