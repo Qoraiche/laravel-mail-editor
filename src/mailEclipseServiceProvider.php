@@ -4,7 +4,6 @@ namespace qoraiche\mailEclipse;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use mailEclipse;
 
 class mailEclipseServiceProvider extends ServiceProvider
 {
