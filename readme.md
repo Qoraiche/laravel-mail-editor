@@ -48,12 +48,6 @@ Publish configuration file and public assets:
 php artisan vendor:publish --provider="qoraiche\mailEclipse\mailEclipseServiceProvider"
 ```
 
-Migrate database:
-
-```bash
-php artisan migrate
-```
-
 ## Usage
 
 [![Package tutorial](https://i.imgur.com/sBCiFyt.png)](https://www.youtube.com/watch?v=QFgEGNBY3FI)
