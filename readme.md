@@ -14,8 +14,6 @@
 
 MailEclipse is a mailable editor package for your Laravel applications to create and manage mailables using a web UI. You can use this package to develop mailables without using the command line, and edit templates associated with mailables using a WYSIWYG editor, among other features.
 
-This Package inspired from [JoggApp/laravel-mail-viewer](https://github.com/JoggApp/laravel-mail-viewer) & [laravel/telescope](https://github.com/laravel/telescope) (Design).
-
 ## WORK IN PROGRESS
 
 Please note that this package is still under active development. We encourage everyone to try it and give feedback.
