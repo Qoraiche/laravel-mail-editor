@@ -25,3 +25,31 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 - look for the equivalent factory and check if the dependency is an eloquent model.
 - resolve all other non-eloquent objects.
 - markdown editor will output no object variables in the following format: {{ varname }}.
+
+## Version 1.1.1
+
+- fix template view path encoding for windows env.
+
+## Version 1.1.2
+
+- Add constructor auto detect for arrays.
+
+## Version 1.1.3
+
+- rollback db after generating a model factory.
+
+## Version 1.1.4
+
+- Fix Error Request failed with status code 500.
+
+## Version 1.1.5
+
+- Enable source code editing plugin for WYSIWYG.
+
+## Version 1.1.6
+
+- Add `vendor:publish` for template production.
+
+## Version 1.1.7
+
+- Moving away templates metadata from DB to a JSON file to avoid production problems.
