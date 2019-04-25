@@ -40,7 +40,7 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 
 ## Version 1.1.4
 
-- Fix Error Request failed with status code 500.
+- Fix error saving template error `Request failed with status code 500`.
 
 ## Version 1.1.5
 
