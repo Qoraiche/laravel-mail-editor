@@ -15,6 +15,7 @@ use RecursiveIteratorIterator;
 use ReflectionClass;
 use ReflectionProperty;
 use RegexIterator;
+use ReeceM\Mocker\ReflectionMockery;
 
 class mailEclipse
 {
