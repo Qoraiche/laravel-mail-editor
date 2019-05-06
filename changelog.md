@@ -58,3 +58,7 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 
 - Fixes issues #15, #16 
 - Adds the ability to have params mocked for a Mailable's constructor where a type isn't available
+
+## Version 1.1.11
+
+- Fixes issue where the **tinyMCE editor** would take the blade directive `{{ $user->name }}` and then render the thing as this in the `.blade.php` file `{{ $user-&gt;name }}`.
