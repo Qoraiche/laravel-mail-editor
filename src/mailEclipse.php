@@ -624,10 +624,7 @@ class mailEclipse
             $reflection = new ReflectionClass($mailable);
 
             $params = $reflection->getConstructor()->getParameters();
-            
-            /**
-             * Pass the $reflection instance
-             */
+		
             $mock = new ReflectionMockery($reflection);
 
             DB::beginTransaction();
