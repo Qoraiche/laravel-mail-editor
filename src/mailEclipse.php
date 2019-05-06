@@ -625,7 +625,7 @@ class mailEclipse
 
             $params = $reflection->getConstructor()->getParameters();
 		
-            $mock = new ReflectionMockery($reflection);
+            $mocked = new ReflectionMockery($reflection);
 
             DB::beginTransaction();
 
@@ -689,10 +689,11 @@ class mailEclipse
 
 
                 } else {
-                    /**
-                     * For all the things not found, mock it.
-                     */
-                    $filteredparams[] = $mock->get($arg);
+                    try {
+                        $filteredparams[] = $mocked->get($arg);
+                    } catch (\Exception $e) {
+                        $filteredparams[] = $arg;
+                    }
                 }
 
             }
