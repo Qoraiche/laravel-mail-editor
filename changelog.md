@@ -53,3 +53,8 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 ## Version 1.1.7
 
 - Moving away templates metadata from DB to a JSON file to avoid production problems.
+
+## Version 1.1.10
+
+- Fixes issues #15, #16 
+- Adds the ability to have params mocked for a Mailable's constructor where a type isn't available

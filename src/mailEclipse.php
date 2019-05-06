@@ -15,6 +15,7 @@ use RecursiveIteratorIterator;
 use ReflectionClass;
 use ReflectionProperty;
 use RegexIterator;
+use ReeceM\Mocker\ReflectionMockery;
 
 class mailEclipse
 {
@@ -623,6 +624,8 @@ class mailEclipse
             $reflection = new ReflectionClass($mailable);
 
             $params = $reflection->getConstructor()->getParameters();
+		
+            $mocked = new ReflectionMockery($reflection);
 
             DB::beginTransaction();
 
@@ -686,9 +689,11 @@ class mailEclipse
 
 
                 } else {
-
-                    $filteredparams[] = $arg;
-
+                    try {
+                        $filteredparams[] = $mocked->get($arg);
+                    } catch (\Exception $e) {
+                        $filteredparams[] = $arg;
+                    }
                 }
 
             }
