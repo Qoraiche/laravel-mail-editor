@@ -87,7 +87,10 @@ class MailablesController extends Controller
 
 		$viewPath = $request->has('template') ? $request->viewpath : base64_decode($request->viewpath);
 
-		if( mailEclipse::markdownedTemplateToView(true, $request->markdown, $viewPath, $template) ){
+		// ref https://regexr.com/4dflu
+		$bladeRenderable = preg_replace('/((?!{{.*?-)(&gt;)(?=.*?}}))/', '>', $request->markdown);
+
+		if( mailEclipse::markdownedTemplateToView(true, $bladeRenderable, $viewPath, $template) ){
 
 			return response()->json([
 			    'status' => 'ok',
