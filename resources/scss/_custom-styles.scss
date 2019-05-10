@@ -321,3 +321,12 @@ p {
 .nav-link.disabled {
     color: #6c757d !important;
 }
+
+.maileclipse-key::before {
+    content: '\f13d';
+    position: relative;
+    margin: -21px 1px;
+    font-family: FontAwesome;
+    font-size: 10px;
+    color: #087fff;
+}

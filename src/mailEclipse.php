@@ -813,7 +813,7 @@ class mailEclipse
 
             foreach ($_data as $key => $value) {
                 if (!is_object($value)) {
-                    $_data[$key] = "{{ $key }}";
+                    $_data[$key] = '<span class="maileclipse-key" title="Variable">'.$key.'</span>';
                 }
             }
 
@@ -827,16 +827,12 @@ class mailEclipse
         try {
 
             if ($simpleview) {
-
-                $renderer_html = view($_view, $_data)->render();
-                return $renderer_html;
-
+                return htmlspecialchars_decode(view($_view, $_data)->render());
             }
 
             $_md = self::buildMailable(Markdown::class, 'make');
-            $renderer_html = $_md->render($_view, $_data);
 
-            return $renderer_html;
+            return htmlspecialchars_decode($_md->render($_view, $_data));
 
         } catch (ErrorException $e) {
 
