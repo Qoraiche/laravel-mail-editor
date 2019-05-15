@@ -116,13 +116,16 @@ class mailEclipse
 
             // Update
             //
-            self::saveTemplates(self::getTemplates()->reject(function ($value, $key) use($template) {
+            $oldForm = self::getTemplates()->reject(function ($value, $key) use ($template) {
                 return $value->template_slug == $template->template_slug;
-            })->add(array_merge((array)$template, [
+            });
+            $newForm = array_merge($oldForm->toArray(),[ array_merge((array)$template, [
                 'template_slug' => $templatename,
                 'template_name' => $request->title,
                 'template_description' => $request->description,
-            ])));
+            ])]);
+
+            self::saveTemplates(collect($newForm));
 
             $template_view = self::$view_namespace . '::templates.' . $request->templateslug;
             $template_plaintext_view = $template_view . '_plain_text';
