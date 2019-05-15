@@ -121,11 +121,11 @@ class mailEclipse
             $oldForm = self::getTemplates()->reject(function ($value, $key) use ($template) {
                 return $value->template_slug == $template->template_slug;
             });
-            $newForm = array_merge($oldForm->toArray(), array_merge((array)$template, [
+            $newForm = array_merge($oldForm->toArray(),[ array_merge((array)$template, [
                 'template_slug' => $templatename,
                 'template_name' => $request->title,
                 'template_description' => $request->description,
-            ]));
+            ])]);
 
             self::saveTemplates(collect($newForm));
 
