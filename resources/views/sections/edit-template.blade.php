@@ -486,10 +486,12 @@ $(document).ready(function(){
 	        menubar : false,
 	        visual: false,
 	        height:600,
+	        plugins: "legacyoutput",
+	        inline_styles : true,
 	        plugins: [
 	             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
 	             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-	             "save table directionality emoticons template paste fullpage code"
+	             "save table directionality emoticons template paste fullpage code legacyoutput"
 	       ],
 	       content_css: "css/content.css",
 	       toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image fullpage table | forecolor backcolor emoticons | preview | code",
