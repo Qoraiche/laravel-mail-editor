@@ -450,7 +450,6 @@ selector: "textarea#template_editor",
 menubar : false,
 visual: false,
 height:560,
-plugins: "legacyoutput",
 inline_styles : true,
 plugins: [
      "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
