@@ -84,6 +84,11 @@ __Contributions are welcome__
 * Add more email templates (HTML/Markdown).
 * Expand documentation pages.
 
+## Credits
+
+- [Yassine Qoraiche](https://github.com/qoraiche)
+- [All Contributors](../../contributors)
+
 ## Donate :heart:
 
 If you benefit from and/or like using MailEclipse then please help drive the future development of the project by 
