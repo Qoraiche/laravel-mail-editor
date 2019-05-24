@@ -22,6 +22,17 @@ return [
 
     'mail_dir' => app_path('Mail/'),
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | If you want the package to look for the equivalent factory if the
+    | dependency is an eloquent model.
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'factory' => true,
+
     /*
     |--------------------------------------------------------------------------
     | Environment
@@ -46,7 +57,7 @@ return [
     */
    
     'middleware' => [
-    	'web',
+        
     ],
 
     /*

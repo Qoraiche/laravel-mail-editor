@@ -14,6 +14,7 @@ const el = document.querySelector('img');
 
 $(function () {
     $('[data-toggle="popover"]').popover();
+    $('[maileclipse-data-toggle="tooltip"]').tooltip();
 })
 
 $(document).on('click', function (e) {

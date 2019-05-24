@@ -548,12 +548,15 @@ class mailEclipse
                             continue;
                         }
 
-                        if (!is_null(self::handleMailableViewDataArgs($mailableClass))) {
-                            $mailable_view_data = self::getMailableViewData(self::handleMailableViewDataArgs($mailableClass));
-                        } else {
-                            $mailable_view_data = self::getMailableViewData(new $mailableClass);
-                        }
+                        $mailable_data = self::buildMailable($mailableClass);
 
+                        if (!is_null(self::handleMailableViewDataArgs($mailableClass))) {
+                            $mailable_view_data = self::getMailableViewData(self::handleMailableViewDataArgs($mailableClass), $mailable_data);
+
+                            // dd($mailable_view_data);
+                        } else {
+                            $mailable_view_data = self::getMailableViewData(new $mailableClass, $mailable_data);
+                        }
 
                         $mailable_data = self::buildMailable($mailableClass);
 
@@ -673,7 +676,7 @@ class mailEclipse
 
                     if (isset($arg['is_instance'])) {
 
-                        if (isset($eloquentFactory[$arg['instance']])) {
+                        if (isset($eloquentFactory[$arg['instance']]) && config('maileclipse.factory')) {
 
                             $filteredparams[] = factory($arg['instance'])->states($factoryStates)->create();
 
@@ -716,7 +719,7 @@ class mailEclipse
     }
 
 
-    static private function getMailableViewData($mailable)
+    static private function getMailableViewData($mailable, $mailable_data)
     {
 
         $traitProperties = [];
@@ -748,10 +751,52 @@ class mailEclipse
 
         $classProps = array_diff($allProps, $traitProperties);
 
-        $mailableData = collect($classProps)->merge(collect($obj->viewData)->keys());
+        $withFuncData = collect($obj->viewData)->keys();
 
-        return $mailableData->all();
+        $mailableData = collect($classProps)->merge($withFuncData);
 
+        // dd($mailableData);
+        
+        $data = $mailableData->map(function($parameter) use ($mailable_data){
+
+            return [ 
+                'key' => $parameter,
+                'value' => $mailable_data->$parameter,
+                'data' => self::viewDataInspect($mailable_data->$parameter),
+            ];
+
+        });
+
+        return $data->all();
+
+    }
+
+
+    static protected function viewDataInspect($param){
+
+        // dd($param);
+
+        if ( $param instanceof \Illuminate\Database\Eloquent\Model ){
+
+            return [
+                'type' => 'model',
+                'attributes' => collect($param->getAttributes()),
+            ];
+
+        } elseif ( $param instanceof \Illuminate\Database\Eloquent\Collection) {
+
+            return [
+                'type' => 'elequent-collection',
+                'attributes' => $param->all(),
+            ];
+        }
+
+        elseif ( $param instanceof \Illuminate\Support\Collection ) {
+            return [
+                'type' => 'collection',
+                'attributes' => $param->all(),
+            ];
+        }
     }
 
     /**
