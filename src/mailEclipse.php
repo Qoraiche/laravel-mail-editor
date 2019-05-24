@@ -551,14 +551,12 @@ class mailEclipse
                         $mailable_data = self::buildMailable($mailableClass);
 
                         if (!is_null(self::handleMailableViewDataArgs($mailableClass))) {
+
                             $mailable_view_data = self::getMailableViewData(self::handleMailableViewDataArgs($mailableClass), $mailable_data);
 
-                            // dd($mailable_view_data);
                         } else {
                             $mailable_view_data = self::getMailableViewData(new $mailableClass, $mailable_data);
                         }
-
-                        $mailable_data = self::buildMailable($mailableClass);
 
                         $fqcns[$i]['data'] = $mailable_data;
                         $fqcns[$i]['markdown'] = self::getMarkdownViewName($mailable_data);
@@ -754,16 +752,14 @@ class mailEclipse
         $withFuncData = collect($obj->viewData)->keys();
 
         $mailableData = collect($classProps)->merge($withFuncData);
-
-        // dd($mailableData);
         
         $data = $mailableData->map(function($parameter) use ($mailable_data){
 
-            return [ 
-                'key' => $parameter,
-                'value' => $mailable_data->$parameter,
-                'data' => self::viewDataInspect($mailable_data->$parameter),
-            ];
+                return [ 
+                    'key' => $parameter,
+                    'value' => property_exists($mailable_data, $parameter) ? $mailable_data->$parameter : null,
+                    'data' => property_exists($mailable_data, $parameter) ? self::viewDataInspect($mailable_data->$parameter) : null,
+                ];
 
         });
 
@@ -773,8 +769,6 @@ class mailEclipse
 
 
     static protected function viewDataInspect($param){
-
-        // dd($param);
 
         if ( $param instanceof \Illuminate\Database\Eloquent\Model ){
 
