@@ -62,3 +62,28 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 ## Version 1.1.11
 
 - Fixes issue where the **tinyMCE editor** would take the blade directive `{{ $user->name }}` and then render the thing as this in the `.blade.php` file `{{ $user-&gt;name }}`.
+
+## Version 1.1.14
+
+- Add ui anchor icon for each simple variable.
+- Fix error that occured when updating template details: Error: Request failed with status code 500 #32.
+- Add route groups.
+
+## Version 1.1.15
+
+- Add Legacy output plugin and inline_styles option to TinyMCE editor.
+
+## Version 1.1.16
+
+- Add web middleware
+
+## Version 1.1.20
+
+- Add advanced editor params.
+- Optional factory usage configuration.
+- Add with data to params list.
+- Remove web middleware which disables markdown preview to render.
+
+## Version 1.1.21
+
+- Rename config middleware option to middlewares and add a simple middleware example.
