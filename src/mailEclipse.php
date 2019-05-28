@@ -755,11 +755,11 @@ class mailEclipse
         
         $data = $mailableData->map(function($parameter) use ($mailable_data){
 
-                return [ 
-                    'key' => $parameter,
-                    'value' => property_exists($mailable_data, $parameter) ? $mailable_data->$parameter : null,
-                    'data' => property_exists($mailable_data, $parameter) ? self::viewDataInspect($mailable_data->$parameter) : null,
-                ];
+            return [ 
+                'key' => $parameter,
+                'value' => property_exists($mailable_data, $parameter) ? $mailable_data->$parameter : null,
+                'data' => property_exists($mailable_data, $parameter) ? self::viewDataInspect($mailable_data->$parameter) : null,
+            ];
 
         });
 

@@ -14,7 +14,7 @@ class mailEclipseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::middlewareGroup('maileclipse', config('maileclipse.middleware', []));
+        Route::middlewareGroup('maileclipse', config('maileclipse.middlewares', []));
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'maileclipse');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'maileclipse');

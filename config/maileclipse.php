@@ -56,8 +56,8 @@ return [
     |
     */
    
-    'middleware' => [
-        
+    'middlewares' => [
+        //'auth',
     ],
 
     /*
