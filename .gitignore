@@ -1,1 +1,9 @@
 /node_modules/*
+
+# exclude everything
+resources/views/templates/*
+resources/views/draft/*
+
+# exception to the rule
+!resources/views/draft/.gitkeep
+!resources/views/templates/.gitkeep
