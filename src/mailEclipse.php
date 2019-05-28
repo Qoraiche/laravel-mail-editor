@@ -65,10 +65,10 @@ class mailEclipse
 
     static public function getTemplatesFile()
     {
-        $file = config('maileclipse.mail_dir') . 'templates.json';
+        $file = config('maileclipse.mailables_dir') . 'templates.json';
         if (!file_exists($file)) {
-            if (!file_exists(config('maileclipse.mail_dir'))) {
-                mkdir(config('maileclipse.mail_dir'));
+            if (!file_exists(config('maileclipse.mailables_dir'))) {
+                mkdir(config('maileclipse.mailables_dir'));
             }
             file_put_contents($file, "[]");
         }
@@ -516,13 +516,13 @@ class mailEclipse
     {
         $fqcns = array();
 
-        if (!file_exists(config('maileclipse.mail_dir'))):
+        if (!file_exists(config('maileclipse.mailables_dir'))):
 
             return;
 
         else:
 
-            $allFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(config('maileclipse.mail_dir')));
+            $allFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(config('maileclipse.mailables_dir')));
             $phpFiles = new RegexIterator($allFiles, '/\.php$/');
             $i = 0;
 

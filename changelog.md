@@ -87,3 +87,9 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 ## Version 1.1.21
 
 - Rename config middleware option to middlewares and add a simple middleware example.
+
+## Version 1.2.0
+
+- Save created templates to maileclipse vendor resources path.
+- Fix editor view data anchor.
+- Rename configuration option `mail_dir` to `mailables_dir`.
