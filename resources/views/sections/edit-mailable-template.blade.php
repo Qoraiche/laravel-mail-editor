@@ -104,10 +104,10 @@
 
                                         <!-- Dropdown menu links -->
                                         @if ( !$param['data']['attributes']->isEmpty() )
-                                                <a class="dropdown-item view_data_param" param-key="{{ $param['key'] }}" href="#">{{ $param['key'] }}</a>
+                                                <a class="dropdown-item view_data_param" param-key="{{ $param['key'] }}" href="#param">{{ $param['key'] }}</a>
                                                 <div class="dropdown-divider"></div>
                                             @foreach( $param['data']['attributes'] as $key => $val )
-                                                <a class="dropdown-item is-attribute view_data_param" param-parent-key="{{ $param['key'] }}" param-key="{{ $key }}" href="#">{{ $key }}</a>
+                                                <a class="dropdown-item is-attribute view_data_param" param-parent-key="{{ $param['key'] }}" param-key="{{ $key }}" href="#param">{{ $key }}</a>
                                             @endforeach
 
                                             @else 
