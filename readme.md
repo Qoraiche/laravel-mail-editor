@@ -49,7 +49,7 @@ php artisan vendor:publish --provider="qoraiche\mailEclipse\mailEclipseServicePr
 
 ## Documentation
 
-Documentation for Maileclipse can be found on the [https://maileclipse.io/](official website).
+Documentation for Maileclipse can be found on the [Official website](https://maileclipse.io).
 
 
 ## Change log
