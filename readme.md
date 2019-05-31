@@ -47,14 +47,10 @@ Publish configuration file and public assets:
 php artisan vendor:publish --provider="qoraiche\mailEclipse\mailEclipseServiceProvider"
 ```
 
-## Usage
+## Documentation
 
-[![Package tutorial](https://i.imgur.com/sBCiFyt.png)](https://www.youtube.com/watch?v=QFgEGNBY3FI)
+Documentation for Maileclipse can be found on the [https://maileclipse.io/](official website).
 
-
-After setting up the package as described above, you can now access the application by visiting the `/maileclipse` route (considering the default url is `maileclipse` in the config file). You can modify it to whatever you want as per your needs.
-
-![maileclipse-img](https://i.imgur.com/cWD5odh.png)
 
 ## Change log
 
