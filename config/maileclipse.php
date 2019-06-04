@@ -56,6 +56,7 @@ return [
     */
    
     'middlewares' => [
+        'web',
         //'auth',
     ],
 
