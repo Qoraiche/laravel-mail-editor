@@ -93,3 +93,7 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 - Save created templates to maileclipse vendor resources path.
 - Fix editor view data anchor.
 - Rename configuration option `mail_dir` to `mailables_dir`.
+
+## Version 1.2.1
+
+- Fix markdown template preview error request **419**.
