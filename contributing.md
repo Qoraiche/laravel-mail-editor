@@ -2,7 +2,7 @@
 
 Contributions are welcome and will be fully credited.
 
-Contributions are accepted via Pull Requests on [Github](https://github.com/qoraiche/maileclipse).
+Contributions are accepted via Pull Requests on [Github](https://github.com/qoraiche/laravel-mail-editor).
 
 
 ## Pull Requests
