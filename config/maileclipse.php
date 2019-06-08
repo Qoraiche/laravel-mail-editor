@@ -2,7 +2,7 @@
 
 return [
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | MailEclipse Path
     |--------------------------------------------------------------------------
@@ -11,9 +11,9 @@ return [
     |
     */
 
-	'path' => 'maileclipse',
+    'path' => 'maileclipse',
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Application Mailables Directory
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     | class names of the middleware classes.
     |
     */
-   
+
     'middlewares' => [
         'web',
         //'auth',
@@ -69,98 +69,98 @@ return [
     |
     |
     */
-   
+
    'skeletons' => [
 
         'html' => [
 
             'airmail' => [
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'ping', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'upsell', 
+                'confirm',
+                'invite',
+                'invoice',
+                'ping',
+                'progress',
+                'reignite',
+                'survey',
+                'upsell',
                 'welcome',
             ],
 
             'cerberus' => [
-                'fluid', 
-                'hybrid', 
+                'fluid',
+                'hybrid',
                 'responsive',
             ],
 
             'cleave' => [
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'ping', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'upsell', 
+                'confirm',
+                'invite',
+                'invoice',
+                'ping',
+                'progress',
+                'reignite',
+                'survey',
+                'upsell',
                 'welcome',
             ],
 
             'go' => [
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'ping', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'upsell', 
+                'confirm',
+                'invite',
+                'invoice',
+                'ping',
+                'progress',
+                'reignite',
+                'survey',
+                'upsell',
                 'welcome',
             ],
 
             'goldstar' => [
-                'birthday', 
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'update', 
+                'birthday',
+                'confirm',
+                'invite',
+                'invoice',
+                'progress',
+                'reignite',
+                'survey',
+                'update',
                 'welcome',
             ],
 
             'mantra' => [
-                'activation', 
-                'birthday', 
-                'coupon', 
-                'progress', 
-                'rating', 
-                'receipt', 
-                'shipped', 
-                'update', 
+                'activation',
+                'birthday',
+                'coupon',
+                'progress',
+                'rating',
+                'receipt',
+                'shipped',
+                'update',
                 'welcome',
             ],
 
             'meow' => [
-                'confirmation', 
-                'coupon', 
-                'digest-left', 
-                'digest-right', 
-                'progress', 
-                'receipt', 
-                'survey', 
-                'two-column', 
-                'welcome'
+                'confirmation',
+                'coupon',
+                'digest-left',
+                'digest-right',
+                'progress',
+                'receipt',
+                'survey',
+                'two-column',
+                'welcome',
             ],
 
             'narrative' => [
-                'confirm', 
-                'invite', 
-                'invoice', 
-                'ping', 
-                'progress', 
-                'reignite', 
-                'survey', 
-                'upsell', 
+                'confirm',
+                'invite',
+                'invoice',
+                'ping',
+                'progress',
+                'reignite',
+                'survey',
+                'upsell',
                 'welcome',
             ],
 
@@ -189,7 +189,7 @@ return [
             ],
 
             'plain' => [
-                'plain'
+                'plain',
             ],
 
             'skyline' => [
@@ -243,7 +243,7 @@ return [
                 'user-invitation',
                 'welcome',
             ],
-        ]
-   ]
+        ],
+   ],
 
 ];
