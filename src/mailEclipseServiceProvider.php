@@ -25,7 +25,7 @@ class mailEclipseServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
     }
-    
+
     /**
      * Register the package routes.
      *
@@ -65,7 +65,6 @@ class mailEclipseServiceProvider extends ServiceProvider
         $this->app->singleton('maileclipse', function ($app) {
             return new mailEclipse;
         });
-
     }
 
     /**
@@ -77,7 +76,7 @@ class mailEclipseServiceProvider extends ServiceProvider
     {
         return ['maileclipse'];
     }
-    
+
     /**
      * Console-specific booting.
      *
@@ -97,6 +96,5 @@ class mailEclipseServiceProvider extends ServiceProvider
         $this->publishes([
                 __DIR__.'/../resources/views/templates' => $this->app->resourcePath('views/vendor/maileclipse/templates'),
             ], 'maileclipse.templates');
-
     }
 }
