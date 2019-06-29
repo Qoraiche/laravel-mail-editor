@@ -770,7 +770,7 @@ class mailEclipse
             if ($template) {
                 $error .= '<div class="alert alert-info">
 				<h5 class="alert-heading">Notice:</h5>
-				 <p>You can\'t add variables withing a template editor. because they are undefined until you bind template with a mailable that actually has data.</p>
+				<p>You can\'t add variables within a template editor because they are undefined until you bind the template with a mailable that actually has data.</p>
 	    	</div>';
             }
 
