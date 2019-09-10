@@ -2,6 +2,7 @@
 
 namespace qoraiche\mailEclipse;
 
+use Illuminate\Support\Str;
 use RegexIterator;
 use ErrorException;
 use ReflectionClass;
@@ -91,7 +92,7 @@ class mailEclipse
                 ]);
             }
 
-            $templatename = camel_case(preg_replace('/\s+/', '_', $request->title));
+            $templatename = Str::camel(preg_replace('/\s+/', '_', $request->title));
 
             // check if not already exists on db
             //
@@ -197,7 +198,7 @@ class mailEclipse
 
         $view = self::$view_namespace.'::templates.'.$request->template_name;
 
-        $templatename = camel_case(preg_replace('/\s+/', '_', $request->template_name));
+        $templatename = Str::camel(preg_replace('/\s+/', '_', $request->template_name));
 
         if (! view()->exists($view) && ! self::getTemplates()->contains('template_slug', '=', $templatename)) {
             self::saveTemplates(self::getTemplates()
@@ -406,7 +407,7 @@ class mailEclipse
 
     public static function generateMailable($request = null)
     {
-        $name = ucwords(camel_case(preg_replace('/\s+/', '_', $request->input('name'))));
+        $name = ucwords(Str::camel(preg_replace('/\s+/', '_', $request->input('name'))));
 
         if (! self::getMailable('name', $name)->isEmpty() && ! $request->has('force')) {
             // return redirect()->route('createMailable')->with('error', 'mailable already exists! to overide it enable force option.');
