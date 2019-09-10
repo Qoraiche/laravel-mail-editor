@@ -2,7 +2,6 @@
     "name": "codepotatoltd/laravel-mail-editor",
     "description": "Laravel Mailable Editor",
     "license": "MIT",
-    "version": "dev-master",
     "authors": [
         {
             "name": "yassine qoraiche",
@@ -13,7 +12,7 @@
     "homepage": "https://github.com/Qoraiche/laravel-mail-editor",
     "keywords": ["Laravel", "mailEclipse", "mailable-editor", "laravel-mail", "laravel-mailable", "mailable", "markdown"],
     "require": {
-        "illuminate/support": "^6.0",
+        "illuminate/support": "~6.0",
         "reecem/mocker": "1.1.*"
     },
     "require-dev": {
