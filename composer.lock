@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2e58bd6ff384ba09173e7fe0a310e9c",
+    "content-hash": "967c146ac306f743869ed6936f5769c0",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1051,6 +1051,55 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "reecem/mocker",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ReeceM/mocker.git",
+                "reference": "3e7356c69742cb841bdcc4675574bd07d5927101"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ReeceM/mocker/zipball/3e7356c69742cb841bdcc4675574bd07d5927101",
+                "reference": "3e7356c69742cb841bdcc4675574bd07d5927101",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^5.6|^6.0",
+                "illuminate/support": "^5.6|^6.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5|^4.0",
+                "phpunit/phpunit": "^7.5|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ReeceM\\Mocker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ReeceM",
+                    "email": "reecestevenmay@gmail.com",
+                    "homepage": "https://githib.com/reecem"
+                }
+            ],
+            "description": "Mock class constructor args based on the reflection class",
+            "homepage": "https://github.com/reecem/mocker",
+            "keywords": [
+                "helper",
+                "laravel",
+                "mockery",
+                "testing"
+            ],
+            "time": "2019-09-09T13:58:46+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2799,29 +2848,29 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v3.9.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "62af00a2d39132a062c9011206c1b69ba1bfcc5f"
+                "reference": "bde8b826bde3bd39a2a87e6cd328501e19c60cc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/62af00a2d39132a062c9011206c1b69ba1bfcc5f",
-                "reference": "62af00a2d39132a062c9011206c1b69ba1bfcc5f",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/bde8b826bde3bd39a2a87e6cd328501e19c60cc9",
+                "reference": "bde8b826bde3bd39a2a87e6cd328501e19c60cc9",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^6.0",
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench-core": "^3.9.0",
+                "orchestra/testbench-core": "^4.0",
                 "php": ">=7.2",
                 "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.9-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2845,20 +2894,20 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2019-09-03T19:58:40+00:00"
+            "time": "2019-09-03T20:02:19+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v3.9.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "3c34a651dbf7b37ff67d672a007f1852792d3db2"
+                "reference": "de4b741bdee89cc8aba5c03fa8dd0e485001a0d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/3c34a651dbf7b37ff67d672a007f1852792d3db2",
-                "reference": "3c34a651dbf7b37ff67d672a007f1852792d3db2",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/de4b741bdee89cc8aba5c03fa8dd0e485001a0d5",
+                "reference": "de4b741bdee89cc8aba5c03fa8dd0e485001a0d5",
                 "shasum": ""
             },
             "require": {
@@ -2874,14 +2923,14 @@
             "suggest": {
                 "laravel/framework": "Required for testing (^6.0).",
                 "mockery/mockery": "Allow to use Mockery for testing (^1.0).",
-                "orchestra/testbench-browser-kit": "Allow to use legacy Laravel BrowserKit for testing (^3.9).",
-                "orchestra/testbench-dusk": "Allow to use Laravel Dusk for testing (^3.9).",
+                "orchestra/testbench-browser-kit": "Allow to use legacy Laravel BrowserKit for testing (^4.0).",
+                "orchestra/testbench-dusk": "Allow to use Laravel Dusk for testing (^4.0).",
                 "phpunit/phpunit": "Allow to use PHPUnit for testing (^8.0)."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.9-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -2910,7 +2959,7 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2019-09-03T19:54:36+00:00"
+            "time": "2019-09-03T20:00:44+00:00"
         },
         {
             "name": "phar-io/manifest",
