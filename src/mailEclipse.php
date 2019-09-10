@@ -2,11 +2,11 @@
 
 namespace qoraiche\mailEclipse;
 
-use Illuminate\Support\Str;
 use RegexIterator;
 use ErrorException;
 use ReflectionClass;
 use ReflectionProperty;
+use Illuminate\Support\Str;
 use Illuminate\Mail\Markdown;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
