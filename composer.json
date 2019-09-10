@@ -2,6 +2,7 @@
     "name": "codepotatoltd/laravel-mail-editor",
     "description": "Laravel Mailable Editor",
     "license": "MIT",
+    "version": "dev-master",
     "authors": [
         {
             "name": "yassine qoraiche",
