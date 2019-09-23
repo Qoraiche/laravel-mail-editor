@@ -8,3 +8,4 @@ resources/views/draft/*
 !resources/views/draft/.gitkeep
 !resources/views/templates/.gitkeep
 .DS_Store
+/vendor
