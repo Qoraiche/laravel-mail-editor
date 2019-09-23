@@ -641,7 +641,7 @@ class mailEclipse
      * @param string $arg the argument string|array
      * @param array $params the reflection param list
      * 
-     * @return array
+     * @return array|string|\ReeceM\Mocker\Mocked
      */
     private static function getMissingParams($arg, $params)
     {
