@@ -6,6 +6,7 @@ use RegexIterator;
 use ErrorException;
 use ReflectionClass;
 use ReflectionProperty;
+use ReeceM\Mocker\Mocked;
 use Illuminate\Support\Str;
 use Illuminate\Mail\Markdown;
 use RecursiveIteratorIterator;
@@ -14,7 +15,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\View;
-use ReeceM\Mocker\Mocked;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
@@ -24,14 +24,14 @@ class mailEclipse
 
     /**
      * Default type examples for being passed to reflected classes.
-     * 
+     *
      * @var array TYPES
      */
     public const TYPES = [
         'int' => 31,
         // 'string' => 'test_string', // not needed as it can be cast __toString()
         'bool' => false,
-        'float' => 3.14159
+        'float' => 3.14159,
     ];
 
     public static function getMailables()
@@ -574,7 +574,7 @@ class mailEclipse
             $reflection = new ReflectionClass($mailable);
 
             $params = $reflection->getConstructor()->getParameters();
-            
+
             DB::beginTransaction();
 
             $eloquentFactory = app(EloquentFactory::class);
@@ -637,34 +637,32 @@ class mailEclipse
 
     /**
      * Gets any missing params that may not be collectable in the reflection.
-     * 
+     *
      * @param string $arg the argument string|array
      * @param array $params the reflection param list
-     * 
+     *
      * @return array|string|\ReeceM\Mocker\Mocked
      */
     private static function getMissingParams($arg, $params)
     {
         /**
          * Determine if a builtin type can be found.
-         * Not a string or object as a Mocked::class can work there
-         * 
+         * Not a string or object as a Mocked::class can work there.
+         *
          * ->getType() needs to be cast to string to get the protected prop.
          */
-        $argType = (string)collect($params)->where('name', $arg)->first()->getType();
+        $argType = (string) collect($params)->where('name', $arg)->first()->getType();
 
         $argType = self::TYPES[$argType] ?? null;
-        
-        try {
-            return !is_null($argType) 
-                    ? $argType 
-                    : new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
 
+        try {
+            return ! is_null($argType)
+                    ? $argType
+                    : new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
         } catch (\Exception $e) {
             return $arg;
         }
     }
-
 
     private static function getMailableViewData($mailable, $mailable_data)
     {
