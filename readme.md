@@ -51,6 +51,13 @@ php artisan vendor:publish --provider="qoraiche\mailEclipse\mailEclipseServicePr
 
 Documentation for Maileclipse can be found on the [Official website](https://maileclipse.io).
 
+## Community
+
+You can reach us at:
+
+- Spectrum chat: https://spectrum.chat/maileclipse
+- Slack: https://maileclipse.slack.com/
+
 
 ## Change log
 
