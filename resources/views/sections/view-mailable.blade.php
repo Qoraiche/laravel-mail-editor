@@ -52,7 +52,7 @@
 
 				    				<tr>
 	                                    <td class="table-fit font-weight-sixhundred">From</td>
-	                                    <td><a href="mailto:{{ collect($resource['data']->from)->first()['address'] }}{{ !collect($resource['data']->from)->isEmpty() ? collect($resource['data']->from)->first()['address'] : config('mail.from.address') }}" class="badge badge-info mr-1 font-weight-light">
+	                                    <td><a href="mailto:{{ !collect($resource['data']->from)->isEmpty() ? collect($resource['data']->from)->first()['address'] : config('mail.from.address') }}" class="badge badge-info mr-1 font-weight-light">
 	                                    	@if (!collect($resource['data']->from)->isEmpty())
 
                             					{{ collect($resource['data']->from)->first()['address'] }}
@@ -67,7 +67,7 @@
 
                                 	<tr>
 	                                    <td class="table-fit font-weight-sixhundred">Reply To</td>
-	                                    <td><a href="mailto:{{ collect($resource['data']->replyTo)->first()['address'] }}{{ !collect($resource['data']->replyTo)->isEmpty() ? collect($resource['data']->replyTo)->first()['address'] : config('mail.reply_to.address') }}" class="badge badge-info mr-1 font-weight-light">
+	                                    <td><a href="mailto:{{ !collect($resource['data']->replyTo)->isEmpty() ? collect($resource['data']->replyTo)->first()['address'] : config('mail.reply_to.address') }}" class="badge badge-info mr-1 font-weight-light">
 	                                    	@if (!collect($resource['data']->replyTo)->isEmpty())
 
                             					{{ collect($resource['data']->replyTo)->first()['address'] }}
