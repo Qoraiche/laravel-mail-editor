@@ -97,3 +97,30 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 ## Version 1.2.1
 
 - Fix markdown template preview error request **419**.
+
+## Version 1.2.3
+
+- Fixed generation of test instance
+- StyleCi integration
+
+## Version 1.2.4
+
+- Fix typo in error message
+
+## Version 1.2.5
+
+- Fix mailable deletion
+
+## Version 1.3.0
+
+- Supports Laravel 6
+- Backwards compatibility
+
+## Version 1.3.1
+
+- Update footer minor version
+
+## Version 1.3.2
+
+- Fix constructor type hints
+- Type hints in mailable constructor must be an object
