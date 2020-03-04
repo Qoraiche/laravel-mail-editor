@@ -507,6 +507,12 @@ class mailEclipse
                         continue;
                     }
 
+                    $reflector = new ReflectionClass($mailableClass);
+
+                    if ($reflector->isAbstract()) {
+                        continue;
+                    }
+
                     $mailable_data = self::buildMailable($mailableClass);
 
                     if (! is_null(self::handleMailableViewDataArgs($mailableClass))) {
