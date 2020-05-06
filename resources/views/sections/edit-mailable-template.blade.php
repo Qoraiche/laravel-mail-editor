@@ -36,8 +36,6 @@
 
      </style>
 
-     {{-- {{ dd($templateData) }} --}}
-
 <div class="col-lg-12 col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -94,8 +92,7 @@
                         <div class="p-3" style="border-top: 1px solid #ccc;">
                         @foreach($templateData['view_data'] as $param)
 
-                            {{-- {{ dd($param) }}  --}}
-                               @if ( $param['data'] && $param['data']['type'] === 'model' )
+                               @if (isset($param['data']['type']) && $param['data']['type'] === 'model')
                                     <div class="btn-group dropright">
                                       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" maileclipse-data-toggle="tooltip" data-placement="top" title="Elequent Model">
                                         <i class="fas fa-database mr-1"></i>{{ $param['key'] }}
@@ -118,14 +115,14 @@
 
                                       </div>
                                     </div>
-
-                                    @elseif( $param['data'] && $param['data']['type'] === 'elequent-collection' )
+               
+                                    @elseif(isset($param['data']['type']) && $param['data']['type'] === 'elequent-collection')
 
                                         <button type="button" class="btn btn-info btn-sm view_data_param" maileclipse-data-toggle="tooltip" data-placement="top" title="Elequent Collection" param-key="{{ $param['key'] }}">
                                         <i class="fa fa-table mr-1" aria-hidden="true"></i>{{ $param['key'] }}
                                         </button>
 
-                                    @elseif( $param['data'] && $param['data']['type'] === 'collection' )
+                                    @elseif(isset($param['data']['type']) && $param['data']['type'] === 'collection')
 
                                         <button type="button" class="btn btn-success btn-sm view_data_param" maileclipse-data-toggle="tooltip" data-placement="top" title="Collection" param-key="{{ $param['key'] }}">
                                         <i class="fa fa-table mr-1" aria-hidden="true"></i>{{ $param['key'] }}
