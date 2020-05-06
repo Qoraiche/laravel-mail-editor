@@ -129,10 +129,12 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 
 - minor fixes
 
-## Version 1.4.0
-
-- Laravel 7 support
-
 ## Version 1.4.3
 
 - Minor Bug fixes: #87 #86 #78
+
+
+## Version 2.0
+
+- Laravel 7 support
+- Minor bug fixes
