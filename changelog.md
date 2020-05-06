@@ -124,3 +124,15 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 
 - Fix constructor type hints
 - Type hints in mailable constructor must be an object
+
+## Version 1.3.3
+
+- minor fixes
+
+## Version 1.4.0
+
+- Laravel 7 support
+
+## Version 1.4.3
+
+- Minor Bug fixes: #87 #86 #78
