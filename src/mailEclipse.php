@@ -655,15 +655,22 @@ class mailEclipse
          * Determine if a builtin type can be found.
          * Not a string or object as a Mocked::class can work there.
          *
-         * ->getType() needs to be cast to string to get the protected prop.
+         * getName() is undocumented alternative to casting to string.
+         * https://www.php.net/manual/en/class.reflectiontype.php#124658
+         *
+         * @var \ReflectionType $reflection
          */
-        $argType = (string) collect($params)->where('name', $arg)->first()->getType();
+        $reflection = collect($params)->where('name', $arg)->first();
 
-        $argType = self::TYPES[$argType] ?? null;
+        if (version_compare(phpversion(), '7.1.00', '>=')) {
+            $type = self::TYPES[$reflection->getName()] ?? null;
+        } else {
+            $type = self::TYPES[$reflection->__toString()] ?? null;
+        }
 
         try {
-            return ! is_null($argType)
-                    ? $argType
+            return ! is_null($type)
+                    ? $type
                     : new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
         } catch (\Exception $e) {
             return $arg;
