@@ -668,7 +668,7 @@ class mailEclipse
                 : null;
         } else {
             $type = ! is_null($reflection)
-                ? self::TYPES[$reflection->__toString()]
+                ? self::TYPES[/** @scrutinizer ignore-deprecated */ $reflection->__toString()]
                 : null;
         }
 
