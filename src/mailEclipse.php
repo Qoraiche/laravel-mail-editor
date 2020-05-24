@@ -660,12 +660,16 @@ class mailEclipse
          *
          * @var \ReflectionType $reflection
          */
-        $reflection = collect($params)->where('name', $arg)->first();
+        $reflection = collect($params)->where('name', $arg)->first()->getType();
 
-        if (version_compare(phpversion(), '7.1.00', '>=')) {
-            $type = self::TYPES[$reflection->getName()] ?? null;
+        if (version_compare(phpversion(), '7.1', '>=')) {
+            $type = ! is_null($reflection)
+                ? self::TYPES[$reflection->getName()]
+                : null;
         } else {
-            $type = self::TYPES[$reflection->__toString()] ?? null;
+            $type = ! is_null($reflection)
+                ? self::TYPES[$reflection->__toString()]
+                : null;
         }
 
         try {
