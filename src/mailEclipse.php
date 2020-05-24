@@ -2,21 +2,21 @@
 
 namespace qoraiche\mailEclipse;
 
-use RegexIterator;
 use ErrorException;
+use Illuminate\Container\Container;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use Illuminate\Mail\Markdown;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use ReeceM\Mocker\Mocked;
 use ReflectionClass;
 use ReflectionProperty;
-use ReeceM\Mocker\Mocked;
-use Illuminate\Support\Str;
-use Illuminate\Mail\Markdown;
-use RecursiveIteratorIterator;
-use RecursiveDirectoryIterator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Container\Container;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use RegexIterator;
 
 class mailEclipse
 {
