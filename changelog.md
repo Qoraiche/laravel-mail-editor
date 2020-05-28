@@ -133,8 +133,16 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 
 - Minor Bug fixes: #87 #86 #78
 
-
 ## Version 2.0
 
 - Laravel 7 support
 - Minor bug fixes
+
+## Version 2.0.4
+
+- fix bug #82 (Function ReflectionType::__toString() is deprecated)
+
+# Version 2.0.6
+
+- Fix Mailables deletion
+- Read properties of the Mailable parent classes
