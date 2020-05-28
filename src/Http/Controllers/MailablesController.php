@@ -145,7 +145,7 @@ class MailablesController extends Controller
         }
 
         return response()->json([
-                'status' => 'error',
-            ]);
+            'status' => 'error',
+        ]);
     }
 }

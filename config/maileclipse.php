@@ -70,7 +70,7 @@ return [
     |
     */
 
-   'skeletons' => [
+    'skeletons' => [
 
         'html' => [
 
@@ -244,6 +244,6 @@ return [
                 'welcome',
             ],
         ],
-   ],
+    ],
 
 ];
