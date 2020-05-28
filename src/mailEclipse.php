@@ -697,8 +697,9 @@ class mailEclipse
         $allProps = [];
 
         foreach ($properties as $prop) {
-            if ($prop->class == $data->getName()) {
-                $allProps[] = $prop->name;
+            if ($prop->class == $data->getName() || $prop->class == get_parent_class($data->getName()) &&
+                    get_parent_class($data->getName()) != 'Illuminate\Mail\Mailable' && !$prop->isStatic()) {
+                        $allProps[] = $prop->name;
             }
         }
 
