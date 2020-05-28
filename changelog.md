@@ -142,7 +142,7 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 
 - fix bug #82 (Function ReflectionType::__toString() is deprecated)
 
-# Version 2.0.6
+## Version 2.0.6
 
 - Fix Mailables deletion
 - Read properties of the Mailable parent classes
