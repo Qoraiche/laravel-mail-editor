@@ -49,6 +49,11 @@ php artisan vendor:publish --provider="qoraiche\mailEclipse\mailEclipseServicePr
 
 ## Documentation
 
+### !!NOTE!! Maileclipse website is currently down, please check this youtube video (from author) for usage:
+
+https://www.youtube.com/watch?v=QFgEGNBY3FI&t=135s
+
+
 Documentation for Maileclipse can be found on the [Official website](https://maileclipse.io).
 
 ## Community

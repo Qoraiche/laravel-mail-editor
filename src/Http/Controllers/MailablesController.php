@@ -134,7 +134,7 @@ class MailablesController extends Controller
 
     public function delete(Request $request)
     {
-        $mailableFile = config('maileclipse.mailables_dir').$request->mailablename.'.php';
+        $mailableFile = config('maileclipse.mailables_dir').'/'.$request->mailablename.'.php';
 
         if (file_exists($mailableFile)) {
             unlink($mailableFile);
@@ -145,7 +145,7 @@ class MailablesController extends Controller
         }
 
         return response()->json([
-                'status' => 'error',
-            ]);
+            'status' => 'error',
+        ]);
     }
 }

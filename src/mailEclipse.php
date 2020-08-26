@@ -2,21 +2,21 @@
 
 namespace qoraiche\mailEclipse;
 
-use RegexIterator;
 use ErrorException;
+use Illuminate\Container\Container;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use Illuminate\Mail\Markdown;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use ReeceM\Mocker\Mocked;
 use ReflectionClass;
 use ReflectionProperty;
-use ReeceM\Mocker\Mocked;
-use Illuminate\Support\Str;
-use Illuminate\Mail\Markdown;
-use RecursiveIteratorIterator;
-use RecursiveDirectoryIterator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Container\Container;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use RegexIterator;
 
 class mailEclipse
 {
@@ -655,15 +655,26 @@ class mailEclipse
          * Determine if a builtin type can be found.
          * Not a string or object as a Mocked::class can work there.
          *
-         * ->getType() needs to be cast to string to get the protected prop.
+         * getName() is undocumented alternative to casting to string.
+         * https://www.php.net/manual/en/class.reflectiontype.php#124658
+         *
+         * @var \ReflectionType $reflection
          */
-        $argType = (string) collect($params)->where('name', $arg)->first()->getType();
+        $reflection = collect($params)->where('name', $arg)->first()->getType();
 
-        $argType = self::TYPES[$argType] ?? null;
+        if (version_compare(phpversion(), '7.1', '>=')) {
+            $type = ! is_null($reflection)
+                ? self::TYPES[$reflection->getName()]
+                : null;
+        } else {
+            $type = ! is_null($reflection)
+                ? self::TYPES[/** @scrutinizer ignore-deprecated */ $reflection->__toString()]
+                : null;
+        }
 
         try {
-            return ! is_null($argType)
-                    ? $argType
+            return ! is_null($type)
+                    ? $type
                     : new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
         } catch (\Exception $e) {
             return $arg;
@@ -686,7 +697,8 @@ class mailEclipse
         $allProps = [];
 
         foreach ($properties as $prop) {
-            if ($prop->class == $data->getName()) {
+            if ($prop->class == $data->getName() || $prop->class == get_parent_class($data->getName()) &&
+                    get_parent_class($data->getName()) != 'Illuminate\Mail\Mailable' && ! $prop->isStatic()) {
                 $allProps[] = $prop->name;
             }
         }
