@@ -28,10 +28,10 @@ class MailEclipse
      * @var array TYPES
      */
     public const TYPES = [
-        'int' => 31,
-        // 'string' => 'test_string', // not needed as it can be cast __toString()
-        'bool' => false,
-        'float' => 3.14159,
+        'int'    => 31,
+        // 'string' => "Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton()) instance",
+        'bool'   => false,
+        'float'  =>  3.14159,
     ];
 
     public static function getMailables()
@@ -625,7 +625,11 @@ class MailEclipse
                         return;
                     }
                 } else {
-                    $filteredparams[] = self::getMissingParams($arg, $params);
+                    try {
+                        $filteredparams[] = self::getMissingParams($arg, $params);
+                    } catch (\Exception $error) {
+                        $filteredparams[] = $arg;
+                    }
                 }
             }
 
@@ -662,23 +666,19 @@ class MailEclipse
          */
         $reflection = collect($params)->where('name', $arg)->first()->getType();
 
-        if (version_compare(phpversion(), '7.1', '>=')) {
-            $type = ! is_null($reflection)
-                ? self::TYPES[$reflection->getName()]
-                : null;
-        } else {
-            $type = ! is_null($reflection)
-                ? self::TYPES[/** @scrutinizer ignore-deprecated */ $reflection->__toString()]
-                : null;
-        }
-
-        try {
-            return ! is_null($type)
-                    ? $type
-                    : new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
-        } catch (\Exception $e) {
+        if (is_null($reflection)) {
             return $arg;
         }
+
+        if (version_compare(phpversion(), '7.1', '>=')) {
+            $reflectionType = $reflection->getName();
+        } else {
+            $reflectionType = /** @scrutinizer ignore-deprecated */ $reflection->__toString();
+        }
+
+        return isset(self::TYPES[$reflectionType])
+            ? self::TYPES[$reflectionType]($arg)
+            : $reflectionType;
     }
 
     private static function getMailableViewData($mailable, $mailable_data)
