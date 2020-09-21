@@ -28,7 +28,7 @@ class VendorPublishCommand extends Command
     public function handle()
     {
         $this->call('vendor:publish', [
-            '--provider' => "qoraiche\mailEclipse\mailEclipseServiceProvider"
+            '--provider' => "qoraiche\mailEclipse\mailEclipseServiceProvider",
         ]);
     }
 }
