@@ -146,3 +146,10 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 
 - Fix Mailables deletion
 - Read properties of the Mailable parent classes
+
+## Version 2.1.0
+
+### Addition
+- Laravel 8 Support
+- Laravel legacy factories for L8 support 
+see #107, #106 
