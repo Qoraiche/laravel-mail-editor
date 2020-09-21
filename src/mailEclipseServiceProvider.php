@@ -4,6 +4,7 @@ namespace qoraiche\mailEclipse;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use qoraiche\mailEclipse\Command\VendorPublishCommand;
 
 class mailEclipseServiceProvider extends ServiceProvider
 {
@@ -96,5 +97,10 @@ class mailEclipseServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views/templates' => $this->app->resourcePath('views/vendor/maileclipse/templates'),
         ], 'maileclipse.templates');
+
+        // Add Artisan publish command
+        $this->commands([
+            VendorPublishCommand::class,
+        ]);
     }
 }
