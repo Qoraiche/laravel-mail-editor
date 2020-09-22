@@ -500,7 +500,7 @@ class mailEclipse
 
                         [$name, $extension] = explode('.', $phpFile->getFilename());
 
-                        $mailableClass = $namespace . '\\' . $tokens[$index][1];
+                        $mailableClass = $namespace.'\\'.$tokens[$index][1];
 
                         if (! self::mailable_exists($mailableClass)) {
                             continue;
