@@ -153,3 +153,11 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 - Laravel 8 Support
 - Laravel legacy factories for L8 support 
 see #107, #106 
+
+
+## Unreleased v3.0 & v2.2
+
+### Changed
+- See [#108](https://github.com/Qoraiche/laravel-mail-editor/pull/108)
+    - Version 3 will only support Laravel 8 
+    - Version 2.x will revert to only supporting versions 5, 6, and 7 of Laravel
