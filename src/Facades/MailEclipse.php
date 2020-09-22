@@ -1,10 +1,10 @@
 <?php
 
-namespace qoraiche\mailEclipse\Facades;
+namespace Qoraiche\MailEclipse\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class mailEclipse extends Facade
+class MailEclipse extends Facade
 {
     /**
      * Get the registered name of the component.

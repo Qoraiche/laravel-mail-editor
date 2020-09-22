@@ -44,7 +44,7 @@ The package will automatically register itself.
 Publish configuration file and public assets:
 
 ``` bash
-php artisan vendor:publish --provider="qoraiche\mailEclipse\mailEclipseServiceProvider"
+php artisan laravel-mail-editor:install
 ```
 
 ## Documentation
