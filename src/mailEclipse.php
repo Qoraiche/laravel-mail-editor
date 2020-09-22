@@ -476,7 +476,6 @@ class mailEclipse
         if (! file_exists(config('maileclipse.mailables_dir'))) {
             return;
         } else {
-
             $allFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(config('maileclipse.mailables_dir')));
             $phpFiles = new RegexIterator($allFiles, '/\.php$/');
             $i = 0;
@@ -487,7 +486,7 @@ class mailEclipse
                 $tokens = token_get_all($content);
                 $namespace = '';
                 for ($index = 0; isset($tokens[$index]); $index++) {
-                    if (!isset($tokens[$index][0])) {
+                    if (! isset($tokens[$index][0])) {
                         continue;
                     }
                     if (T_NAMESPACE === $tokens[$index][0]) {
@@ -503,7 +502,7 @@ class mailEclipse
 
                         $mailableClass = $namespace . '\\' . $tokens[$index][1];
 
-                        if (!self::mailable_exists($mailableClass)) {
+                        if (! self::mailable_exists($mailableClass)) {
                             continue;
                         }
 
@@ -515,7 +514,7 @@ class mailEclipse
 
                         $mailable_data = self::buildMailable($mailableClass);
 
-                        if (!is_null(self::handleMailableViewDataArgs($mailableClass))) {
+                        if (! is_null(self::handleMailableViewDataArgs($mailableClass))) {
                             $mailable_view_data = self::getMailableViewData(self::handleMailableViewDataArgs($mailableClass), $mailable_data);
                         } else {
                             $mailable_view_data = self::getMailableViewData(new $mailableClass, $mailable_data);
@@ -536,16 +535,16 @@ class mailEclipse
                         $fqcns[$i]['view_path'] = null;
                         $fqcns[$i]['text_view_path'] = null;
 
-                        if (!is_null($fqcns[$i]['markdown']) && View::exists($fqcns[$i]['markdown'])) {
+                        if (! is_null($fqcns[$i]['markdown']) && View::exists($fqcns[$i]['markdown'])) {
                             $fqcns[$i]['view_path'] = View($fqcns[$i]['markdown'])->getPath();
                         }
 
-                        if (!is_null($fqcns[$i]['data'])) {
-                            if (!is_null($fqcns[$i]['data']->view) && View::exists($fqcns[$i]['data']->view)) {
+                        if (! is_null($fqcns[$i]['data'])) {
+                            if (! is_null($fqcns[$i]['data']->view) && View::exists($fqcns[$i]['data']->view)) {
                                 $fqcns[$i]['view_path'] = View($fqcns[$i]['data']->view)->getPath();
                             }
 
-                            if (!is_null($fqcns[$i]['data']->textView) && View::exists($fqcns[$i]['data']->textView)) {
+                            if (! is_null($fqcns[$i]['data']->textView) && View::exists($fqcns[$i]['data']->textView)) {
                                 $fqcns[$i]['text_view_path'] = View($fqcns[$i]['data']->textView)->getPath();
                                 $fqcns[$i]['text_view'] = $fqcns[$i]['data']->textView;
                             }
@@ -561,11 +560,9 @@ class mailEclipse
             $collection = collect($fqcns)->map(function ($mailable) {
                 return $mailable;
             })->reject(function ($object) {
-                return !method_exists($object['namespace'], 'build');
+                return ! method_exists($object['namespace'], 'build');
             });
 
-            // return $collection->all();
-            //
             return $collection;
         }
     }
