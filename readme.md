@@ -29,14 +29,16 @@ Please note that this package is still under active development. We encourage ev
 
 ## Requirements
 
-* Laravel 5.6+.
+**Laravel 8** support is on the [main branch](https://github.com/Qoraiche/laravel-mail-editor/tree/master)
+
+* Laravel 5.6+ to 7
 
 ## Installation
 
-Via Composer
+Via Composer, please use version v2.2 and up.
 
 ``` bash
-$ composer require qoraiche/laravel-mail-editor
+$ composer require qoraiche/laravel-mail-editor:^2.2
 ```
 
 The package will automatically register itself.
@@ -44,7 +46,7 @@ The package will automatically register itself.
 Publish configuration file and public assets:
 
 ``` bash
-php artisan vendor:publish --provider="qoraiche\mailEclipse\mailEclipseServiceProvider"
+php artisan laravel-mail-editor:install
 ```
 
 ## Documentation
