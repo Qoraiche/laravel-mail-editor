@@ -29,7 +29,7 @@ class mailEclipse
      */
     public const TYPES = [
         'int'    => 31,
-        // 'string' => "Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton()) instance",
+        'string' => null,
         'bool'   => false,
         'float'  =>  3.14159,
     ];
@@ -626,7 +626,11 @@ class mailEclipse
                     }
                 } else {
                     try {
-                        $filteredparams[] = self::getMissingParams($arg, $params);
+
+                        $missingParam = self::getMissingParams($arg, $params);
+                        $filteredparams[] = is_null($missingParam)
+                            ? new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton())
+                            : $missingParam;
                     } catch (\Exception $error) {
                         $filteredparams[] = $arg;
                     }
@@ -677,7 +681,7 @@ class mailEclipse
         }
 
         return isset(self::TYPES[$reflectionType])
-            ? self::TYPES[$reflectionType]($arg)
+            ? self::TYPES[$reflectionType]
             : $reflectionType;
     }
 
