@@ -153,3 +153,9 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 - Laravel 8 Support
 - Laravel legacy factories for L8 support 
 see #107, #106 
+
+## Version 2.2.0
+
+### Addition
+- Revert Laravel 8 support
+- Console command for installing assets see PR #111
