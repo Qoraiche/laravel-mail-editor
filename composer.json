@@ -23,21 +23,21 @@
     },
     "autoload": {
         "psr-4": {
-            "qoraiche\\mailEclipse\\": "src/"
+            "Qoraiche\\MailEclipse\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "qoraiche\\mailEclipse\\Tests\\": "tests"
+            "Qoraiche\\MailEclipse\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "qoraiche\\mailEclipse\\mailEclipseServiceProvider"
+                "Qoraiche\\MailEclipse\\MailEclipseServiceProvider"
             ],
             "aliases": {
-                "mailEclipse": "qoraiche\\mailEclipse\\Facades\\mailEclipse"
+                "MailEclipse": "Qoraiche\\MailEclipse\\Facades\\MailEclipse"
             }
         }
     }

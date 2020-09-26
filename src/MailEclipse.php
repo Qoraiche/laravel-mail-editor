@@ -1,6 +1,6 @@
 <?php
 
-namespace qoraiche\mailEclipse;
+namespace Qoraiche\MailEclipse;
 
 use ErrorException;
 use Illuminate\Container\Container;
@@ -18,7 +18,7 @@ use ReflectionClass;
 use ReflectionProperty;
 use RegexIterator;
 
-class mailEclipse
+class MailEclipse
 {
     public static $view_namespace = 'maileclipse';
 
