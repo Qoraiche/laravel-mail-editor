@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
+use Qoraiche\MailEclipse\Utils\Replacer;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use ReeceM\Mocker\Mocked;
@@ -56,7 +57,7 @@ class MailEclipse
                 return $value->template_slug == $template->template_slug;
             }));
 
-            $template_view = self::$view_namespace.'::templates.'.$templateSlug;
+            $template_view = self::VIEW_NAMESPACE.'::templates.'.$templateSlug;
             $template_plaintext_view = $template_view.'_plain_text';
 
             if (View::exists($template_view)) {
@@ -132,7 +133,7 @@ class MailEclipse
 
             self::saveTemplates(collect($newForm));
 
-            $template_view = self::$view_namespace.'::templates.'.$request->templateslug;
+            $template_view = self::VIEW_NAMESPACE.'::templates.'.$request->templateslug;
             $template_plaintext_view = $template_view.'_plain_text';
 
             if (View::exists($template_view)) {
@@ -163,7 +164,7 @@ class MailEclipse
             ->where('template_slug', $templateSlug)->first();
 
         if (! is_null($template)) {
-            $template_view = self::$view_namespace.'::templates.'.$template->template_slug;
+            $template_view = self::VIEW_NAMESPACE.'::templates.'.$template->template_slug;
             $template_plaintext_view = $template_view.'_plain_text';
 
             // return $template_plaintext_view;
@@ -173,7 +174,7 @@ class MailEclipse
                 $textViewPath = View($template_plaintext_view)->getPath();
 
                 $templateData = collect([
-                    'template' => self::templateComponentReplace(file_get_contents($viewPath), true),
+                    'template' => Replacer::toEditor(file_get_contents($viewPath)),
                     'plain_text' => View::exists($template_plaintext_view) ? file_get_contents($textViewPath) : '',
                     'slug' => $template->template_slug,
                     'name' => $template->template_name,
@@ -192,9 +193,7 @@ class MailEclipse
 
     public static function getTemplates()
     {
-        $template = collect(json_decode(file_get_contents(self::getTemplatesFile())));
-
-        return $template;
+        return collect(json_decode(file_get_contents(self::getTemplatesFile())));
     }
 
     public static function createTemplate($request)
@@ -208,7 +207,7 @@ class MailEclipse
             ]);
         }
 
-        $view = self::$view_namespace.'::templates.'.$request->template_name;
+        $view = self::VIEW_NAMESPACE.'::templates.'.$request->template_name;
 
         $templatename = Str::camel(preg_replace('/\s+/', '_', $request->template_name));
 
@@ -223,13 +222,13 @@ class MailEclipse
                     'template_skeleton' => $request->template_skeleton,
                 ]));
 
-            $dir = resource_path('views/vendor/'.self::$view_namespace.'/templates');
+            $dir = resource_path('views/vendor/'.self::VIEW_NAMESPACE.'/templates');
 
             if (! \File::isDirectory($dir)) {
                 \File::makeDirectory($dir, 0755, true);
             }
 
-            file_put_contents($dir."/{$templatename}.blade.php", self::templateComponentReplace($request->content));
+            file_put_contents($dir."/{$templatename}.blade.php", Replacer::toBlade($request->content));
 
             file_put_contents($dir."/{$templatename}_plain_text.blade.php", $request->plain_text);
 
@@ -250,12 +249,11 @@ class MailEclipse
         ]);
     }
 
-
     protected static function markdownedTemplate($viewPath)
     {
         $viewContent = file_get_contents($viewPath);
 
-        return self::templateComponentReplace($viewContent, true);
+        return Replacer::toEditor($viewContent, true);
 
         // return preg_replace($patterns, $replacements, $viewContent);
     }
@@ -265,11 +263,11 @@ class MailEclipse
      */
     public static function markdownedTemplateToView($save = true, $content = '', $viewPath = '', $template = false)
     {
-        if ($template && View::exists(self::$view_namespace.'::templates.'.$viewPath)) {
-            $viewPath = View(self::$view_namespace.'::templates.'.$viewPath)->getPath();
+        if ($template && View::exists(self::VIEW_NAMESPACE.'::templates.'.$viewPath)) {
+            $viewPath = View(self::VIEW_NAMESPACE.'::templates.'.$viewPath)->getPath();
         }
 
-        $replaced = self::templateComponentReplace($content);
+        $replaced = Replacer::toBlade($content);
 
         if (! $save) {
             return $replaced;
@@ -297,7 +295,7 @@ class MailEclipse
                 }
             }
 
-            return self::renderPreview($simpleview, self::$view_namespace.'::draft.'.$viewName, $template, $instance);
+            return self::renderPreview($simpleview, self::VIEW_NAMESPACE.'::draft.'.$viewName, $template, $instance);
         }
 
         return false;
@@ -703,6 +701,15 @@ class MailEclipse
         return Container::getInstance()->make($instance);
     }
 
+    /**
+     * Render the preview
+     * @param mixed $simpleview
+     * @param mixed $view
+     * @param bool $template
+     * @param mixed|null $instance
+     *
+     * @return void|string
+     */
     public static function renderPreview($simpleview, $view, $template = false, $instance = null)
     {
         if (! View::exists($view)) {
