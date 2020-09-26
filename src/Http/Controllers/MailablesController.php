@@ -5,7 +5,7 @@ namespace Qoraiche\MailEclipse\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
-use Qoraiche\MailEclipse\MailEclipse;
+use Qoraiche\MailEclipse\Facades\MailEclipse;
 
 class MailablesController extends Controller
 {
@@ -28,12 +28,12 @@ class MailablesController extends Controller
 
         $mailables = (null !== $mailables) ? $mailables->sortBy('name') : collect([]);
 
-        return view(MailEclipse::$view_namespace.'::sections.mailables', compact('mailables'));
+        return view(MailEclipse::VIEW_NAMESPACE.'::sections.mailables', compact('mailables'));
     }
 
     public function createMailable(Request $request)
     {
-        return view(MailEclipse::$view_namespace.'::createmailable');
+        return view(MailEclipse::VIEW_NAMESPACE.'::createmailable');
     }
 
     public function generateMailable(Request $request)
@@ -51,7 +51,7 @@ class MailablesController extends Controller
 
         $resource = $mailable->first();
 
-        return view(MailEclipse::$view_namespace.'::sections.view-mailable')->with(compact('resource'));
+        return view(MailEclipse::VIEW_NAMESPACE.'::sections.view-mailable')->with(compact('resource'));
     }
 
     public function editMailable($name)
@@ -62,12 +62,12 @@ class MailablesController extends Controller
             return redirect()->route('viewMailable', ['name' => $name]);
         }
 
-        return view(MailEclipse::$view_namespace.'::sections.edit-mailable-template', compact('templateData', 'name'));
+        return view(MailEclipse::VIEW_NAMESPACE.'::sections.edit-mailable-template', compact('templateData', 'name'));
     }
 
     public function templatePreviewError()
     {
-        return view(MailEclipse::$view_namespace.'::previewerror');
+        return view(MailEclipse::VIEW_NAMESPACE.'::previewerror');
     }
 
     public function parseTemplate(Request $request)
@@ -125,11 +125,11 @@ class MailablesController extends Controller
 
                 return $html->render();
             } catch (\ErrorException $e) {
-                return view(MailEclipse::$view_namespace.'::previewerror', ['errorMessage' => $e->getMessage()]);
+                return view(MailEclipse::VIEW_NAMESPACE.'::previewerror', ['errorMessage' => $e->getMessage()]);
             }
         }
 
-        return view(MailEclipse::$view_namespace.'::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
+        return view(MailEclipse::VIEW_NAMESPACE.'::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
     }
 
     public function delete(Request $request)
