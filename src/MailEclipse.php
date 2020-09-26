@@ -20,7 +20,7 @@ use RegexIterator;
 
 class MailEclipse
 {
-    public static $view_namespace = 'maileclipse';
+    public const VIEW_NAMESPACE = 'maileclipse';
 
     /**
      * Default type examples for being passed to reflected classes.
@@ -250,84 +250,6 @@ class MailEclipse
         ]);
     }
 
-    public static function getTemplateSkeletons()
-    {
-        return collect(config('maileclipse.skeletons'));
-    }
-
-    public static function getTemplateSkeleton($type, $name, $skeleton)
-    {
-        $skeletonView = self::$view_namespace."::skeletons.{$type}.{$name}.{$skeleton}";
-
-        if (view()->exists($skeletonView)) {
-            $skeletonViewPath = View($skeletonView)->getPath();
-            $templateContent = file_get_contents($skeletonViewPath);
-
-            return [
-                'type' => $type,
-                'name' => $name,
-                'skeleton' => $skeleton,
-                'template' => self::templateComponentReplace($templateContent, true),
-                'view' => $skeletonView,
-                'view_path' => $skeletonViewPath,
-            ];
-        }
-    }
-
-    protected static function templateComponentReplace($content, $reverse = false)
-    {
-        if ($reverse) {
-            $patterns = [
-                '/@component/i',
-                '/@endcomponent/i',
-                '/@yield/',
-                '/@section/',
-                '/@endsection/',
-                '/@extends/',
-                '/@parent/',
-                '/@slot/',
-                '/@endslot/',
-            ];
-
-            $replacements = [
-                '[component]: # ',
-                '[endcomponent]: # ',
-                '[yield]: # ',
-                '[section]: # ',
-                '[endsection]: # ',
-                '[extends]: # ',
-                '[parent]: # ',
-                '[slot]: # ',
-                '[endslot]: # ',
-            ];
-        } else {
-            $patterns = [
-                '/\[component]:\s?#\s?/i',
-                '/\[endcomponent]:\s?#\s?/i',
-                '/\[yield]:\s?#\s?/i',
-                '/\[section]:\s?#\s?/i',
-                '/\[endsection]:\s?#\s?/i',
-                '/\[extends]:\s?#\s?/i',
-                '/\[parent]:\s?#\s?/i',
-                '/\[slot]:\s?#\s?/i',
-                '/\[endslot]:\s?#\s?/i',
-            ];
-
-            $replacements = [
-                '@component',
-                '@endcomponent',
-                '@yield',
-                '@section',
-                '@endsection',
-                '@extends',
-                '@parent',
-                '@slot',
-                '@endslot',
-            ];
-        }
-
-        return preg_replace($patterns, $replacements, $content);
-    }
 
     protected static function markdownedTemplate($viewPath)
     {
