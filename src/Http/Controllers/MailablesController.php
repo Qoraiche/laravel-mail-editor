@@ -65,11 +65,6 @@ class MailablesController extends Controller
         return view(MailEclipse::VIEW_NAMESPACE.'::sections.edit-mailable-template', compact('templateData', 'name'));
     }
 
-    public function templatePreviewError()
-    {
-        return view(MailEclipse::VIEW_NAMESPACE.'::previewerror');
-    }
-
     public function parseTemplate(Request $request)
     {
         $template = $request->has('template') ? $request->template : false;
@@ -105,19 +100,19 @@ class MailablesController extends Controller
 
         $resource = $mailable->first();
 
-        if (! is_null(MailEclipse::handleMailableViewDataArgs($resource['namespace']))) {
-            // $instance = new $resource['namespace'];
-            //
-            $instance = MailEclipse::handleMailableViewDataArgs($resource['namespace']);
-        } else {
-            $instance = new $resource['namespace'];
-        }
-
         if (collect($resource['data'])->isEmpty()) {
             return 'View not found';
         }
 
-        $view = ! is_null($resource['markdown']) ? $resource['markdown'] : $resource['data']->view;
+        $instance = MailEclipse::handleMailableViewDataArgs($resource['namespace']);
+
+        if (is_null($instance)) {
+            $instance = new $resource['namespace'];
+        }
+
+        $view = ! is_null($resource['markdown'])
+            ? $resource['markdown']
+            : $resource['data']->view;
 
         if (view()->exists($view)) {
             try {

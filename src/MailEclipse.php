@@ -9,6 +9,7 @@ use Illuminate\Mail\Markdown;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Qoraiche\MailEclipse\Utils\Replacer;
@@ -224,8 +225,8 @@ class MailEclipse
 
             $dir = resource_path('views/vendor/'.self::VIEW_NAMESPACE.'/templates');
 
-            if (! \File::isDirectory($dir)) {
-                \File::makeDirectory($dir, 0755, true);
+            if (! File::isDirectory($dir)) {
+                File::makeDirectory($dir, 0755, true);
             }
 
             file_put_contents($dir."/{$templatename}.blade.php", Replacer::toBlade($request->content));

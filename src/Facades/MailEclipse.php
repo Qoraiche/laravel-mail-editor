@@ -30,6 +30,7 @@ use Qoraiche\MailEclipse\MailEclipse as MailEclipseParent;
 class MailEclipse extends Facade
 {
     const VIEW_NAMESPACE = MailEclipseParent::VIEW_NAMESPACE;
+
     /**
      * Get the registered name of the component.
      *

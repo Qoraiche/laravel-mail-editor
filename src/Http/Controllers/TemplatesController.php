@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Qoraiche\MailEclipse\Facades\MailEclipse;
-use Qoraiche\MailEclipse\Templates\TemplateSkeletons;
+use Qoraiche\MailEclipse\Utils\TemplateSkeletons;
 
 class TemplatesController extends Controller
 {
@@ -20,7 +20,7 @@ class TemplatesController extends Controller
 
     public function index()
     {
-        $skeletons = (new TemplateSkeletons())->skeletons();
+        $skeletons = TemplateSkeletons::skeletons();
 
         $templates = MailEclipse::getTemplates();
 
@@ -31,7 +31,7 @@ class TemplatesController extends Controller
     {
         $type = $type === 'html' ? $type : 'markdown';
 
-        $skeleton = (new TemplateSkeletons())->templateSkelton($type, $name, $skeleton);
+        $skeleton = TemplateSkeletons::get($type, $name, $skeleton);
 
         return View(MailEclipse::VIEW_NAMESPACE.'::sections.create-template', compact('skeleton'));
     }
@@ -54,14 +54,9 @@ class TemplatesController extends Controller
 
     public function select(Request $request)
     {
-        $skeletons = (new TemplateSkeletons())->skeletons();
+        $skeletons = TemplateSkeletons::skeletons();
 
         return View(MailEclipse::VIEW_NAMESPACE.'::sections.new-template', compact('skeletons'));
-    }
-
-    public function previewTemplateMarkdownView(Request $request)
-    {
-        return MailEclipse::previewMarkdownViewContent(false, $request->markdown, $request->name, true);
     }
 
     public function delete(Request $request)
