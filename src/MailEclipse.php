@@ -680,7 +680,7 @@ class MailEclipse
             $reflectionType = /** @scrutinizer ignore-deprecated */ $reflection->__toString();
         }
 
-        return isset(self::TYPES[$reflectionType])
+        return array_key_exists($reflectionType, self::TYPES)
             ? self::TYPES[$reflectionType]
             : $reflectionType;
     }
