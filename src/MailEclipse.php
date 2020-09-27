@@ -24,6 +24,8 @@ class MailEclipse
 {
     public const VIEW_NAMESPACE = 'maileclipse';
 
+    public const VERSION = '3.0.0';
+
     /**
      * Default type examples for being passed to reflected classes.
      *

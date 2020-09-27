@@ -31,6 +31,8 @@ class MailEclipse extends Facade
 {
     const VIEW_NAMESPACE = MailEclipseParent::VIEW_NAMESPACE;
 
+    const VERSION = MailEclipseParent::VERSION;
+
     /**
      * Get the registered name of the component.
      *
