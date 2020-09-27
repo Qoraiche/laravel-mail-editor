@@ -62,6 +62,27 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Blade Methods
+    |--------------------------------------------------------------------------
+    |
+    | The list of blade methods that need to be replaced when moving between the
+    | editor and the blade file.
+    |
+    */
+    'components' => [
+        'extends',
+        'yield',
+        'parent',
+        'component',
+        'endcomponent',
+        'section',
+        'endsection',
+        'slot',
+        'endslot',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Templates
     |--------------------------------------------------------------------------
     |
