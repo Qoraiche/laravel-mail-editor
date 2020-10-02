@@ -419,7 +419,14 @@ class MailEclipse
 
     public static function generateMailable($request = null)
     {
-        $name = ucwords(Str::camel(preg_replace('/\s+/', '_', $request->input('name'))));
+        $name = self::generateClassName($request->input('name'));
+
+        if ($name === false) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Wrong name format.',
+            ]);
+        }
 
         if (! self::getMailable('name', $name)->isEmpty() && ! $request->has('force')) {
             // return redirect()->route('createMailable')->with('error', 'mailable already exists! to overide it enable force option.');
@@ -826,5 +833,42 @@ class MailEclipse
 
             return $error;
         }
+    }
+
+    /**
+     * Class name has to satisfy those rules.
+     *
+     * https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class
+     * https://www.php.net/manual/en/reserved.keywords.php
+     *
+     * @param $input
+     * @return string|false class name or false on failure
+     */
+    public static function generateClassName($input)
+    {
+        $suffix = 'Mail';
+
+        if (strtolower($input) === strtolower($suffix)) {
+            return false;
+        }
+
+        // Avoid MailMail as a class name suffix
+        if (substr_compare(strtolower($input), 'mail', -4) === 0) {
+            $suffix = '';
+        }
+
+        /**
+         * - Suffix is needed to avoid usage of reserved word.
+         * - Str::slug will remove all forbidden characters.
+         */
+        $name = ucwords(Str::camel(Str::slug($input, '_'))).$suffix;
+
+        if (! preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $name) ||
+            substr_compare($name, $suffix, -strlen($suffix), strlen($suffix), true) !== 0
+        ) {
+            return false;
+        }
+
+        return $name;
     }
 }
