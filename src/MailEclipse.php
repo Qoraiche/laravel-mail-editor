@@ -487,7 +487,7 @@ class MailEclipse
                 $tokens = token_get_all($content);
                 $namespace = '';
                 for ($index = 0; isset($tokens[$index]); $index++) {
-                    if (!isset($tokens[$index][0])) {
+                    if (! isset($tokens[$index][0])) {
                         continue;
                     }
                     if (T_NAMESPACE === $tokens[$index][0]) {
@@ -501,7 +501,7 @@ class MailEclipse
 
                         [$name, $extension] = explode('.', $phpFile->getFilename());
 
-                        $mailableClass = $namespace . '\\' . $tokens[$index][1];
+                        $mailableClass = $namespace.'\\' . $tokens[$index][1];
 
                         if (! self::mailable_exists($mailableClass)) {
                             continue;
