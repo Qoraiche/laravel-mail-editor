@@ -476,7 +476,6 @@ class MailEclipse
         if (! file_exists(config('maileclipse.mailables_dir'))) {
             return;
         } else {
-
             $allFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(config('maileclipse.mailables_dir')));
             $phpFiles = new RegexIterator($allFiles, '/\.php$/');
             $i = 0;
@@ -625,7 +624,6 @@ class MailEclipse
                     }
                 } else {
                     try {
-
                         $missingParam = self::getMissingParams($arg, $params);
                         $filteredparams[] = is_null($missingParam)
                             ? new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton())
