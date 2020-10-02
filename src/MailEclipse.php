@@ -863,7 +863,7 @@ class MailEclipse
          */
         $name = ucwords(Str::camel(Str::slug($input, '_'))).$suffix;
 
-        if(! preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $name) ||
+        if (! preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $name) ||
             substr_compare($name, $suffix, -strlen($suffix), strlen($suffix), true) !== 0
         ) {
             return false;
