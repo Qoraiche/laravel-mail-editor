@@ -853,18 +853,18 @@ class MailEclipse
         }
 
         // Avoid MailMail as a class name suffix
-        if (substr_compare( strtolower($input), 'mail', -4) === 0) {
+        if (substr_compare(strtolower($input), 'mail', -4) === 0) {
             $suffix = '';
         }
 
         /**
          * - Suffix is needed to avoid usage of reserved word.
-         * - Str::slug will remove all forbidden characters
+         * - Str::slug will remove all forbidden characters.
          */
-        $name = ucwords(Str::camel(Str::slug($input, '_'))) . $suffix;
+        $name = ucwords(Str::camel(Str::slug($input, '_'))).$suffix;
 
-        if( !preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $name) ||
-            substr_compare( $name, $suffix, -strlen($suffix), strlen($suffix), true ) !== 0
+        if(! preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $name) ||
+            substr_compare($name, $suffix, -strlen($suffix), strlen($suffix), true) !== 0
         ) {
             return false;
         }

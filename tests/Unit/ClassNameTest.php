@@ -24,7 +24,7 @@ class ClassNameTest extends TestCase
             'customer mail' => 'CustomerMail',
         ];
 
-        foreach($expectedMap as $input => $expected) {
+        foreach ($expectedMap as $input => $expected) {
             $className = MailEclipse::generateClassName($input);
             $this->assertEquals($expected, $className);
         }
