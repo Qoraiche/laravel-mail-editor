@@ -11,6 +11,7 @@ Route::group(['prefix' => 'templates'], function () {
     Route::post('delete', 'TemplatesController@delete')->name('deleteTemplate');
     Route::post('update', 'TemplatesController@update')->name('updateTemplate');
     Route::post('preview', 'TemplatesController@previewTemplateMarkdownView')->name('previewTemplateMarkdownView');
+    Route::get('getTemplateProduct', 'TemplatesController@getTemplateProduct')->name('getTemplateProduct');
 });
 
 Route::group(['prefix' => 'mailables'], function () {

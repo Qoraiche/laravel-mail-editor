@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Qoraiche\MailEclipse\MailEclipse;
-
+use App\Product;
+use Illuminate\Support\Str;
 class TemplatesController extends Controller
 {
     public function __construct()
@@ -79,5 +80,20 @@ class TemplatesController extends Controller
     public function update(Request $request)
     {
         return MailEclipse::updateTemplate($request);
+    }
+    public function getTemplateProduct(request $request){
+        $id = $request->input('productid');
+        $productData = product::find($id);
+        if(isset($productData)){
+            return response()->json([
+            'status'=>'success',
+            'productName'=>$productData->name,
+            'short_description'=>Str::limit($productData->short_description, 20, $end='...'),
+            'price'=>'$'.$productData->price,
+            'product_image'=>$productData->image,
+            'product_url'=>'www.test.com',
+        ]);
+        }
+        return response()->json(['status'=>'failed','message'=>'Product not found']);
     }
 }

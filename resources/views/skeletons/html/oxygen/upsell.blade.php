@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,16 +8,50 @@
 
   <style type="text/css">
     /* Take care of image borders and formatting, client hacks */
-    img { max-width: 600px; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;}
-    a img { border: none; }
-    table { border-collapse: collapse !important;}
-    #outlook a { padding:0; }
-    .ReadMsgBody { width: 100%; }
-    .ExternalClass { width: 100%; }
-    .backgroundTable { margin: 0 auto; padding: 0; width: 100% !important; }
-    table td { border-collapse: collapse; }
-    .ExternalClass * { line-height: 115%; }
-    .container-for-gmail-android { min-width: 600px; }
+    img {
+      max-width: 600px;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    a img {
+      border: none;
+    }
+
+    table {
+      border-collapse: collapse !important;
+    }
+
+    #outlook a {
+      padding: 0;
+    }
+
+    .ReadMsgBody {
+      width: 100%;
+    }
+
+    .ExternalClass {
+      width: 100%;
+    }
+
+    .backgroundTable {
+      margin: 0 auto;
+      padding: 0;
+      width: 100% !important;
+    }
+
+    table td {
+      border-collapse: collapse;
+    }
+
+    .ExternalClass * {
+      line-height: 115%;
+    }
+
+    .container-for-gmail-android {
+      min-width: 600px;
+    }
 
 
     /* General styling */
@@ -120,7 +155,7 @@
     }
 
     .force-width-gmail {
-      min-width:600px;
+      min-width: 600px;
       height: 0px !important;
       line-height: 1px !important;
       font-size: 1px !important;
@@ -129,8 +164,6 @@
     .button-width {
       width: 228px;
     }
-
-
   </style>
 
   <style type="text/css" media="screen">
@@ -139,6 +172,7 @@
 
   <style type="text/css" media="screen">
     @media screen {
+
       /* Thanks Outlook 2013! */
       * {
         font-family: 'Oxygen', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
@@ -194,7 +228,7 @@
         padding: 5px 0 30px !important;
       }
 
-       td[class="button"] {
+      td[class="button"] {
         padding: 5px !important;
       }
 
@@ -217,195 +251,177 @@
 </head>
 
 <body bgcolor="#f7f7f7">
-<table align="center" cellpadding="0" cellspacing="0" class="container-for-gmail-android" width="100%">
-  <tr>
-    <td align="left" valign="top" width="100%" style="background:repeat-x url(http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg) #ffffff;">
-      <center>
-      <img src="http://s3.amazonaws.com/swu-filepicker/SBb2fQPrQ5ezxmqUTgCr_transparent.png" class="force-width-gmail">
-        <table cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff" background="http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg" style="background-color:transparent">
-          <tr>
-            <td width="100%" height="80" valign="top" style="text-align: center; vertical-align:middle;">
-            <!--[if gte mso 9]>
+  <center></center>
+  <table class="container-for-gmail-android" width="100%" cellspacing="0" cellpadding="0" align="center">
+    <tbody>
+      <tr>
+        <td style="background: repeat-x url('http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg') #ffffff;" align="left" valign="top" width="100%">
+          <center><img class="force-width-gmail" src="http://s3.amazonaws.com/swu-filepicker/SBb2fQPrQ5ezxmqUTgCr_transparent.png" />
+            <table style="background-color: transparent;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+              <tbody>
+                <tr>
+                  <td style="text-align: center; vertical-align: middle;" valign="top" width="100%" height="80">
+                    <!-- [if gte mso 9]>
             <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;height:80px; v-text-anchor:middle;">
               <v:fill type="tile" src="http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg" color="#ffffff" />
               <v:textbox inset="0,0,0,0">
             <![endif]-->
-              <center>
-                <table cellpadding="0" cellspacing="0" width="600" class="w320">
-                  <tr>
-                    <td class="pull-left mobile-header-padding-left" style="vertical-align: middle;">
-                      <a href=""><img width="137" height="47" src="http://s3.amazonaws.com/swu-filepicker/0zxBZVuORSxdc9ZCqotL_logo_03.gif" alt="logo"></a>
-                    </td>
-                    <td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;">
-                      <a href=""><img width="44" height="47" src="http://s3.amazonaws.com/swu-filepicker/k8D8A7SLRuetZspHxsJk_social_08.gif" alt="twitter" /></a>
-                      <a href=""><img width="38" height="47" src="http://s3.amazonaws.com/swu-filepicker/LMPMj7JSRoCWypAvzaN3_social_09.gif" alt="facebook" /></a>
-                      <a href=""><img width="40" height="47" src="http://s3.amazonaws.com/swu-filepicker/hR33ye5FQXuDDarXCGIW_social_10.gif" alt="rss" /></a>
-                    </td>
-                  </tr>
-                </table>
-              </center>
-              <!--[if gte mso 9]>
+                    <center>
+                      <table class="w320" width="600" cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td class="pull-left mobile-header-padding-left" style="vertical-align: middle;"><a><img src="http://s3.amazonaws.com/swu-filepicker/0zxBZVuORSxdc9ZCqotL_logo_03.gif" alt="logo" width="137" height="47" /></a></td>
+                            <td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;"><a><img src="http://s3.amazonaws.com/swu-filepicker/k8D8A7SLRuetZspHxsJk_social_08.gif" alt="twitter" width="44" height="47" /></a> <a><img src="http://s3.amazonaws.com/swu-filepicker/LMPMj7JSRoCWypAvzaN3_social_09.gif" alt="facebook" width="38" height="47" /></a> <a><img src="http://s3.amazonaws.com/swu-filepicker/hR33ye5FQXuDDarXCGIW_social_10.gif" alt="rss" width="40" height="47" /></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </center>
+                    <!-- [if gte mso 9]>
               </v:textbox>
             </v:rect>
             <![endif]-->
-            </td>
-          </tr>
-        </table>
-      </center>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="100%" style="background-color: #f7f7f7;" class="content-padding">
-      <center>
-        <table cellspacing="0" cellpadding="0" width="600" class="w320">
-          <tr>
-            <td class="header-lg">
-              Upgrade now <br /> and receive <span style="color: #ff6f6f;">20%</span> off!
-            </td>
-          </tr>
-          <tr>
-            <td class="free-text">
-              Upgrade to a full account and receive the best deals available as soon as they go on. Not only that but you'll get <strong>free shipping</strong></strong> on all your purchases. Find out what you've been missing!
-            </td>
-          </tr>
-          <tr>
-            <td class="button">
-              <div><!--[if mso]>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </center>
+        </td>
+      </tr>
+      <tr>
+        <td class="content-padding" style="background-color: #f7f7f7;" align="center" valign="top" width="100%">
+          <center>
+            <table class="w320" width="600" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td class="header-lg">Upgrade now <br />and receive <span style="color: #ff6f6f;">20%</span> off!</td>
+                </tr>
+                <tr>
+                  <td class="free-text">Upgrade to a full account and receive the best deals available as soon as they go on. Not only that but you'll get <strong>free shipping</strong> on all your purchases. Find out what you've been missing!</td>
+                </tr>
+                <tr>
+                  <td class="button">
+                    <div>
+                      <!-- [if mso]>
                 <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:155px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
                   <w:anchorlock/>
                   <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">Upgrade</center>
                 </v:roundrect>
-              <![endif]--><a class="button-mobile" href="http://"
-              style="background-color:#ff6f6f;border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;">Upgrade</a></div>
-            </td>
-          </tr>
-        </table>
-      </center>
-    </td>
-  </tr>
-  <td align="center" valign="top" width="100%" style="background-color: #ffffff;  border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
-    <center>
-      <table cellpadding="0" cellspacing="0" width="600" class="w320">
-        <tr>
-          <td class="content-padding">
-            <table cellpadding="0" cellspacing="0" width="100%">
-              <td class="header-md">
-                Check out some of our upgraded deals!
-              </td>
+              <![endif]--><a class="button-mobile" style="background-color: #ff6f6f; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; width: 155px; -webkit-text-size-adjust: none; mso-hide: all;" href="http://127.0.0.1">Upgrade</a></div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-bottom: 75px;">
-            <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse:separate !important;">
+          </center>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="w320" width="600" cellspacing="0" cellpadding="0">
+    <tbody>
+      <tr>
+        <td class="content-padding">Check out some of our upgraded deals!</td>
+      </tr>
+      <tr>
+        <td style="padding-bottom: 75px;">
+          <table style="border-collapse: separate !important;" width="100%" cellspacing="0" cellpadding="0">
+            <tbody>
               <tr>
                 <td class="info-block">
-                  <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse:separate !important;">
-                    <tr>
-                      <td class="block-rounded">
-                        <table cellpadding="0" cellspacing="0" width="100%">
-                          <tr>
-                            <td class="info-img">
-                              <a href=""><img class="info-img" src="http://s3.amazonaws.com/swu-filepicker/9wRy50HQTg2CTyZA5Ozi_item_images_16.jpg" alt="img" /></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding: 15px;">
-                              <table cellspacing="0" cellpadding="0" width="100%">
-                                <tr>
-                                  <td style="text-align:left; width:155px">
-                                    <a href=""><span class="header-sm">Pink Shoes</span></a><br />
-                                    The hottest summer sneakers are in now!
-                                  </td>
-                                  <td style="text-align:right; vertical-align: top;">
-                                    <strong>$29.99</strong>
-                                  </td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding: 15px;">
-                              <div><!--[if mso]>
+                  <table style="border-collapse: separate !important;" width="100%" cellspacing="0" cellpadding="0">
+                    <tbody>
+                      <tr>
+                        <td class="block-rounded">
+                          <table width="100%" cellspacing="0" cellpadding="0">
+                            <tbody>
+                              <tr>
+                                <td class="info-img" style="height: 216px;"><a><img class="info-img solo-mailtemp-prod-img" src="http://s3.amazonaws.com/swu-filepicker/9wRy50HQTg2CTyZA5Ozi_item_images_16.jpg" alt="img" /></a></td>
+                              </tr>
+                              <tr>
+                                <td style="padding: 15px;">
+                                  <table width="100%" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                      <tr>
+                                        <td style="text-align: left; width: 155px;"><a><span class="header-sm solo-mailtemp-prod-title">Pink Shoes</span></a><br /><span class="solo-mailtemp-prod-shortdesc">The hottest summer sneakers are in now!</span></td>
+                                        <td style="text-align: right; vertical-align: top;"><strong class="solo-mailtemp-prod-price">$29.99</strong></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="padding: 15px;">
+                                  <div>
+                                    <!-- [if mso]>
                                 <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:228px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
                                   <w:anchorlock/>
                                   <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">My Account</center>
                                 </v:roundrect>
-                              <![endif]--><a class="button-width" href="http://"
-                              style="background-color:#ff6f6f;border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;mso-hide:all;">View Now!</a></div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
+                              <![endif]--><a class="button-width solo-mailtemp-prod-url" style="background-color: #ff6f6f; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; -webkit-text-size-adjust: none; mso-hide: all;" href="http://127.0.0.1">View Now!</a></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </td>
                 <td class="info-block">
-                  <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse:separate !important;">
-                    <tr>
-                      <td class="block-rounded">
-                        <table cellpadding="0" cellspacing="0" width="100%">
-                          <tr>
-                            <td class="info-img">
-                              <a href=""><img width="258" height="210" class="info-img" src="http://s3.amazonaws.com/swu-filepicker/RPezUIwPRv8pjatAAH1E_item_images_19.jpg" alt="img" /></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding: 15px;">
-                              <table cellspacing="0" cellpadding="0" width="100%">
-                                <tr>
-                                  <td style="text-align:left; width:155px">
-                                    <a href=""><span class="header-sm">Golden Earings</span></a><br />
-                                    New city looks!
-                                    <!-- Remove bottom br and nbsp when item text longer than one line is -->
-                                    <br />
-                                    &nbsp;
-                                  </td>
-                                  <td style="text-align:right; vertical-align: top;">
-                                    <strong>$29.99</strong>
-                                  </td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding: 15px;">
-                              <div><!--[if mso]>
+                  <table style="border-collapse: separate !important;" width="100%" cellspacing="0" cellpadding="0">
+                    <tbody>
+                      <tr>
+                        <td class="block-rounded">
+                          <table style="height: 326px; width: 100%;" width="100%" cellspacing="0" cellpadding="0">
+                            <tbody>
+                              <tr style="height: 216px;">
+                                <td class="info-img" style="height: 216px;"><a><img class="info-img solo-mailtemp-prod-img" src="http://s3.amazonaws.com/swu-filepicker/RPezUIwPRv8pjatAAH1E_item_images_19.jpg" alt="img" width="258" height="210" /></a></td>
+                              </tr>
+                              <tr style="height: 65px;">
+                                <td style="padding: 15px; height: 65px;">
+                                  <table width="100%" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                      <tr>
+                                        <td style="text-align: left; width: 155px;"><a><span class="header-sm solo-mailtemp-prod-title">Golden Earings</span></a><br /><span class="solo-mailtemp-prod-shortdesc">New city looks!</span> <!-- Remove bottom br and nbsp when item text longer than one line is --> <br />&nbsp;</td>
+                                        <td style="text-align: right; vertical-align: top;"><strong class="solo-mailtemp-prod-price">$29.99</strong></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr style="height: 45px;">
+                                <td style="padding: 15px; height: 45px;">
+                                  <div>
+                                    <!-- [if mso]>
                                 <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:228px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
                                   <w:anchorlock/>
                                   <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">My Account</center>
                                 </v:roundrect>
-                              <![endif]--><a class="button-width" href="http://"
-                              style="background-color:#ff6f6f;border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:228px;-webkit-text-size-adjust:none;mso-hide:all;">View Now!</a></div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
+                              <![endif]--><a class="button-width solo-mailtemp-prod-url" style="background-color: #ff6f6f; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; width: 228px; -webkit-text-size-adjust: none; mso-hide: all;" href="http://127.0.0.1">View Now!</a></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </td>
               </tr>
-            </table>
-          </td>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <center>
+    <table class="w320" width="600" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td style="padding: 25px 0 25px;"><strong>Awesome Inc</strong><br />1234 Awesome St <br />Wonderland <br /><br /></td>
         </tr>
-      </table>
-    </center>
-  </td>
-  <tr>
-    <td align="center" valign="top" width="100%" style="background-color: #f7f7f7; height: 100px;">
-      <center>
-        <table cellspacing="0" cellpadding="0" width="600" class="w320">
-          <tr>
-            <td style="padding: 25px 0 25px">
-              <strong>Awesome Inc</strong><br />
-              1234 Awesome St <br />
-              Wonderland <br /><br />
-            </td>
-          </tr>
-        </table>
-      </center>
-    </td>
-  </tr>
-</table>
+      </tbody>
+    </table>
+  </center>
 </body>
+
 </html>
