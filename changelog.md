@@ -156,25 +156,6 @@ see #107, #106
 
 ## Version 2.2.0
 
-IMPORTANT: Version 2.2.0 will only support Laravel versions 5, 6 and 7 for future releases.
-
 ### Addition
 - Revert Laravel 8 support
-- Console command for installing assets see PR #111, credit: @yogendra-revanna
-
-## Version 3.0.0
-Laravel 8 Support release
-
-## Addition
-
-- The package now has an install command `php artisan laravel-mail-editor:install` see #111 
-
-## Changes
-
-- Supports only Laravel v8
-- See [#108](https://github.com/Qoraiche/laravel-mail-editor/pull/108)
-- PSR Classnames #112, thank you @yogendra-revanna
-
-## Potential Breaking Change
-
-The name spaces of the package now use PSR classname standards, if you were referencing them before in an application, please update them to reflect everything correctly.
+- Console command for installing assets see PR #111

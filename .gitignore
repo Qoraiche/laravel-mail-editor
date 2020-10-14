@@ -2,7 +2,6 @@
 .DS_Store
 /vendor
 /composer.lock
-.phpunit.result.cache
 # exclude everything
 resources/views/templates/*
 resources/views/draft/*

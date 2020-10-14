@@ -29,16 +29,16 @@ Please note that this package is still under active development. We encourage ev
 
 ## Requirements
 
-* Laravel 8.
+**Laravel 8** support is on the [main branch](https://github.com/Qoraiche/laravel-mail-editor/tree/master)
 
-For Laravel 5.6 to 7 support please see version [v2.2 branch](https://github.com/Qoraiche/laravel-mail-editor/tree/2.x)
+* Laravel 5.6+ to 7
 
 ## Installation
 
-Via Composer
+Via Composer, please use version v2.2 and up.
 
 ``` bash
-$ composer require qoraiche/laravel-mail-editor
+$ composer require qoraiche/laravel-mail-editor:^2.2
 ```
 
 The package will automatically register itself.
