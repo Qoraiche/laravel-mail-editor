@@ -81,19 +81,4 @@ class TemplatesController extends Controller
     {
         return MailEclipse::updateTemplate($request);
     }
-    public function getTemplateProduct(request $request){
-        $id = $request->input('productid');
-        $productData = product::find($id);
-        if(isset($productData)){
-            return response()->json([
-            'status'=>'success',
-            'productName'=>$productData->name,
-            'short_description'=>Str::limit($productData->short_description, 20, $end='...'),
-            'price'=>'$'.$productData->price,
-            'product_image'=>$productData->image,
-            'product_url'=>'www.test.com',
-        ]);
-        }
-        return response()->json(['status'=>'failed','message'=>'Product not found']);
-    }
 }
