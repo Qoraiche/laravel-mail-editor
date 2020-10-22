@@ -24,4 +24,5 @@ Route::group(['prefix' => 'mailables'], function () {
     Route::get('new', 'MailablesController@createMailable')->name('createMailable');
     Route::post('new', 'MailablesController@generateMailable')->name('generateMailable');
     Route::post('delete', 'MailablesController@delete')->name('deleteMailable');
+    Route::post('send-test', 'MailablesController@sendTest')->name('sendTestMail');
 });
