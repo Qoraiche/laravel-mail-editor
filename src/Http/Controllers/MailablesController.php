@@ -2,6 +2,7 @@
 
 namespace Qoraiche\MailEclipse\Http\Controllers;
 
+use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
@@ -115,5 +116,17 @@ class MailablesController extends Controller
         return response()->json([
             'status' => 'error',
         ]);
+    }
+
+    public function sendTest(Request $request)
+    {
+        $validatedData = $request->validate([
+            'email' => 'email|nullable',
+            'name' => 'string|required'
+        ]);
+
+        $email = $request->get('email') ?? config('maileclipse.test_mail');
+
+        MailEclipse::sendTest($request->get('name'), $email);
     }
 }
