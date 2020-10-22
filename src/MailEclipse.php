@@ -896,4 +896,31 @@ class MailEclipse
         }
         return $resolvedTypeHints;
     }
+
+    /**
+     * @param string $name
+     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public static function renderMailable(string $name)
+    {
+        $mailable = self::getMailable('name', $name)->first();
+
+        if (collect($mailable['data'])->isEmpty()) {
+            return false;
+        }
+
+        if (self::handleMailableViewDataArgs($mailable['namespace']) !== null) {
+            $mailableInstance = self::handleMailableViewDataArgs($mailable['namespace']);
+        } else {
+            $mailableInstance = new $mailable['namespace'];
+        }
+
+        $view = $mailable['markdown'] ?? $mailable['data']->view;
+
+        if (view()->exists($view)) {
+            return $mailableInstance->render();
+        }
+
+        return view(self::$view_namespace . '::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
+    }
 }

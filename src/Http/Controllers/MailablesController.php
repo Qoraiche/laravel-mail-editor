@@ -97,39 +97,7 @@ class MailablesController extends Controller
 
     public function previewMailable($name)
     {
-        $mailable = MailEclipse::getMailable('name', $name);
-
-        if ($mailable->isEmpty()) {
-            return redirect()->route('mailableList');
-        }
-
-        $resource = $mailable->first();
-
-        if (! is_null(MailEclipse::handleMailableViewDataArgs($resource['namespace']))) {
-            // $instance = new $resource['namespace'];
-            //
-            $instance = MailEclipse::handleMailableViewDataArgs($resource['namespace']);
-        } else {
-            $instance = new $resource['namespace'];
-        }
-
-        if (collect($resource['data'])->isEmpty()) {
-            return 'View not found';
-        }
-
-        $view = ! is_null($resource['markdown']) ? $resource['markdown'] : $resource['data']->view;
-
-        if (view()->exists($view)) {
-            try {
-                $html = $instance;
-
-                return $html->render();
-            } catch (\ErrorException $e) {
-                return view(MailEclipse::$view_namespace.'::previewerror', ['errorMessage' => $e->getMessage()]);
-            }
-        }
-
-        return view(MailEclipse::$view_namespace.'::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
+        return MailEclipse::renderMailable($name);
     }
 
     public function delete(Request $request)
