@@ -610,32 +610,30 @@ class MailEclipse
                 return $param->name;
             });
 
-            $filteredparams = [];
+            $resolvedTypeHints = [];
 
             foreach ($args->all() as $arg) {
-                $factoryStates = [];
-
                 if (is_array($arg)) {
                     if (isset($arg['is_instance'])) {
-                        if (isset($eloquentFactory[$arg['instance']]) && config('maileclipse.factory')) {
-                            $filteredparams[] = factory($arg['instance'])->states($factoryStates)->make();
-                        } else {
-                            $filteredparams[] = app($arg['instance']);
-                        }
+
+                        $model = $arg['instance'];
+
+                        $resolvedTypeHints = self::resolveFactory($eloquentFactory, $model, $resolvedTypeHints);
+
                     } elseif (isset($arg['is_array'])) {
-                        $filteredparams[] = [];
+                        $resolvedTypeHints[] = [];
                     } else {
                         return;
                     }
                 } else {
-                    $filteredparams[] = self::getMissingParams($arg, $params);
+                    $resolvedTypeHints[] = self::getMissingParams($arg, $params);
                 }
             }
 
             $reflector = new ReflectionClass($mailable);
 
-            if (! $args->isEmpty()) {
-                $foo = $reflector->newInstanceArgs($filteredparams);
+            if (!$args->isEmpty()) {
+                $foo = $reflector->newInstanceArgs($resolvedTypeHints);
 
                 return $foo;
             }
@@ -870,5 +868,32 @@ class MailEclipse
         }
 
         return $name;
+    }
+
+    /**
+     * @param $eloquentFactory
+     * @param $model
+     * @param array $resolvedTypeHints
+     * @return array
+     */
+    private static function resolveFactory($eloquentFactory, $model, array $resolvedTypeHints): array
+    {
+        if (config('maileclipse.factory')) {
+            // factory builder backwards compatibility
+            if (isset($eloquentFactory[$model])) {
+                $resolvedTypeHints[] = factory($model)->make();
+            }
+
+            /** @var array|false $modelHasFactory */
+            $modelHasFactory = class_uses($model);
+
+            if (isset($modelHasFactory['Illuminate\Database\Eloquent\Factories\HasFactory'])) {
+                $resolvedTypeHints[] = $model::factory()->make();
+            }
+
+        } else {
+            $resolvedTypeHints[] = app($model);
+        }
+        return $resolvedTypeHints;
     }
 }
