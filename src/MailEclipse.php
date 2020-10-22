@@ -9,6 +9,7 @@ use Illuminate\Mail\Markdown;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use RecursiveDirectoryIterator;
@@ -909,18 +910,53 @@ class MailEclipse
             return false;
         }
 
+        $mailableInstance = self::resolveMailableInstance($mailable);
+
+        $view = $mailable['markdown'] ?? $mailable['data']->view;
+
+        if (view()->exists($view)) {
+            return ($mailableInstance)->render();
+        }
+
+        return view(self::$view_namespace . '::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
+    }
+
+
+    /**
+     * @param string $name
+     * @param string $recipient
+     */
+    public static function sendTest(string $name, string $recipient): void
+    {
+        $mailable = self::getMailable('name', $name)->first();
+
+        $mailableInstance = self::resolveMailableInstance($mailable);
+
+        $mailableInstance = self::setMailableSendTestRecipient($mailableInstance, $recipient);
+
+        Mail::send($mailableInstance);
+    }
+
+    public static function setMailableSendTestRecipient($mailable, string $email)
+    {
+        $mailable->to($email);
+        $mailable->cc([]);
+        $mailable->bcc([]);
+
+        return $mailable;
+    }
+
+    /**
+     * @param $mailable
+     * @return object|void
+     */
+    private static function resolveMailableInstance($mailable)
+    {
         if (self::handleMailableViewDataArgs($mailable['namespace']) !== null) {
             $mailableInstance = self::handleMailableViewDataArgs($mailable['namespace']);
         } else {
             $mailableInstance = new $mailable['namespace'];
         }
-
-        $view = $mailable['markdown'] ?? $mailable['data']->view;
-
-        if (view()->exists($view)) {
-            return $mailableInstance->render();
-        }
-
-        return view(self::$view_namespace . '::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
+        return $mailableInstance;
     }
 }
