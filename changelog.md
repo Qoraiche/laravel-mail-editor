@@ -165,6 +165,17 @@ IMPORTANT: Version 2.2.0 will only support Laravel versions 5, 6 and 7 for futur
 ## Version 3.0.0
 Laravel 8 Support release
 
+## Version 3.0.1
+- PSR standards for console command class name, see #115, credit @ivebe
+
+## Version 3.1.0
+- Improve the sanitization of class names for mailables to align with PHP expectations. credit @ivebe
+
+## Version 3.2.1
+- Add the ability to send test mail with fake factory model data
+- Fix model factories builder not loaded in laravel 8
+- Formatting 
+
 ## Addition
 
 - The package now has an install command `php artisan laravel-mail-editor:install` see #111 
