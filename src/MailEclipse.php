@@ -616,11 +616,9 @@ class MailEclipse
             foreach ($args->all() as $arg) {
                 if (is_array($arg)) {
                     if (isset($arg['is_instance'])) {
-
                         $model = $arg['instance'];
 
                         $resolvedTypeHints = self::resolveFactory($eloquentFactory, $model, $resolvedTypeHints);
-
                     } elseif (isset($arg['is_array'])) {
                         $resolvedTypeHints[] = [];
                     } else {
@@ -633,7 +631,7 @@ class MailEclipse
 
             $reflector = new ReflectionClass($mailable);
 
-            if (!$args->isEmpty()) {
+            if (! $args->isEmpty()) {
                 $foo = $reflector->newInstanceArgs($resolvedTypeHints);
 
                 return $foo;
@@ -891,10 +889,10 @@ class MailEclipse
             if (isset($modelHasFactory['Illuminate\Database\Eloquent\Factories\HasFactory'])) {
                 $resolvedTypeHints[] = $model::factory()->make();
             }
-
         } else {
             $resolvedTypeHints[] = app($model);
         }
+
         return $resolvedTypeHints;
     }
 
@@ -918,9 +916,8 @@ class MailEclipse
             return ($mailableInstance)->render();
         }
 
-        return view(self::$view_namespace . '::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
+        return view(self::$view_namespace.'::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
     }
-
 
     /**
      * @param string $name
@@ -957,6 +954,7 @@ class MailEclipse
         } else {
             $mailableInstance = new $mailable['namespace'];
         }
+
         return $mailableInstance;
     }
 }
