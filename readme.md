@@ -124,7 +124,7 @@ If you benefit from and/or like using MailEclipse then please help drive the fut
   <tbody>
     <tr>
           <td align="center" valign="middle">
-            <a href="https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1" target="_blank">
+            <a href="https://www.jetbrains.com/?from=maileclipse" target="_blank">
               <img width="222px" src="https://user-images.githubusercontent.com/15586492/96636404-2c18dd00-1315-11eb-9520-736dffaaf0a7.png">
             </a>
           </td>
