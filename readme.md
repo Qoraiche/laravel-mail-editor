@@ -25,6 +25,8 @@ Please note that this package is still under active development. We encourage ev
 * Templates (more than 20+ ready to use email templates).
 * WYSIWYG Email HTML/Markdown editor.
 * Suitable for laravel beginners.
+* Send Test mails
+* Testing mails with fake data
 * and many more... (promise).
 
 ## Requirements
