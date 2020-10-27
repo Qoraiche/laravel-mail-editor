@@ -811,12 +811,16 @@ class MailEclipse
                 'type' => 'model',
                 'attributes' => collect($param->getAttributes()),
             ];
-        } elseif ($param instanceof \Illuminate\Database\Eloquent\Collection) {
+        }
+
+        if ($param instanceof \Illuminate\Database\Eloquent\Collection) {
             return [
                 'type' => 'elequent-collection',
                 'attributes' => $param->all(),
             ];
-        } elseif ($param instanceof \Illuminate\Support\Collection) {
+        }
+
+        if ($param instanceof \Illuminate\Support\Collection) {
             return [
                 'type' => 'collection',
                 'attributes' => $param->all(),
