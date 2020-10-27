@@ -777,7 +777,7 @@ class MailEclipse
 
         $obj = self::buildMailable($mailable);
 
-        if (is_null($obj)) {
+        if ($obj === null) {
             $obj = [];
 
             return collect($obj);
@@ -804,7 +804,7 @@ class MailEclipse
      * @param $param
      * @return array
      */
-    protected static function viewDataInspect($param)
+    protected static function viewDataInspect($param): ?array
     {
         if ($param instanceof \Illuminate\Database\Eloquent\Model) {
             return [
@@ -828,7 +828,7 @@ class MailEclipse
      * @param $mailable
      * @return bool
      */
-    protected static function mailable_exists($mailable)
+    protected static function mailable_exists($mailable): bool
     {
         if (! class_exists($mailable)) {
             return false;
@@ -868,13 +868,14 @@ class MailEclipse
     {
         if ($type === 'call') {
             if (self::handleMailableViewDataArgs($instance) !== null) {
-                return Container::getInstance()->call([self::handleMailableViewDataArgs($instance), 'build']);
+
+                return app()->call([self::handleMailableViewDataArgs($instance), 'build']);
             }
 
-            return Container::getInstance()->call([new $instance, 'build']);
+            return app()->call([new $instance, 'build']);
         }
 
-        return Container::getInstance()->make($instance);
+        return app()->make($instance);
     }
 
     /**
@@ -1000,6 +1001,7 @@ class MailEclipse
     /**
      * @param string $name
      * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \ReflectionException
      */
     public static function renderMailable(string $name)
     {
