@@ -30,4 +30,6 @@ Route::group(['prefix' => 'mailables'], function () {
         Route::get('template/previewerror', 'MailablesPreviewController@previewError')->name('templatePreviewError');
         Route::get('{name}', 'MailablesPreviewController@mailable')->name('previewMailable');
     });
+
+    Route::post('send-test', 'MailablesController@sendTest')->name('sendTestMail');
 });

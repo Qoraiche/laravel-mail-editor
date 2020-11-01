@@ -92,39 +92,7 @@ class MailablesController extends Controller
 
     public function previewMailable($name)
     {
-        $mailable = MailEclipse::getMailable('name', $name);
-
-        if ($mailable->isEmpty()) {
-            return redirect()->route('mailableList');
-        }
-
-        $resource = $mailable->first();
-
-        if (collect($resource['data'])->isEmpty()) {
-            return 'View not found';
-        }
-
-        $instance = MailEclipse::handleMailableViewDataArgs($resource['namespace']);
-
-        if (is_null($instance)) {
-            $instance = new $resource['namespace'];
-        }
-
-        $view = ! is_null($resource['markdown'])
-            ? $resource['markdown']
-            : $resource['data']->view;
-
-        if (view()->exists($view)) {
-            try {
-                $html = $instance;
-
-                return $html->render();
-            } catch (\ErrorException $e) {
-                return view(MailEclipse::VIEW_NAMESPACE.'::previewerror', ['errorMessage' => $e->getMessage()]);
-            }
-        }
-
-        return view(MailEclipse::VIEW_NAMESPACE.'::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
+        return MailEclipse::renderMailable($name);
     }
 
     public function delete(Request $request)
@@ -142,5 +110,17 @@ class MailablesController extends Controller
         return response()->json([
             'status' => 'error',
         ]);
+    }
+
+    public function sendTest(Request $request)
+    {
+        $validatedData = $request->validate([
+            'email' => 'email|nullable',
+            'name' => 'string|required',
+        ]);
+
+        $email = $request->get('email') ?? config('maileclipse.test_mail');
+
+        MailEclipse::sendTest($request->get('name'), $email);
     }
 }
