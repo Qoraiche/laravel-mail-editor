@@ -31,11 +31,6 @@ class MailablesController extends Controller
         return view(MailEclipse::$view_namespace.'::sections.mailables', compact('mailables'));
     }
 
-    public function createMailable(Request $request)
-    {
-        return view(MailEclipse::$view_namespace.'::createmailable');
-    }
-
     public function generateMailable(Request $request)
     {
         return MailEclipse::generateMailable($request);
