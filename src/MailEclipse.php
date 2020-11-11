@@ -3,7 +3,6 @@
 namespace Qoraiche\MailEclipse;
 
 use ErrorException;
-use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Mail\Markdown;
@@ -264,7 +263,7 @@ class MailEclipse
                 File::makeDirectory($dir, 0755, true);
             }
 
-            file_put_contents($dir."/{$templatename}.blade.php", Replacer::toBlade($request->content));
+            file_put_contents($dir."/{$templateName}.blade.php", Replacer::toBlade($request->content));
 
             file_put_contents($dir."/{$templateName}_plain_text.blade.php", $request->plain_text);
 
@@ -286,9 +285,7 @@ class MailEclipse
     {
         $viewContent = file_get_contents($viewPath);
 
-        return Replacer::toEditor($viewContent, true);
-
-        // return preg_replace($patterns, $replacements, $viewContent);
+        return Replacer::toEditor($viewContent);
     }
 
     /**

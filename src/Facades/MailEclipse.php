@@ -18,11 +18,12 @@ use Qoraiche\MailEclipse\MailEclipse as MailEclipseParent;
  * @method static string markdownedTemplateToView($save = true, $content = '', $viewPath = '', $template = false)
  * @method static bool|mixed|string previewMarkdownViewContent($simpleview, $content, $viewName, $template = false, $namespace = null)
  * @method static mixed|string previewMarkdownHtml($instance, $view)
- * @method static \Illuminate\Support\Collection getMailableTemplateData($mailableName)
+ * @method static array|bool getMailableTemplateData($mailableName)
  * @method static \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory generateMailable($request = null)
  * @method static array handleMailableViewDataArgs($mailable)
  * @method static \Illuminate\Contracts\Mail\Mailable|\Illuminate\Contracts\Support\Renderable buildMailable($instance, $type = 'call')
  * @method static void|string renderPreview($simpleview, $view, $template = false, $instance = null)
+ * @method static void sendTest(string $name, string $recipient)
  *
  * @see \Qoraiche\MailEclipse\MailEclipse
  */
