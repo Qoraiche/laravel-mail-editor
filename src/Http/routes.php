@@ -21,7 +21,6 @@ Route::group(['prefix' => 'mailables'], function () {
     Route::post('preview/template', 'MailablesController@previewMarkdownView')->name('previewMarkdownView');
     Route::get('preview/template/previewerror', 'MailablesController@templatePreviewError')->name('templatePreviewError');
     Route::get('preview/{name}', 'MailablesController@previewMailable')->name('previewMailable');
-    Route::get('new', 'MailablesController@createMailable')->name('createMailable');
     Route::post('new', 'MailablesController@generateMailable')->name('generateMailable');
     Route::post('delete', 'MailablesController@delete')->name('deleteMailable');
     Route::post('send-test', 'MailablesController@sendTest')->name('sendTestMail');
