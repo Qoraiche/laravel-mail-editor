@@ -5,20 +5,20 @@
 @section('content')
 
 <div class="col-lg-10 col-md-12">
-                
+
                 <div class="card my-4">
                     <div class="card-header d-flex align-items-center justify-content-between"><h5>{{ __('Mailables') }}</h5>
 
                         @if (!$mailables->isEmpty())
-                        <a class="btn btn-primary" href="{{ route('createMailable') }}" data-toggle="modal" data-target="#newMailableModal">{{ __('Add Mailable') }}</a>
+                            <a class="btn btn-primary" href="#newMailableModal" data-toggle="modal" data-target="#newMailableModal">{{ __('Add Mailable') }}</a>
                         @endif
                         <!-- Modal -->
                     </div>
 
                     @if ($mailables->isEmpty())
-                    
+
                     @component('maileclipse::layout.emptydata')
-                        
+
                         <span class="mt-4">{{ __("We didn't find anything - just empty space.") }}</span><button class="btn btn-primary mt-3" data-toggle="modal" data-target="#newMailableModal">{{ __('Add New Mailable') }}</button>
 
                     @endcomponent
@@ -40,7 +40,7 @@
                         @foreach($mailables->all() as $mailable)
                             <tr id="mailable_item_{{ $mailable['name'] }}">
                                 <td class="pr-0">
-                                    {{ $mailable['name'] }} 
+                                    {{ $mailable['name'] }}
                                 </td>
                                 <td class="text-muted" title="/tee">{{ $mailable['namespace'] }} </td>
 
@@ -76,7 +76,7 @@
       </div>
       <div class="modal-body">
         <div class="alert alert-warning new-mailable-alerts d-none" role="alert">
-          
+
         </div>
           <div class="form-group">
             <label for="mailableName">Name</label>
@@ -117,7 +117,7 @@
     $(document).ready(function(){
 
         if ($('#markdown--truth').is(':checked')) {
-                
+
                 $('.markdown-input').show();
             } else {
 
@@ -127,7 +127,7 @@
         $('#markdown--truth').change(
         function(){
             if ($(this).is(':checked')) {
-                
+
                 $('.markdown-input').show();
             } else {
 
@@ -179,9 +179,9 @@
         e.preventDefault();
         // /generateMailable
         // new-mailable-alerts
-        // 
-        // 
-        
+        //
+        //
+
 
     if ( $('input#markdown--truth').is(':checked') && $('#markdownView').val() == '')
     {
@@ -213,7 +213,7 @@
 
     });
 
-                
+
 </script>
-   
+
 @endsection
