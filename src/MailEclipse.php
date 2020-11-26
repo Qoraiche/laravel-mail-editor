@@ -824,6 +824,8 @@ class MailEclipse
                 'attributes' => $param->all(),
             ];
         }
+
+        return null;
     }
 
     /**
