@@ -159,3 +159,23 @@ see #107, #106
 ### Addition
 - Revert Laravel 8 support
 - Console command for installing assets see PR #111
+
+## Version 2.2.1
+Patch Release.
+
+### Fixes
+
+- Fixes  the string error that happens when the constructor params have a string type hint, issue #103
+see #113
+
+## Version 2.2.2
+This is a patch release of the package for a PSR-4 warning
+
+### Fix
+
+- The namespace and the file structure of the console command were corrected to PSR-4 standards thanks @ivebe, see #115
+
+
+## Version 2.2.3
+### Fix
+- port version 3 fix back into v2, see #140, #141
