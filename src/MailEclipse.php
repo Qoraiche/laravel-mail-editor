@@ -649,23 +649,23 @@ class MailEclipse
      */
     private static function getMissingParams($arg, $params)
     {
-        /** 
-         * Determine if a builtin type can be found. 
-         * Not a string or object as a Mocked::class can work there. 
-         * 
-         * getName() is undocumented alternative to casting to string. 
-         * https://www.php.net/manual/en/class.reflectiontype.php#124658 
-         * 
-         * @var \ReflectionType $reflection 
+        /**
+         * Determine if a builtin type can be found.
+         * Not a string or object as a Mocked::class can work there.
+         *
+         * getName() is undocumented alternative to casting to string.
+         * https://www.php.net/manual/en/class.reflectiontype.php#124658
+         *
+         * @var \ReflectionType $reflection
          */
         $reflection = collect($params)->where('name', $arg)->first()->getType();
 
         if (version_compare(phpversion(), '7.1', '>=')) {
-            $type = !is_null($reflection)
+            $type = ! is_null($reflection)
                 ? self::TYPES[$reflection->getName()]
                 : null;
         } else {
-            $type = !is_null($reflection)
+            $type = ! is_null($reflection)
                 ? self::TYPES[
                 /** @scrutinizer ignore-deprecated */
                 $reflection->__toString()]
@@ -679,7 +679,7 @@ class MailEclipse
         } catch (\Exception $e) {
             return $arg;
         }
-    } 
+    }
 
     private static function getMailableViewData($mailable, $mailable_data)
     {
