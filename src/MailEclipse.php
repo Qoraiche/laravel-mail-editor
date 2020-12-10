@@ -673,7 +673,7 @@ class MailEclipse
         }
 
         try {
-            return !is_null($type)
+            return ! is_null($type)
                 ? $type
                 : new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
         } catch (\Exception $e) {
