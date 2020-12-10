@@ -623,7 +623,7 @@ class MailEclipse
                         return;
                     }
                 } else {
-                    $filteredparams = self::getMissingParams($arg, $params);
+                    $filteredparams[] = self::getMissingParams($arg, $params);
                 }
             }
 

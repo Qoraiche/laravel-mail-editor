@@ -179,3 +179,7 @@ This is a patch release of the package for a PSR-4 warning
 ## Version 2.2.3
 ### Fix
 - port version 3 fix back into v2, see #140, #141
+
+## Version 2.2.4
+### Fix
+- Fix a typo from version 2.2.3
