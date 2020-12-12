@@ -22,8 +22,7 @@ use ReflectionProperty;
 use RegexIterator;
 
 /**
- * Class MailEclipse
- * @package Qoraiche\MailEclipse
+ * Class MailEclipse.
  */
 class MailEclipse
 {
@@ -103,7 +102,7 @@ class MailEclipse
         $file = config('maileclipse.mailables_dir').'templates.json';
         if (! file_exists($file)) {
             if (! file_exists(config('maileclipse.mailables_dir'))) {
-                if (!mkdir($concurrentDirectory = config('maileclipse.mailables_dir')) && !is_dir($concurrentDirectory)) {
+                if (! mkdir($concurrentDirectory = config('maileclipse.mailables_dir')) && ! is_dir($concurrentDirectory)) {
                     throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
                 }
             }
@@ -114,7 +113,7 @@ class MailEclipse
     }
 
     /**
-     * Save templates to templates.json file
+     * Save templates to templates.json file.
      *
      * @param Collection $templates
      */
@@ -220,7 +219,7 @@ class MailEclipse
     }
 
     /**
-     * Get templates collection
+     * Get templates collection.
      *
      * @return Collection
      */
@@ -326,7 +325,7 @@ class MailEclipse
 
             if ($template) {
                 $instance = null;
-            } else if (self::handleMailableViewDataArgs($namespace) !== null) {
+            } elseif (self::handleMailableViewDataArgs($namespace) !== null) {
                 $instance = self::handleMailableViewDataArgs($namespace);
             } else {
                 $instance = new $namespace;
@@ -729,6 +728,8 @@ class MailEclipse
                 'attributes' => $param->all(),
             ];
         }
+
+        return null;
     }
 
     /**
@@ -775,7 +776,6 @@ class MailEclipse
     {
         if ($type === 'call') {
             if (self::handleMailableViewDataArgs($instance) !== null) {
-
                 return app()->call([self::handleMailableViewDataArgs($instance), 'build']);
             }
 
