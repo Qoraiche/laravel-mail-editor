@@ -122,7 +122,9 @@
 
 $(document).ready(function(){
 
-	 var templateID = "{{ "template_view_".$template['slug'] }}";
+	
+
+	var templateID = "{{ "template_view_".$template['slug'] }}";
 
 	 $('.edit-template').click(function(){
 
@@ -211,7 +213,7 @@ $(document).ready(function(){
 	});
 
 	@if ($template['template_type'] === 'markdown')
-
+	
 	var simplemde = new SimpleMDE(
 		{
 		element: $("#template_editor")[0],
@@ -479,8 +481,9 @@ $(document).ready(function(){
 		$(this).toggleClass('active');
 	});
 
+		
 	@else
-
+		
 		tinymce.init({
 	        selector: "textarea#template_editor",
 	        menubar : false,
@@ -496,6 +499,8 @@ $(document).ready(function(){
 	       toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image fullpage table | forecolor backcolor emoticons | preview | code",
 	       fullpage_default_encoding: "UTF-8",
 	       fullpage_default_doctype: "<!DOCTYPE html>",
+		   allow_conditional_comments: true,
+		   allow_html_in_named_anchor: true,
 	       init_instance_callback: function (editor) 
 	       {
 	    		editor.on('Change', function (e) {
@@ -512,7 +517,8 @@ $(document).ready(function(){
 					editor.execCommand("mceRepaint");
 				}, 2000);
 
-	    	}
+	    	},
+			
 	    });
 
 
@@ -558,14 +564,37 @@ $(document).ready(function(){
 		}
 	});
 
-	 $('.preview-toggle').click(function(){
+	$('.preview-toggle').click(function(){
 		tinyMCE.execCommand('mcePreview');return false;
 	});
 
+		
 	@endif
+	
+	@if( !empty( $product_list ) )
+		setTimeout(function(){
+			
+			var url = window.location.href;
+			var to  = url.lastIndexOf('/') +1;
+				x   = url.substring(0,to);
 
+			window.history.pushState('', '', x+'{{$template['slug']}}');
+
+			$("#template_editor_ifr").contents().find(".block-row").empty();
+			var obj = '{{$product_list}}';
+			$.each(JSON.parse(obj.replace(/&quot;/g,'"')), function (index, valueOfElement) { 
+				$("#template_editor_ifr").contents().find(".block-row").append('<div class="block-col"> <div class="block"><div class="image-holder"><img class="" src="'+this.img+'" alt="image-description" /></div><div class="description"><strong class="title">'+this.name+'</strong><div class="price-holder"><strong class="price">'+this.price+'</strong> <strong class="old-price"></strong></div><span class="discount">50% off</span></div></div></div>');
+				
+			});
+			
+			axios.post('{{ route('parseTemplate') }}', {
+				markdown: tinymce.get('template_editor').getContent(), viewpath: "{{ $template['slug'] }}", template: true
+			})
+
+		}, 1000);
+	@endif
 });
-                
+
 </script>
    
 @endsection

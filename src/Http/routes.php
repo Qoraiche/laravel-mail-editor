@@ -6,11 +6,13 @@ Route::group(['prefix' => 'templates'], function () {
     Route::get('/', 'TemplatesController@index')->name('templateList');
     Route::get('new', 'TemplatesController@select')->name('selectNewTemplate');
     Route::get('new/{type}/{name}/{skeleton}', 'TemplatesController@new')->name('newTemplate');
+    Route::get('edit/', 'TemplatesController@view')->name('viewTemplatePost');
     Route::get('edit/{templatename}', 'TemplatesController@view')->name('viewTemplate');
     Route::post('new', 'TemplatesController@create')->name('createNewTemplate');
     Route::post('delete', 'TemplatesController@delete')->name('deleteTemplate');
     Route::post('update', 'TemplatesController@update')->name('updateTemplate');
     Route::post('preview', 'TemplatesController@previewTemplateMarkdownView')->name('previewTemplateMarkdownView');
+    Route::get('getTemplateProduct', 'TemplatesController@getTemplateProduct')->name('getTemplateProduct');
 });
 
 Route::group(['prefix' => 'mailables'], function () {
