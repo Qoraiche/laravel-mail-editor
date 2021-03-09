@@ -28,7 +28,7 @@ class MailEclipse
 {
     public const VIEW_NAMESPACE = 'maileclipse';
 
-    public const VERSION = '3.0.0';
+    public const VERSION = '3.3.0';
 
     /**
      * Default type examples for being passed to reflected classes.
@@ -859,16 +859,19 @@ class MailEclipse
         }
 
         // Avoid MailMail as a class name suffix
-        if (substr_compare(strtolower($input), 'mail', -4) === 0) {
-            $suffix = '';
-        }
+        $suffix = substr_compare($input, 'mail', -4, 4, true) === 0
+            ? ''
+            : $suffix;
 
         /**
          * - Suffix is needed to avoid usage of reserved word.
          * - Str::slug will remove all forbidden characters.
          */
-        $name = ucwords(Str::camel(Str::slug($input, '_'))).$suffix;
+        $name = Str::studly(Str::slug($input, '_')).$suffix;
 
+        /**
+         * Removal of reserved keywords.
+         */
         if (! preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $name) ||
             substr_compare($name, $suffix, -strlen($suffix), strlen($suffix), true) !== 0
         ) {
@@ -879,6 +882,9 @@ class MailEclipse
     }
 
     /**
+     *
+     * @todo Add dynamic search and population of related classes.
+     *
      * @param $eloquentFactory
      * @param $model
      * @param array $resolvedTypeHints
