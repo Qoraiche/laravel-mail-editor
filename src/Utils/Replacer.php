@@ -6,15 +6,15 @@ class Replacer
 {
     /**
      * The pattern for the blade syntax to replace.
-     *  eg `'/@component/i'`
+     *  eg `'/@component/i'`.
      *
      * @var array
      */
     protected $bladeMatchPatterns = [];
 
     /**
-     * The syntax that replaces the blade files
-     * eg `'[component]: # '`
+     * The syntax that replaces the blade files.
+     * eg `'[component]: # '`.
      *
      * @var array
      */
@@ -22,7 +22,7 @@ class Replacer
 
     /**
      * The patterns of the editor to match.
-     * eg `'/\[component]:\s?#\s?/i'`
+     * eg `'/\[component]:\s?#\s?/i'`.
      *
      * @var array
      */
@@ -30,7 +30,7 @@ class Replacer
 
     /**
      * The blade syntax to change to from the editor.
-     * eg `'@component'`
+     * eg `'@component'`.
      *
      * @var array
      */
@@ -73,7 +73,7 @@ class Replacer
     }
 
     /**
-     * Replace the content with the patterns and targeted format
+     * Replace the content with the patterns and targeted format.
      *
      * @param array $patterns
      * @param array $replacements

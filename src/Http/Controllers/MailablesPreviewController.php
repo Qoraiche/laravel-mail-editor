@@ -20,7 +20,7 @@ class MailablesPreviewController extends Controller
 
     public function previewError()
     {
-        return view(MailEclipse::VIEW_NAMESPACE . '::previewerror');
+        return view(MailEclipse::VIEW_NAMESPACE.'::previewerror');
     }
 
     public function markdownView(Request $request)

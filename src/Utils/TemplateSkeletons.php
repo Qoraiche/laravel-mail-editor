@@ -21,7 +21,6 @@ class TemplateSkeletons
     }
 
     /**
-     *
      * @param mixed $type
      * @param mixed $name
      * @param mixed $skeleton

@@ -26,7 +26,7 @@ class CreateMailable
             ];
         }
 
-        if (!MailEclipse::getMailable('name', $parameters['name'])->isEmpty() && !isset($parameters['force'])) {
+        if (! MailEclipse::getMailable('name', $parameters['name'])->isEmpty() && !isset($parameters['force'])) {
 
             return [
                 'status' => 'error',

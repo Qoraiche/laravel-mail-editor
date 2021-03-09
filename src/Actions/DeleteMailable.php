@@ -8,12 +8,12 @@ class DeleteMailable
 {
     public function handle(array $request)
     {
-        $mailableFile = config('maileclipse.mailables_dir').'/'.$request['mailablename'].'.php';
+        $mailableFile = config('maileclipse.mailables_dir') . '/' . $request['mailablename'] . '.php';
 
-        if (! File::exists($mailableFile)) {
+        if (!File::exists($mailableFile)) {
             return [
                 'status' => 'error',
-                'message' => 'Mailable ' . $request['mailablename'] . ' does not exist',
+                'message' => 'Mailable '.$request['mailablename'].' does not exist',
             ];
         }
 

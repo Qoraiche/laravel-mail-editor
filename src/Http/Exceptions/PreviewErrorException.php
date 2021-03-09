@@ -9,14 +9,14 @@ class PreviewErrorException extends Exception
 {
 
     /**
-     * The error exception
+     * The error exception.
      *
      * @var string
      */
     protected $exception;
 
     /**
-     * Create a new preview exception
+     * Create a new preview exception.
      */
     public function __construct($exception)
     {
@@ -33,7 +33,7 @@ class PreviewErrorException extends Exception
     {
         return response()
             ->view(
-                MailEclipse::VIEW_NAMESPACE . '::previewerror',
+                MailEclipse::VIEW_NAMESPACE.'::previewerror',
                 ['exception' => $this->exception],
                 500
             );

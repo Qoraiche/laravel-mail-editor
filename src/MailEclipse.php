@@ -882,7 +882,6 @@ class MailEclipse
     }
 
     /**
-     *
      * @todo Add dynamic search and population of related classes.
      *
      * @param $eloquentFactory
