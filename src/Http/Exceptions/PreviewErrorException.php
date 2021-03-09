@@ -7,7 +7,6 @@ use Qoraiche\MailEclipse\Facades\MailEclipse;
 
 class PreviewErrorException extends Exception
 {
-
     /**
      * The error exception.
      *

@@ -19,15 +19,13 @@ class CreateMailable
         $parameters = $this->commandParameters($parameters);
 
         if (strtolower($parameters['name']) === 'mailable') {
-
             return [
                 'status' => 'error',
                 'message' => 'You cannot use this name',
             ];
         }
 
-        if (! MailEclipse::getMailable('name', $parameters['name'])->isEmpty() && !isset($parameters['force'])) {
-
+        if (! MailEclipse::getMailable('name', $parameters['name'])->isEmpty() && ! isset($parameters['force'])) {
             return [
                 'status' => 'error',
                 'message' => 'This mailable name already exists. names should be unique! to override it, enable "force" option.',

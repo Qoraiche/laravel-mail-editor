@@ -97,20 +97,20 @@ class Replacer
     {
         $components = config('maileclipse.components');
 
-        $this->bladeMatchPatterns = array_map(function($component) {
+        $this->bladeMatchPatterns = array_map(function ($component) {
             return "/@${component}/i";
         }, $components);
 
-        $this->bladeReplacePatterns = array_map(function($component) {
+        $this->bladeReplacePatterns = array_map(function ($component) {
             return "[${component}]: # ";
         }, $components);
 
 
-        $this->editorMatchPatterns = array_map(function($component) {
+        $this->editorMatchPatterns = array_map(function ($component) {
             return "/\[${component}]:\s?#\s?/i";
         }, $components);
 
-        $this->editorReplacePatterns = array_map(function($component) {
+        $this->editorReplacePatterns = array_map(function ($component) {
             return "@${component}";
         }, $components);
     }

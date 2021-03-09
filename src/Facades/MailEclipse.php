@@ -27,7 +27,6 @@ use Qoraiche\MailEclipse\MailEclipse as MailEclipseParent;
  *
  * @see \Qoraiche\MailEclipse\MailEclipse
  */
-
 class MailEclipse extends Facade
 {
     const VIEW_NAMESPACE = MailEclipseParent::VIEW_NAMESPACE;
