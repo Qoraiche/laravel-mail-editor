@@ -6,7 +6,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Qoraiche\MailEclipse\MailEclipse;
-use Qoraiche\MailEclipse\Utils\Replacer;
 
 class TemplateSkeletons
 {

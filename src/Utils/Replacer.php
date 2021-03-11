@@ -105,7 +105,6 @@ class Replacer
             return "[${component}]: # ";
         }, $components);
 
-
         $this->editorMatchPatterns = array_map(function ($component) {
             return "/\[${component}]:\s?#\s?/i";
         }, $components);
