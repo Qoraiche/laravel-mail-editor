@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
+use Qoraiche\MailEclipse\Utils\Replacer;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use ReeceM\Mocker\Mocked;
@@ -25,7 +26,9 @@ use RegexIterator;
  */
 class MailEclipse
 {
-    public static $view_namespace = 'maileclipse';
+    public const VIEW_NAMESPACE = 'maileclipse';
+
+    public const VERSION = '3.3.0';
 
     /**
      * Default type examples for being passed to reflected classes.
@@ -73,7 +76,7 @@ class MailEclipse
                 return $value->template_slug === $template->template_slug;
             }));
 
-            $template_view = self::$view_namespace.'::templates.'.$templateSlug;
+            $template_view = self::VIEW_NAMESPACE.'::templates.'.$templateSlug;
             $template_plaintext_view = $template_view.'_plain_text';
 
             if (View::exists($template_view)) {
@@ -159,7 +162,7 @@ class MailEclipse
 
             self::saveTemplates(collect($newForm));
 
-            $template_view = self::$view_namespace.'::templates.'.$request->templateslug;
+            $template_view = self::VIEW_NAMESPACE.'::templates.'.$request->templateslug;
             $template_plaintext_view = $template_view.'_plain_text';
 
             if (View::exists($template_view)) {
@@ -191,7 +194,7 @@ class MailEclipse
         $template = self::getTemplates()->where('template_slug', $templateSlug)->first();
 
         if ($template !== null) {
-            $template_view = self::$view_namespace.'::templates.'.$template->template_slug;
+            $template_view = self::VIEW_NAMESPACE.'::templates.'.$template->template_slug;
             $template_plaintext_view = $template_view.'_plain_text';
 
             if (View::exists($template_view)) {
@@ -200,7 +203,7 @@ class MailEclipse
 
                 /** @var Collection $templateData */
                 $templateData = collect([
-                    'template' => self::templateComponentReplace(file_get_contents($viewPath), true),
+                    'template' => Replacer::toEditor(file_get_contents($viewPath)),
                     'plain_text' => View::exists($template_plaintext_view) ? file_get_contents($textViewPath) : '',
                     'slug' => $template->template_slug,
                     'name' => $template->template_name,
@@ -239,7 +242,7 @@ class MailEclipse
             ]);
         }
 
-        $view = self::$view_namespace.'::templates.'.$request->template_name;
+        $view = self::VIEW_NAMESPACE.'::templates.'.$request->template_name;
         $templateName = Str::camel(preg_replace('/\s+/', '_', $request->template_name));
 
         if (! view()->exists($view) && ! self::getTemplates()->contains('template_slug', '=', $templateName)) {
@@ -253,13 +256,13 @@ class MailEclipse
                     'template_skeleton' => $request->template_skeleton,
                 ]));
 
-            $dir = resource_path('views/vendor/'.self::$view_namespace.'/templates');
+            $dir = resource_path('views/vendor/'.self::VIEW_NAMESPACE.'/templates');
 
             if (! File::isDirectory($dir)) {
                 File::makeDirectory($dir, 0755, true);
             }
 
-            file_put_contents($dir."/{$templateName}.blade.php", self::templateComponentReplace($request->content));
+            file_put_contents($dir."/{$templateName}.blade.php", Replacer::toBlade($request->content));
 
             file_put_contents($dir."/{$templateName}_plain_text.blade.php", $request->plain_text);
 
@@ -277,110 +280,11 @@ class MailEclipse
         ]);
     }
 
-    /**
-     * @return Collection
-     */
-    public static function getTemplateSkeletons(): Collection
-    {
-        return collect(config('maileclipse.skeletons'));
-    }
-
-    /**
-     * @param $type
-     * @param $name
-     * @param $skeleton
-     * @return array
-     */
-    public static function getTemplateSkeleton($type, $name, $skeleton)
-    {
-        $skeletonView = self::$view_namespace."::skeletons.{$type}.{$name}.{$skeleton}";
-
-        if (view()->exists($skeletonView)) {
-            $skeletonViewPath = View($skeletonView)->getPath();
-            $templateContent = file_get_contents($skeletonViewPath);
-
-            return [
-                'type' => $type,
-                'name' => $name,
-                'skeleton' => $skeleton,
-                'template' => self::templateComponentReplace($templateContent, true),
-                'view' => $skeletonView,
-                'view_path' => $skeletonViewPath,
-            ];
-        }
-    }
-
-    /**
-     * @param $content
-     * @param bool $reverse
-     * @return string|string[]|null
-     */
-    protected static function templateComponentReplace($content, $reverse = false)
-    {
-        if ($reverse) {
-            $patterns = [
-                '/@component/i',
-                '/@endcomponent/i',
-                '/@yield/',
-                '/@section/',
-                '/@endsection/',
-                '/@extends/',
-                '/@parent/',
-                '/@slot/',
-                '/@endslot/',
-            ];
-
-            $replacements = [
-                '[component]: # ',
-                '[endcomponent]: # ',
-                '[yield]: # ',
-                '[section]: # ',
-                '[endsection]: # ',
-                '[extends]: # ',
-                '[parent]: # ',
-                '[slot]: # ',
-                '[endslot]: # ',
-            ];
-        } else {
-            $patterns = [
-                '/\[component]:\s?#\s?/i',
-                '/\[endcomponent]:\s?#\s?/i',
-                '/\[yield]:\s?#\s?/i',
-                '/\[section]:\s?#\s?/i',
-                '/\[endsection]:\s?#\s?/i',
-                '/\[extends]:\s?#\s?/i',
-                '/\[parent]:\s?#\s?/i',
-                '/\[slot]:\s?#\s?/i',
-                '/\[endslot]:\s?#\s?/i',
-            ];
-
-            $replacements = [
-                '@component',
-                '@endcomponent',
-                '@yield',
-                '@section',
-                '@endsection',
-                '@extends',
-                '@parent',
-                '@slot',
-                '@endslot',
-            ];
-        }
-
-        return preg_replace($patterns, $replacements, $content);
-    }
-
-    /**
-     * @param $viewPath
-     * @return string|string[]|null
-     */
     protected static function markdownedTemplate($viewPath)
     {
         $viewContent = file_get_contents($viewPath);
 
-        return self::templateComponentReplace($viewContent, true);
-
-        // return preg_replace($patterns, $replacements, $viewContent);
+        return Replacer::toEditor($viewContent);
     }
 
     /**
@@ -388,11 +292,11 @@ class MailEclipse
      */
     public static function markdownedTemplateToView($save = true, $content = '', $viewPath = '', $template = false)
     {
-        if ($template && View::exists(self::$view_namespace.'::templates.'.$viewPath)) {
-            $viewPath = View(self::$view_namespace.'::templates.'.$viewPath)->getPath();
+        if ($template && View::exists(self::VIEW_NAMESPACE.'::templates.'.$viewPath)) {
+            $viewPath = View(self::VIEW_NAMESPACE.'::templates.'.$viewPath)->getPath();
         }
 
-        $replaced = self::templateComponentReplace($content);
+        $replaced = Replacer::toBlade($content);
 
         if (! $save) {
             return $replaced;
@@ -427,7 +331,7 @@ class MailEclipse
                 $instance = new $namespace;
             }
 
-            return self::renderPreview($simpleview, self::$view_namespace.'::draft.'.$viewName, $template, $instance);
+            return self::renderPreview($simpleview, self::VIEW_NAMESPACE.'::draft.'.$viewName, $template, $instance);
         }
 
         return false;
@@ -955,16 +859,19 @@ class MailEclipse
         }
 
         // Avoid MailMail as a class name suffix
-        if (substr_compare(strtolower($input), 'mail', -4) === 0) {
-            $suffix = '';
-        }
+        $suffix = substr_compare($input, 'mail', -4, 4, true) === 0
+            ? ''
+            : $suffix;
 
         /**
          * - Suffix is needed to avoid usage of reserved word.
          * - Str::slug will remove all forbidden characters.
          */
-        $name = ucwords(Str::camel(Str::slug($input, '_'))).$suffix;
+        $name = Str::studly(Str::slug($input, '_')).$suffix;
 
+        /**
+         * Removal of reserved keywords.
+         */
         if (! preg_match('/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/', $name) ||
             substr_compare($name, $suffix, -strlen($suffix), strlen($suffix), true) !== 0
         ) {
@@ -975,6 +882,8 @@ class MailEclipse
     }
 
     /**
+     * @todo Add dynamic search and population of related classes.
+     *
      * @param $eloquentFactory
      * @param $model
      * @param array $resolvedTypeHints
@@ -1022,7 +931,7 @@ class MailEclipse
             return ($mailableInstance)->render();
         }
 
-        return view(self::$view_namespace.'::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
+        return view(self::VIEW_NAMESPACE.'::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
     }
 
     /**

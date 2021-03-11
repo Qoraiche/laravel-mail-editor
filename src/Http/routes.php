@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', 'MailablesController@toMailablesList');
 
 Route::group(['prefix' => 'templates'], function () {
@@ -18,10 +20,16 @@ Route::group(['prefix' => 'mailables'], function () {
     Route::get('view/{name}', 'MailablesController@viewMailable')->name('viewMailable');
     Route::get('edit/template/{name}', 'MailablesController@editMailable')->name('editMailable');
     Route::post('parse/template', 'MailablesController@parseTemplate')->name('parseTemplate');
-    Route::post('preview/template', 'MailablesController@previewMarkdownView')->name('previewMarkdownView');
-    Route::get('preview/template/previewerror', 'MailablesController@templatePreviewError')->name('templatePreviewError');
-    Route::get('preview/{name}', 'MailablesController@previewMailable')->name('previewMailable');
+
+    Route::get('new', 'MailablesController@createMailable')->name('createMailable');
     Route::post('new', 'MailablesController@generateMailable')->name('generateMailable');
     Route::post('delete', 'MailablesController@delete')->name('deleteMailable');
+
+    Route::group(['prefix' => 'preview'], function () {
+        Route::post('template', 'MailablesPreviewController@markdownView')->name('previewMarkdownView');
+        Route::get('template/previewerror', 'MailablesPreviewController@previewError')->name('templatePreviewError');
+        Route::get('{name}', 'MailablesPreviewController@mailable')->name('previewMailable');
+    });
+
     Route::post('send-test', 'MailablesController@sendTest')->name('sendTestMail');
 });

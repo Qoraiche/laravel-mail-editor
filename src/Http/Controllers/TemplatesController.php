@@ -5,7 +5,8 @@ namespace Qoraiche\MailEclipse\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
-use Qoraiche\MailEclipse\MailEclipse;
+use Qoraiche\MailEclipse\Facades\MailEclipse;
+use Qoraiche\MailEclipse\Utils\TemplateSkeletons;
 
 class TemplatesController extends Controller
 {
@@ -19,20 +20,20 @@ class TemplatesController extends Controller
 
     public function index()
     {
-        $skeletons = MailEclipse::getTemplateSkeletons();
+        $skeletons = TemplateSkeletons::skeletons();
 
         $templates = MailEclipse::getTemplates();
 
-        return View(MailEclipse::$view_namespace.'::sections.templates', compact('skeletons', 'templates'));
+        return View(MailEclipse::VIEW_NAMESPACE.'::sections.templates', compact('skeletons', 'templates'));
     }
 
     public function new($type, $name, $skeleton)
     {
         $type = $type === 'html' ? $type : 'markdown';
 
-        $skeleton = MailEclipse::getTemplateSkeleton($type, $name, $skeleton);
+        $skeleton = TemplateSkeletons::get($type, $name, $skeleton);
 
-        return View(MailEclipse::$view_namespace.'::sections.create-template', compact('skeleton'));
+        return View(MailEclipse::VIEW_NAMESPACE.'::sections.create-template', compact('skeleton'));
     }
 
     public function view($templateslug = null)
@@ -43,7 +44,7 @@ class TemplatesController extends Controller
             return redirect()->route('templateList');
         }
 
-        return View(MailEclipse::$view_namespace.'::sections.edit-template', compact('template'));
+        return View(MailEclipse::VIEW_NAMESPACE.'::sections.edit-template', compact('template'));
     }
 
     public function create(Request $request)
@@ -53,14 +54,9 @@ class TemplatesController extends Controller
 
     public function select(Request $request)
     {
-        $skeletons = MailEclipse::getTemplateSkeletons();
+        $skeletons = TemplateSkeletons::skeletons();
 
-        return View(MailEclipse::$view_namespace.'::sections.new-template', compact('skeletons'));
-    }
-
-    public function previewTemplateMarkdownView(Request $request)
-    {
-        return MailEclipse::previewMarkdownViewContent(false, $request->markdown, $request->name, true);
+        return View(MailEclipse::VIEW_NAMESPACE.'::sections.new-template', compact('skeletons'));
     }
 
     public function delete(Request $request)

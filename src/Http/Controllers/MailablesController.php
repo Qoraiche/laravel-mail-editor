@@ -5,7 +5,7 @@ namespace Qoraiche\MailEclipse\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
-use Qoraiche\MailEclipse\MailEclipse;
+use Qoraiche\MailEclipse\Facades\MailEclipse;
 
 class MailablesController extends Controller
 {
@@ -28,7 +28,7 @@ class MailablesController extends Controller
 
         $mailables = (null !== $mailables) ? $mailables->sortBy('name') : collect([]);
 
-        return view(MailEclipse::$view_namespace.'::sections.mailables', compact('mailables'));
+        return view(MailEclipse::VIEW_NAMESPACE.'::sections.mailables', compact('mailables'));
     }
 
     public function generateMailable(Request $request)
@@ -46,7 +46,7 @@ class MailablesController extends Controller
 
         $resource = $mailable->first();
 
-        return view(MailEclipse::$view_namespace.'::sections.view-mailable')->with(compact('resource'));
+        return view(MailEclipse::VIEW_NAMESPACE.'::sections.view-mailable')->with(compact('resource'));
     }
 
     public function editMailable($name)
@@ -57,12 +57,7 @@ class MailablesController extends Controller
             return redirect()->route('viewMailable', ['name' => $name]);
         }
 
-        return view(MailEclipse::$view_namespace.'::sections.edit-mailable-template', compact('templateData', 'name'));
-    }
-
-    public function templatePreviewError()
-    {
-        return view(MailEclipse::$view_namespace.'::previewerror');
+        return view(MailEclipse::VIEW_NAMESPACE.'::sections.edit-mailable-template', compact('templateData', 'name'));
     }
 
     public function parseTemplate(Request $request)
