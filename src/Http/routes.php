@@ -13,6 +13,7 @@ Route::group(['prefix' => 'templates'], function () {
     Route::post('update', 'TemplatesController@update')->name('updateTemplate');
     Route::post('preview', 'TemplatesController@previewTemplateMarkdownView')->name('previewTemplateMarkdownView');
     Route::get('getTemplateProduct', 'TemplatesController@getTemplateProduct')->name('getTemplateProduct');
+    Route::post('translate-template', 'TemplatesController@translateTemplate')->name('translateTemplate');
 });
 
 Route::group(['prefix' => 'mailables'], function () {

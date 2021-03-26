@@ -7,7 +7,9 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Qoraiche\MailEclipse\MailEclipse;
 use App\Product;
+use App\Language;
 use Illuminate\Support\Str;
+use App\GoogleTranslate;
 class TemplatesController extends Controller
 {
     public function __construct()
@@ -20,15 +22,13 @@ class TemplatesController extends Controller
 
     public function index()
     {
-        $skeletons = MailEclipse::getTemplateSkeletons();
-
-        $templates = MailEclipse::getTemplates()->where('template_dynamic',FALSE);
+        $skeletons           = MailEclipse::getTemplateSkeletons();
+        $templates           = MailEclipse::getTemplates()->where('template_dynamic',FALSE)->where('template_translate',FALSE);
+        $templates_dynamic   = MailEclipse::getTemplates()->where('template_dynamic',TRUE)->where('template_translate',FALSE);
+        $templates_translate = MailEclipse::getTemplates()->where('template_translate',TRUE);
+        $languages           = Language::all();
         
-        
-        $templates_dynamic = MailEclipse::getTemplates()->where('template_dynamic',TRUE);
-        
-        
-        return View(MailEclipse::$view_namespace.'::sections.templates', compact('skeletons', 'templates', 'templates_dynamic'));
+        return View(MailEclipse::$view_namespace.'::sections.templates', compact('skeletons', 'templates', 'templates_dynamic','languages','templates_translate'));
     }
 
     public function new($type, $name, $skeleton)
@@ -165,5 +165,64 @@ class TemplatesController extends Controller
         ]);
         }
         return response()->json(['status'=>'failed','message'=>'Product not found']);
+    }
+
+    public function translateTemplate( Request $request )
+    {       
+        $request->validate([
+            'language' => 'required',
+            'template' => 'required',
+        ]);
+        
+        $template     = MailEclipse::getTemplate($request->template);
+        $old_template = MailEclipse::getTemplates()->where('template_slug', $request->template)->first();
+
+        if (is_null($template) || empty( $request->language ) || empty( $old_template )) {
+            return redirect()->route('templateList')->with('error','Template not found');
+        }
+        
+        $googleTranslate = new GoogleTranslate();
+        try {
+
+            foreach ($request->language ?? [] as $language) {
+                
+                $translateTemplate = $googleTranslate->translate( $language, $template['template'] );
+                if( !empty( $translateTemplate ) ){
+                    $uniq         = '-'.date('Y-m-d').'-'.rand(10000 , 99999).'-'.$language;
+                    $view         = MailEclipse::$view_namespace.'::templates.'.$request->template.$uniq;
+                    $templatename = Str::camel(preg_replace('/\s+/', '_', $request->template.$uniq));
+            
+                    if (! view()->exists($view) && ! MailEclipse::getTemplates()->contains('template_slug', '=', $templatename)) {
+                        MailEclipse::saveTemplates(MailEclipse::getTemplates()
+                            ->push([
+                                'template_name'        => $request->template.$uniq,
+                                'template_slug'        => $templatename,
+                                'template_description' => $old_template->template_description,
+                                'template_type'        => $old_template->template_type,
+                                'template_view_name'   => $old_template->template_view_name,
+                                'template_skeleton'    => $old_template->template_skeleton,
+                                'template_translate'   => TRUE,
+                                'template_language'    => $language,
+                            ]));
+            
+                        $dir = resource_path('views/vendor/'.MailEclipse::$view_namespace.'/templates');
+            
+                        if (! \File::isDirectory($dir)) {
+                            \File::makeDirectory($dir, 0755, true);
+                        }
+            
+                        file_put_contents($dir."/{$templatename}.blade.php", MailEclipse::templateComponentReplace( $translateTemplate ));
+                        file_put_contents($dir."/{$templatename}_plain_text.blade.php", '');
+                    }
+                }else{
+                    return redirect()->back()->with('error','Google translate not working for '.$language.' language, Please check google credentials');
+                }
+            }
+            return redirect()->back()->with('success','Successfully translation complete');
+        } catch (\Throwable $th) {
+            \Log::error( 'Template translate ::'.$th->getMessage() );
+            return redirect()->back()->with('error',$th->getMessage());
+        }
+        // return View(MailEclipse::$view_namespace.'::sections.edit-template', compact('template'));
     }
 }
