@@ -467,7 +467,7 @@ class MailEclipse
     /**
      * Get mailables list.
      *
-     * @return array
+     * @return void|Collection
      */
     protected static function mailablesList()
     {
