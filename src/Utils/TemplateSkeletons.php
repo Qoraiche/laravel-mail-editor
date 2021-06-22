@@ -3,7 +3,7 @@
 namespace Qoraiche\MailEclipse\Utils;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Qoraiche\MailEclipse\MailEclipse;
 
@@ -31,7 +31,7 @@ class TemplateSkeletons
 
         if (View::exists($skeletonView)) {
             $skeletonViewPath = View::make($skeletonView)->getPath();
-            $templateContent = Storage::get($skeletonViewPath);
+            $templateContent = File::get($skeletonViewPath);
 
             return [
                 'type' => $type,
