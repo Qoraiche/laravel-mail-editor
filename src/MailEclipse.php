@@ -598,7 +598,6 @@ class MailEclipse
                         $resolvedTypeHints[] = $factoryModel
                             ? self::hydrateRelations($eloquentFactory, $factoryModel)
                             : $factoryModel;
-
                     } elseif (isset($arg['is_array'])) {
                         $resolvedTypeHints[] = [];
                     } else {
@@ -952,7 +951,6 @@ class MailEclipse
             ->pluck('name')
             ->diff(collect($model->getMethods())->pluck('name'))
             ->filter(function ($method) use ($factoryModel) {
-
                 return rescue(
                     function () use ($factoryModel, $method) {
                         $parents = class_parents($factoryModel->$method());
@@ -987,7 +985,6 @@ class MailEclipse
                     $relationName,
                     $relatedFactory
                 );
-
             }
         } catch (\Throwable $th) {
             $factoryModel->setRelation(
