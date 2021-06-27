@@ -885,7 +885,7 @@ class MailEclipse
         return $name;
     }
 
-     /**
+    /**
      * Resolves the factory result for a model and returns the hydrated instance.
      *
      * @param $eloquentFactory
@@ -895,7 +895,7 @@ class MailEclipse
      */
     private static function resolveFactory($eloquentFactory, $model): ?object
     {
-        if (!config('maileclipse.factory')) {
+        if (! config('maileclipse.factory')) {
             return app($model);
         }
 
