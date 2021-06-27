@@ -34,6 +34,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Relationship loading depth
+    |--------------------------------------------------------------------------
+    |
+    | This configures how deep the package will search an load relations.
+    | If you set this to 0, relations will not be loaded.
+    |
+    | off = 0, min = 1, max = 5
+    |
+    | N.B. This does not configure how many many relationship types are loaded.
+    */
+
+    'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
+
+    /*
+    |--------------------------------------------------------------------------
     | Environment
     |--------------------------------------------------------------------------
     |

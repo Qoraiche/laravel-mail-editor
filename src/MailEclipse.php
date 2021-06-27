@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
@@ -28,7 +29,7 @@ class MailEclipse
 {
     public const VIEW_NAMESPACE = 'maileclipse';
 
-    public const VERSION = '3.3.0';
+    public const VERSION = '3.4.0';
 
     /**
      * Default type examples for being passed to reflected classes.
@@ -41,6 +42,8 @@ class MailEclipse
         'bool' => false,
         'float' => 3.14159,
     ];
+
+    public static $traversed = 0;
 
     /**
      * @return array
@@ -588,9 +591,14 @@ class MailEclipse
                     if (isset($arg['is_instance'])) {
                         $model = $arg['instance'];
 
+                        self::$traversed = 0;
+
                         $factoryModel = self::resolveFactory($eloquentFactory, $model);
 
-                        $resolvedTypeHints[] = $factoryModel;
+                        $resolvedTypeHints[] = $factoryModel
+                            ? self::hydrateRelations($eloquentFactory, $factoryModel)
+                            : $factoryModel;
+
                     } elseif (isset($arg['is_array'])) {
                         $resolvedTypeHints[] = [];
                     } else {
@@ -912,6 +920,86 @@ class MailEclipse
         }
 
         return null;
+    }
+
+    /**
+     * single level relation resolving for a model.
+     * It will load the relations or set to mocked class.
+     *
+     * @param mixed $eloquentFactory
+     * @param mixed $factoryModel
+     *
+     * @return null|object
+     */
+    private static function hydrateRelations($eloquentFactory, $factoryModel): ?object
+    {
+        if (config('maileclipse.relation_depth') === 0) {
+            return $factoryModel;
+        }
+
+        if (self::$traversed >= 5) {
+            Log::warning('[Maileclipse]: more than 5 calls to relation loader', ['last_model' => get_class($factoryModel) ?? null]);
+            self::$traversed = 6;
+
+            return $factoryModel;
+        }
+
+        $model = new ReflectionClass(Model::class);
+
+        self::$traversed += 1;
+
+        collect((new ReflectionClass($factoryModel))->getMethods())
+            ->pluck('name')
+            ->diff(collect($model->getMethods())->pluck('name'))
+            ->filter(function ($method) use ($factoryModel) {
+
+                return rescue(
+                    function () use ($factoryModel, $method) {
+                        $parents = class_parents($factoryModel->$method());
+
+                        return isset($parents["Illuminate\Database\Eloquent\Relations\Relation"]);
+                    },
+                    false,
+                    false
+                );
+            })
+            ->each(function ($relationName) use (&$factoryModel, $eloquentFactory) {
+                $factoryModel = self::loadRelations($relationName, $factoryModel, $eloquentFactory);
+            });
+
+        return $factoryModel;
+    }
+
+    public static function loadRelations($relationName, $factoryModel, $eloquentFactory = null): ?object
+    {
+        try {
+            $factoryModel->load($relationName);
+
+            if (is_null($factoryModel->$relationName)) {
+                $related = $factoryModel->$relationName()->getRelated();
+                $relatedFactory = self::resolveFactory($eloquentFactory, $related);
+
+                if (self::$traversed < config('maileclipse.relation_depth')) {
+                    $relatedFactory = self::hydrateRelations($eloquentFactory, $relatedFactory);
+                }
+
+                $factoryModel->setRelation(
+                    $relationName,
+                    $relatedFactory
+                );
+
+            }
+        } catch (\Throwable $th) {
+            $factoryModel->setRelation(
+                $relationName,
+                new Mocked(
+                    'relation_is_null',
+                    \ReeceM\Mocker\Utils\VarStore::singleton()
+                )
+            );
+        } finally {
+            return $factoryModel;
+        }
     }
 
     /**
