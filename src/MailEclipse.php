@@ -896,6 +896,8 @@ class MailEclipse
     /**
      * Resolves the factory result for a model and returns the hydrated instance.
      *
+     * @todo Allow the values for the Make command to be passed down by the pkg.
+     *
      * @param $eloquentFactory
      * @param $model
      *
@@ -938,7 +940,7 @@ class MailEclipse
         }
 
         if (self::$traversed >= 5) {
-            Log::warning('[Maileclipse]: more than 5 calls to relation loader', ['last_model' => get_class($factoryModel) ?? null]);
+            Log::warning('[MailEclipse]: more than 5 calls to relation loader', ['last_model' => get_class($factoryModel) ?? null]);
             self::$traversed = 6;
 
             return $factoryModel;
@@ -969,17 +971,42 @@ class MailEclipse
         return $factoryModel;
     }
 
+    /**
+     * Load the relations for the model and the relation.
+     *
+     * @todo Account for the many type relations, link back to parent model for belongsTo
+     *
+     * @param mixed $relationName
+     * @param mixed $factoryModel
+     * @param mixed|null $eloquentFactory
+     *
+     * @return null|object
+     */
     public static function loadRelations($relationName, $factoryModel, $eloquentFactory = null): ?object
     {
         try {
             $factoryModel->load($relationName);
 
-            if (is_null($factoryModel->$relationName)) {
-                $related = $factoryModel->$relationName()->getRelated();
-                $relatedFactory = self::resolveFactory($eloquentFactory, $related);
+            $loadIfIterable = is_iterable($factoryModel->$relationName) && count($factoryModel->$relationName) <= 0;
 
-                if (self::$traversed < config('maileclipse.relation_depth')) {
-                    $relatedFactory = self::hydrateRelations($eloquentFactory, $relatedFactory);
+
+            if (is_null($factoryModel->$relationName) || $loadIfIterable) {
+                $related = $factoryModel->$relationName()->getRelated();
+                $relatedFactory = self::resolveFactory($eloquentFactory, get_class($related));
+
+                if (self::$traversed <= config('maileclipse.relation_depth')) {
+
+                    if (!$loadIfIterable) {
+                        $relatedFactory = self::hydrateRelations($eloquentFactory, $relatedFactory);
+                    } else {
+                        $models = collect();
+
+                        for ($loads = 0; $loads < 3; $loads++) {
+                            $models->push(self::hydrateRelations($eloquentFactory, $relatedFactory));
+                        }
+
+                        $relatedFactory = $models;
+                    }
                 }
 
                 $factoryModel->setRelation(
