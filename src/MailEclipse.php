@@ -588,7 +588,9 @@ class MailEclipse
                     if (isset($arg['is_instance'])) {
                         $model = $arg['instance'];
 
-                        $resolvedTypeHints = self::resolveFactory($eloquentFactory, $model, $resolvedTypeHints);
+                        $factoryModel = self::resolveFactory($eloquentFactory, $model);
+
+                        $resolvedTypeHints[] = $factoryModel;
                     } elseif (isset($arg['is_array'])) {
                         $resolvedTypeHints[] = [];
                     } else {
@@ -602,6 +604,8 @@ class MailEclipse
             $reflector = new ReflectionClass($mailable);
 
             if ($args->isNotEmpty()) {
+                $resolvedTypeHints = array_filter($resolvedTypeHints);
+
                 return $reflector->newInstanceArgs($resolvedTypeHints);
             }
 
@@ -881,33 +885,33 @@ class MailEclipse
         return $name;
     }
 
-    /**
-     * @todo Add dynamic search and population of related classes.
+     /**
+     * Resolves the factory result for a model and returns the hydrated instance.
      *
      * @param $eloquentFactory
      * @param $model
-     * @param array $resolvedTypeHints
-     * @return array
+     *
+     * @return null|object
      */
-    private static function resolveFactory($eloquentFactory, $model, array $resolvedTypeHints): array
+    private static function resolveFactory($eloquentFactory, $model): ?object
     {
-        if (config('maileclipse.factory')) {
-            // factory builder backwards compatibility
-            if (isset($eloquentFactory[$model])) {
-                $resolvedTypeHints[] = factory($model)->make();
-            }
-
-            /** @var array|false $modelHasFactory */
-            $modelHasFactory = class_uses($model);
-
-            if (isset($modelHasFactory['Illuminate\Database\Eloquent\Factories\HasFactory'])) {
-                $resolvedTypeHints[] = $model::factory()->make();
-            }
-        } else {
-            $resolvedTypeHints[] = app($model);
+        if (!config('maileclipse.factory')) {
+            return app($model);
         }
 
-        return $resolvedTypeHints;
+        // factory builder backwards compatibility
+        if (isset($eloquentFactory[$model]) && function_exists('factory')) {
+            return call_user_func_array('factory', [$model])->make();
+        }
+
+        /** @var array|false $modelHasFactory */
+        $modelHasFactory = class_uses($model);
+
+        if (isset($modelHasFactory['Illuminate\Database\Eloquent\Factories\HasFactory'])) {
+            return $model::factory()->make();
+        }
+
+        return null;
     }
 
     /**
