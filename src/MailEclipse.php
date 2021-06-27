@@ -989,14 +989,12 @@ class MailEclipse
 
             $loadIfIterable = is_iterable($factoryModel->$relationName) && count($factoryModel->$relationName) <= 0;
 
-
             if (is_null($factoryModel->$relationName) || $loadIfIterable) {
                 $related = $factoryModel->$relationName()->getRelated();
                 $relatedFactory = self::resolveFactory($eloquentFactory, get_class($related));
 
                 if (self::$traversed <= config('maileclipse.relation_depth')) {
-
-                    if (!$loadIfIterable) {
+                    if (! $loadIfIterable) {
                         $relatedFactory = self::hydrateRelations($eloquentFactory, $relatedFactory);
                     } else {
                         $models = collect();
