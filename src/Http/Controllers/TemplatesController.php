@@ -14,7 +14,8 @@ class TemplatesController extends Controller
     {
         abort_unless(
             App::environment(config('maileclipse.allowed_environments', ['local'])),
-            403
+            403,
+            'Environment Not Allowed'
         );
     }
 
