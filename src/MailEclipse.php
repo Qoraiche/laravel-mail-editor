@@ -625,7 +625,6 @@ class MailEclipse
                         $filteredparams[] = $factoryModel
                             ? self::hydrateRelations($eloquentFactory, $factoryModel)
                             : $factoryModel;
-
                     } elseif (isset($arg['is_array'])) {
                         $filteredparams[] = [];
                     } else {
