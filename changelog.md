@@ -183,3 +183,41 @@ This is a patch release of the package for a PSR-4 warning
 ## Version 2.2.4
 ### Fix
 - Fix a typo from version 2.2.3
+
+## Version 2.2.5 - 2021-05-10
+Small patch release to add some feedback.
+
+## Fixes
+- This adds a error message to the check for allowed environments from the Maileclispe config #152
+
+## Chore
+- Made the return type described in the docblock correct. see 8b21ed764f7653e6c5dd1f5a9f82d19160bb4728 (#152)
+
+## Version 2.3.0 - [unreleased]
+
+This release will resolve the issue that has been brought up in issue #63 where relations weren't being loaded and affected the calling of relations inside emails or mailables.
+
+## Fixes
+- Fixes issue [#63](https://github.com/Qoraiche/laravel-mail-editor/issues/63)
+
+## Addition
+- Discovery and loading of relations that have factories
+- New config for depth of searching see below for new addition
+
+**new config value**
+```php
+    /*
+    |--------------------------------------------------------------------------
+    | Relationship loading depth
+    |--------------------------------------------------------------------------
+    |
+    | This configures how deep the package will search an load relations.
+    | If you set this to 0, relations will not be loaded.
+    |
+    | off = 0, min = 1, max = 5
+    |
+    | N.B. This does not configure how many many relationship types are loaded.
+    */
+
+    'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
+```
