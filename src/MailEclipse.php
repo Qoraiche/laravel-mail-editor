@@ -638,6 +638,7 @@ class MailEclipse
             $reflector = new ReflectionClass($mailable);
 
             if (! $args->isEmpty()) {
+                $filteredparams = array_filter($filteredparams);
                 $foo = $reflector->newInstanceArgs($filteredparams);
 
                 return $foo;
@@ -710,7 +711,7 @@ class MailEclipse
             return call_user_func_array('factory', [$model])->make();
         }
 
-        return app($model);
+        return null;
     }
 
     /**
