@@ -2,13 +2,13 @@
 name: Bug report
 about: Create a report to help us improve
 title: ''
-labels: bug
+labels: bug, Review Needed
 assignees: ''
 
 ---
 
 **Describe the bug**
-A clear and concise description of what the bug is.
+<!-- A clear and concise description of what the bug is. -->
 
 **To Reproduce**
 Steps to reproduce the behavior:
@@ -16,9 +16,15 @@ Steps to reproduce the behavior:
 2. Click on '....'
 4. See error
 
-**Laravel Application**: version
+**Laravel Application**: <!-- version run php artisan --version -->
 
-**Maileclipse package version**: version
+**Maileclipse package version**: <!-- version: run composer show spatie/laravel-activitylog --> 
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+<!-- If applicable, add screenshots to help explain your problem. -->
+
+<details>
+<summary> <b>Additional information</b></summary>
+<!--  Place additional information here if such as extra configuration or other details  -->
+</details>
+
