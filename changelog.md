@@ -189,3 +189,32 @@ Laravel 8 Support release
 ## Potential Breaking Change
 
 The name spaces of the package now use PSR classname standards, if you were referencing them before in an application, please update them to reflect everything correctly.
+
+## Unreleased: Version 3.4.0
+
+This release will resolve the issue that has been brought up in issue #63 where relations weren't being loaded and affected the calling of relations inside emails or mailables.
+
+## Fixes
+- Fixes issue [#63](https://github.com/Qoraiche/laravel-mail-editor/issues/63)
+
+## Addition
+- Discovery and loading of relations that have factories
+- New config for depth of searching see below for new addition
+
+**new config value**
+```php
+    /*
+    |--------------------------------------------------------------------------
+    | Relationship loading depth
+    |--------------------------------------------------------------------------
+    |
+    | This configures how deep the package will search an load relations.
+    | If you set this to 0, relations will not be loaded.
+    |
+    | off = 0, min = 1, max = 5
+    |
+    | N.B. This does not configure how many many relationship types are loaded.
+    */
+
+    'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
+```
