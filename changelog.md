@@ -190,7 +190,7 @@ Laravel 8 Support release
 
 The name spaces of the package now use PSR classname standards, if you were referencing them before in an application, please update them to reflect everything correctly.
 
-## Unreleased: Version 3.4.0
+## Version 3.4.0
 
 This release will resolve the issue that has been brought up in issue #63 where relations weren't being loaded and affected the calling of relations inside emails or mailables.
 
