@@ -218,3 +218,6 @@ This release will resolve the issue that has been brought up in issue #63 where 
 
     'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
 ```
+## Version 3.4.1
+- Add development env to the allowed environments in the config by default as many using it instead of the local
+
