@@ -20,7 +20,7 @@ Steps to reproduce the behavior:
 <!-- version run php artisan --version -->
 
 ## MailEclipse package version: 
-<!-- version: run composer show spatie/laravel-activitylog --> 
+<!-- version: run composer show qoraiche/laravel-mail-editor --> 
 
 ## Screenshots (if applicable)
 <!-- If applicable, add screenshots to help explain your problem. -->
