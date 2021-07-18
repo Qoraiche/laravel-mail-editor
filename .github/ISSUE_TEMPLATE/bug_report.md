@@ -7,21 +7,25 @@ assignees: ''
 
 ---
 
-**Describe the bug**
+## Describe the bug
 <!-- A clear and concise description of what the bug is. -->
 
-**To Reproduce**
+## Reproduction steps
 Steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
 4. See error
 
-**Laravel Application**: <!-- version run php artisan --version -->
+## Laravel Version: 
+<!-- version run php artisan --version -->
 
-**Maileclipse package version**: <!-- version: run composer show spatie/laravel-activitylog --> 
+## MailEclipse package version: 
+<!-- version: run composer show spatie/laravel-activitylog --> 
 
-**Screenshots**
+## Screenshots (if applicable)
 <!-- If applicable, add screenshots to help explain your problem. -->
+
+--- 
 
 <details>
 <summary> <b>Additional information</b></summary>
