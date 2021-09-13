@@ -1,18 +1,14 @@
-<h6 align="center">
-    <img src="https://i.imgur.com/QpAJLql.png" width="150"/>
-</h6>
+# README
 
-<h2 align="center">
-    Laravel Mail Editor (Aka MailEclipse)
-</h2>
+####  ![](https://i.imgur.com/QpAJLql.png)
 
-<p align="center">
-<a href="https://packagist.org/packages/qoraiche/laravel-mail-editor" alt="sponsors on Open Collective"><img src="https://poser.pugx.org/qoraiche/laravel-mail-editor/v/stable" /></a> <a href="https://packagist.org/packages/qoraiche/laravel-mail-editor" alt="Sponsors on Open Collective"><img src="https://poser.pugx.org/qoraiche/laravel-mail-editor/license" /></a> 
-<a href="https://packagist.org/packages/qoraiche/laravel-mail-editor" alt="Sponsors on Open Collective"><img src="https://poser.pugx.org/qoraiche/laravel-mail-editor/downloads" /></a> 
-</p>
-<br/><br/>
+##  Laravel Mail Editor \(Aka MailEclipse\)
 
-MailEclipse is a mailable editor package for your Laravel applications to create and manage mailables using a web UI. You can use this package to develop mailables without using the command line, and edit templates associated with mailables using a WYSIWYG editor, among other features.
+ [![](https://poser.pugx.org/qoraiche/laravel-mail-editor/v/stable)](https://packagist.org/packages/qoraiche/laravel-mail-editor) [![](https://poser.pugx.org/qoraiche/laravel-mail-editor/license)](https://packagist.org/packages/qoraiche/laravel-mail-editor) [![](https://poser.pugx.org/qoraiche/laravel-mail-editor/downloads)](https://packagist.org/packages/qoraiche/laravel-mail-editor)   
+  
+
+
+MailEclipse is a mailable editor package for your Laravel applications to create and manage mailables using a web UI. You can use this package to develop mailables without using the command line, and edit templates associated with mailables using a WYSIWYG editor, among other features..
 
 ## WORK IN PROGRESS
 
@@ -22,12 +18,12 @@ Please note that this package is still under active development. We encourage ev
 
 * Create mailables without using command line.
 * Preview/Edit all your mailables at a single place.
-* Templates (more than 20+ ready to use email templates).
+* Templates \(more than 20+ ready to use email templates\).
 * WYSIWYG Email HTML/Markdown editor.
 * Suitable for laravel beginners.
-* Send Test mails
-* Testing mails with fake data
-* and many more... (promise).
+* Send Test emails
+* Testing emails with fake data
+* and many more... \(promise\).
 
 ## Requirements
 
@@ -39,7 +35,7 @@ For Laravel 5.6 to 7 support please see version [v2.2 branch](https://github.com
 
 Via Composer
 
-``` bash
+```bash
 $ composer require qoraiche/laravel-mail-editor
 ```
 
@@ -47,16 +43,15 @@ The package will automatically register itself.
 
 Publish configuration file and public assets:
 
-``` bash
+```bash
 php artisan laravel-mail-editor:install
 ```
 
 ## Documentation
 
-### !!NOTE!! Maileclipse website is currently down, please check this youtube video (from author) for usage:
+### !!NOTE!! Maileclipse website is currently down, please check this youtube video \(from author\) for usage:
 
-https://www.youtube.com/watch?v=QFgEGNBY3FI&t=135s
-
+[https://www.youtube.com/watch?v=QFgEGNBY3FI&t=135s](https://www.youtube.com/watch?v=QFgEGNBY3FI&t=135s)
 
 Documentation for Maileclipse can be found on the [Official website](https://maileclipse.io).
 
@@ -64,9 +59,8 @@ Documentation for Maileclipse can be found on the [Official website](https://mai
 
 You can reach us at:
 
-- Spectrum chat: https://spectrum.chat/maileclipse
-- Slack: https://maileclipse.slack.com/
-
+* Spectrum chat: [https://spectrum.chat/maileclipse](https://spectrum.chat/maileclipse)
+* Slack: [https://maileclipse.slack.com/](https://maileclipse.slack.com/)
 
 ## Change log
 
@@ -74,11 +68,11 @@ Please see the [changelog](changelog.md) for more information on what has change
 
 ## Security
 
-If you discover any security related issues, please email author email [qoraicheofficiel@hotmail.com](mailto:qoraicheofficiel@hotmail.com) instead of using the issue tracker.
+If you discover any security-related issues, please email author email [qoraicheofficiel@hotmail.com](mailto:qoraicheofficiel@hotmail.com) instead of using the issue tracker.
 
 ## License
 
-MIT license. Please see the [license file](LICENSE) for more information.
+MIT license. Please see the [license file](https://github.com/Qoraiche/laravel-mail-editor/tree/86f8fbda46a7df4a676020ca9aacfabb7ff043ad/LICENSE/README.md) for more information.
 
 ## Screenshots
 
@@ -90,45 +84,38 @@ MIT license. Please see the [license file](LICENSE) for more information.
 
 ## TODO
 
-__Contributions are welcome__
+**Contributions are welcome**
 
-* Frontend enhancement (jquery to vue.js).
-* Add more email templates (HTML/Markdown).
+* Frontend enhancement \(jquery to vue.js\).
+* Add more email templates \(HTML/Markdown\).
 * Expand documentation pages.
 
 ## Credits
 
-- [Yassine Qoraiche](https://github.com/qoraiche)
-- [All Contributors](../../contributors)
+* [Yassine Qoraiche](https://github.com/qoraiche)
+* [All Contributors](https://github.com/Qoraiche/laravel-mail-editor/tree/86f8fbda46a7df4a676020ca9aacfabb7ff043ad/contributors/README.md)
 
 ## Donate :heart:
 
-If you benefit from and/or like using MailEclipse then please help drive the future development of the project by 
+If you benefit from and/or like using MailEclipse then please help drive the future development of the project by
 
 * [Donating today](https://www.paypal.me/streamaps)!.
 * Star the project :star:.
 
 ### Donors list:
 
-1. **conschneider.de** - (20,00 $) - `Thank You!` - 3 November 2020
-2. **Emprovise** - (20,00 $) - `You did a great job on MailEclipse! Thank you for providing this to everyone for free. I look forward to watching your project grow! Thanks Again, James S.` - 19 December 2019
-3. **Idearia Web Agency** - (40,00 €) - `Keep up the good work!` - 19 June 2019
-4. **Snapt Systems Ltd** - (100,00 $ USD) - `Being used by one of our teams at Snapt!` - 11 April 2019
-5. **Corr Ex** - (2,00 $ USD) - 28 March 2019
-6. **WebArt Design** - (10,00 $ USD) - `Donation made with love by BuiltByPanda. com from Australia who support developers and their excellent work` - 28 March 2019
-7. **Flavius Borlovan** (6,99 $ USD) - `#teamcookie says HELLOO 🥳😉 Thanks for this really helpful Package (MailEclipse) bro. 😉💪🏽` - 12 March 2019
-8. **Maik Kasper** - (6,99 $ USD) - `We {teamcookie:github. com/flavius-constantin} 💥 love to support good developers and their awesome work! 🌪🔥` - 13 March 2019
+1. **conschneider.de** - \(20,00 $\) - `Thank You!` - 3 November 2020
+2. **Emprovise** - \(20,00 $\) - `You did a great job on MailEclipse! Thank you for providing this to everyone for free. I look forward to watching your project grow! Thanks Again, James S.` - 19 December 2019
+3. **Idearia Web Agency** - \(40,00 €\) - `Keep up the good work!` - 19 June 2019
+4. **Snapt Systems Ltd** - \(100,00 $ USD\) - `Being used by one of our teams at Snapt!` - 11 April 2019
+5. **Corr Ex** - \(2,00 $ USD\) - 28 March 2019
+6. **WebArt Design** - \(10,00 $ USD\) - `Donation made with love by BuiltByPanda. com from Australia who support developers and their excellent work` - 28 March 2019
+7. **Flavius Borlovan** \(6,99 $ USD\) - `#teamcookie says HELLOO 🥳😉 Thanks for this really helpful Package (MailEclipse) bro. 😉💪🏽` - 12 March 2019
+8. **Maik Kasper** - \(6,99 $ USD\) - `We {teamcookie:github. com/flavius-constantin} 💥 love to support good developers and their awesome work! 🌪🔥` - 13 March 2019
 
 ## Sponsors
 
-<table>
-  <tbody>
-    <tr>
-          <td align="center" valign="middle">
-            <a href="https://www.jetbrains.com/?from=maileclipse" target="_blank">
-              <img width="222px" src="https://user-images.githubusercontent.com/15586492/96636404-2c18dd00-1315-11eb-9520-736dffaaf0a7.png">
-            </a>
-          </td>
-        </tr>
-  </tbody>
-</table>
+|  [![](https://user-images.githubusercontent.com/15586492/96636404-2c18dd00-1315-11eb-9520-736dffaaf0a7.png)](https://www.jetbrains.com/?from=maileclipse) |
+| :--- |
+
+
