@@ -40,7 +40,7 @@ For Laravel 5.6 to 7 support please see version [v2.2 branch](https://github.com
 Via Composer
 
 ``` bash
-$ composer require qoraiche/laravel-mail-editor
+composer require qoraiche/laravel-mail-editor
 ```
 
 The package will automatically register itself.
