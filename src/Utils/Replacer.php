@@ -49,7 +49,7 @@ class Replacer
     /**
      * Take the format of the Blade syntax and convert to one the editor understands.
      *
-     * @param mixed $content
+     * @param  mixed  $content
      * @return string|string[]|null
      */
     public static function toEditor($content)
@@ -62,7 +62,7 @@ class Replacer
     /**
      * Take the data from the editor and return a format that the Blade syntax.
      *
-     * @param mixed $content
+     * @param  mixed  $content
      * @return string|string[]|null
      */
     public static function toBlade($content): string
@@ -75,9 +75,9 @@ class Replacer
     /**
      * Replace the content with the patterns and targeted format.
      *
-     * @param array $patterns
-     * @param array $replacements
-     * @param mixed $content
+     * @param  array  $patterns
+     * @param  array  $replacements
+     * @param  mixed  $content
      * @return string|string[]|null
      */
     protected function replace(array $patterns, array $replacements, $content)
@@ -91,6 +91,7 @@ class Replacer
      * This also ensures that the replace array is the same length as the match array
      *
      * @return void
+     *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function generateRegex()
