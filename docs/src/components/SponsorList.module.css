@@ -1,0 +1,25 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+.sponsors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.sponsorImage {
+    width: 200px;
+}
+
+.sponsorBlock {
+    padding: 2em 0em;
+    border-radius: 1rem;
+    background-color: var(--ifm-color-primary-lightest);
+    border: solid 1px var(--ifm-color-primary-light);
+}
+
+html[data-theme='dark'] .sponsorBlock {
+    background-color: var(--ifm-color-primary-darkest);
+    border: solid 1px var(--ifm-color-primary-dark);
+}
