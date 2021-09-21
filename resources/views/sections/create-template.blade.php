@@ -1,10 +1,13 @@
-@extends('maileclipse::layout.app')
+@extends('layouts.app')
 
 @section('title', 'Create Template')
 
 @section('content')
-
-     <style type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css">
+<link rel="stylesheet" type="text/css" id="u0" href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.0/skins/ui/oxide/skin.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+	<style type="text/css">
          
         .CodeMirror {
             height: 400px;
@@ -36,52 +39,56 @@
 
      </style>
 
-<div class="col-lg-12 col-md-12">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('templateList') }}">Templates</a></li>
-        <li class="breadcrumb-item active">{{ ucfirst($skeleton['type']) }}</li>
-        <li class="breadcrumb-item active">{{ ucfirst($skeleton['name']) }}</li>
-        <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($skeleton['skeleton']) }}</li>
-      </ol>
-    </nav>
+<div class="row  m-0">
+	<div class="col-lg-12">
+        <h2 class="page-heading"> {{ __('Create Template') }} <span class="count-text"></span></h2>
+    </div>
+	<div class="col-lg-12">
         <div class="container">
-            <div class="row my-4">
-                
+            <div class="row my-4">               
                 <div class="col-md-12">
-
-                    <div class="card mb-2">
+				    <div class="card mb-2">
                         <div class="card-header p-3" style="border-bottom:1px solid #e7e7e7e6;">
                             <button type="button" class="btn btn-primary float-right save-template">Create</button>
-                            <button type="button" class="btn btn-secondary float-right preview-toggle mr-2"><i class="far fa-eye"></i> Preview</button>
+                            <button type="button" class="btn btn-secondary float-right preview-toggle mr-2"><i class="fa fa-eye"></i> Preview</button>
                         </div>
                     </div>
 
-                    <div class="card">
-                    
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Editor</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Plain Text</a>
-                      </li>
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <textarea id="template_editor" cols="30" rows="10">{{ $skeleton['template'] }}</textarea>
-                      </div>
-                      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <textarea id="plain_text" cols="30" rows="10"></textarea>
-                      </div>
-                    </div>
+                    <div class="card">                    
+						<ul class="nav nav-pills" id="pills-tab" role="tablist">
+						  <li class="nav-item">
+							<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Editor</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Plain Text</a>
+						  </li>
+						</ul>
+						<div class="tab-content" id="pills-tabContent">
+						  <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+							<textarea id="template_editor" cols="30" rows="10">{{ $skeleton['template'] }}</textarea>
+						  </div>
+						  <div class="tab-pane " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+							<textarea id="plain_text" cols="30" rows="10"></textarea>
+						  </div>
+						</div>
 
                     </div>
                 </div>
             </div>
         </div>       
+	</div>
  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.0/tinymce.min.js"></script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/display/placeholder.js"></script>
+<script src="https://unpkg.com/notie"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script type="text/javascript">
 
     

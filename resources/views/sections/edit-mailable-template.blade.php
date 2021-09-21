@@ -1,9 +1,12 @@
-@extends('maileclipse::layout.app')
+@extends('layouts.app')
 
 @section('title', 'Edit '.$name.' Template')
 
 @section('content')
-
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css">
+<link rel="stylesheet" type="text/css" id="u0" href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.0/skins/ui/oxide/skin.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
      <style type="text/css">
          
         .CodeMirror {
@@ -36,15 +39,11 @@
 
      </style>
 
-<div class="col-lg-12 col-md-12">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        {{-- <li class="breadcrumb-item"><a href="#">Home</a></li> --}}
-        <li class="breadcrumb-item"><a href="{{ route('mailableList') }}">Mailables</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('viewMailable', ['name' => $name]) }}">{{ $name }}</a></li>
-        <li class="breadcrumb-item active">Edit template</li>
-      </ol>
-    </nav>
+<div class="row  m-0">
+	<div class="col-lg-12">
+        <h2 class="page-heading">Edit template <span class="count-text"></span></h2>
+    </div>
+   <div class="col-lg-12">
         <div class="container">
             <div class="row my-4">
                 <div class="col-12 mb-2 d-block d-lg-none">
@@ -70,7 +69,7 @@
                     <div class="card mb-2">
                         <div class="card-header p-3" style="border-bottom:1px solid #e7e7e7e6;">
                             <button type="button" class="btn btn-success float-right save-template">Update</button>
-                            <button type="button" class="btn btn-secondary float-right preview-toggle mr-2"><i class="far fa-eye"></i> Preview</button>
+                            <button type="button" class="btn btn-secondary float-right preview-toggle mr-2"><i class="fa fa-eye"></i> Preview</button>
                             <button type="button" class="btn btn-light float-right mr-2 save-draft disabled">Save Draft</button>
                         </div>
                     </div>
@@ -88,7 +87,7 @@
                     <div class="tab-content" id="pills-tabContent">
                         
 
-                      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                      <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="p-3" style="border-top: 1px solid #ccc;">
                         @foreach($templateData['view_data'] as $param)
 
@@ -140,7 +139,7 @@
                         </div>
                         <textarea id="template_editor" cols="30" rows="10">{{ $templateData['template'] }}</textarea>
                       </div>
-                      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                      <div class="tab-pane " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         @if(!is_null($templateData['text_template']))
                             <textarea id="plain_text" cols="30" rows="10">{{ $templateData['text_template'] }}</textarea>
                         @endif
@@ -163,8 +162,19 @@
                 </div>
             </div>
         </div>       
+    </div>       
  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.0/tinymce.min.js"></script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/display/placeholder.js"></script>
+<script src="https://unpkg.com/notie"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script type="text/javascript">
     
 $(document).ready(function(){
