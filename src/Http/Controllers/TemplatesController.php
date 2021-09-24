@@ -43,6 +43,7 @@ class TemplatesController extends Controller
     public function view($templateslug = null)
     {   
         $template = MailEclipse::getTemplate($templateslug);
+        $product_list = [];
         
         if( request('product_ids') ){
             
@@ -83,7 +84,7 @@ class TemplatesController extends Controller
 
 		    $productData = product::whereIn('id',$product_ids)->withMedia(config('constants.media_tags'))->get();
 
-            $product_list = [];
+            
             foreach ($productData as $key => $value) { 
                 $img = $value->getMedia(config('constants.media_tags'))->first() ? $value->getMedia(config('constants.media_tags'))->first()->getUrl() : null;
                 $product_list[] = array(
