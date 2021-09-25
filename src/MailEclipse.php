@@ -4,7 +4,6 @@ namespace Qoraiche\MailEclipse;
 
 use ErrorException;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Collection;
@@ -946,7 +945,7 @@ class MailEclipse
             return $factoryModel;
         }
 
-        $model = new ReflectionClass(Model::class);
+        $model = new ReflectionClass(config('maileclipse.relations.model', \Illuminate\Foundation\Auth\User::class));
 
         self::$traversed += 1;
 
