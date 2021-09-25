@@ -950,28 +950,26 @@ class MailEclipse
         self::$traversed += 1;
 
         collect((new ReflectionClass($factoryModel))->getMethods())
-            ->each(function(\ReflectionMethod $method) use($model) {
+            ->filter(function(\ReflectionMethod $method) use($model) {
                 return !$model->hasMethod($method->getName());
             })
             ->filter(function (\ReflectionMethod $method) use ($factoryModel) {
-                return rescue(
-                    function () use ($factoryModel, $method) {
-                        if ($method->getNumberOfParameters() >= 1) {
-                            return false;
-                        }
+                if ($method->getNumberOfParameters() >= 1) {
+                    return false;
+                }
 
-                        $parents = $method->hasReturnType()
-                            ? class_parents($method->getReturnType()->getName())
-                            : class_parents($factoryModel->$method());
+                $parents = rescue(function() use($method, $factoryModel) {
+                    $methodName = $method->getName();
 
-                        return isset($parents["Illuminate\Database\Eloquent\Relations\Relation"]);
-                    },
-                    false,
-                    false
-                );
+                    return $method->hasReturnType()
+                        ? class_parents($method->getReturnType()->getName())
+                        : class_parents($factoryModel->$methodName());
+                }, [], false);
+
+                return isset($parents["Illuminate\Database\Eloquent\Relations\Relation"]);
             })
-            ->each(function ($relationName) use (&$factoryModel, $eloquentFactory) {
-                $factoryModel = self::loadRelations($relationName, $factoryModel, $eloquentFactory);
+            ->each(function (\ReflectionMethod $relationName) use (&$factoryModel, $eloquentFactory) {
+                $factoryModel = self::loadRelations($relationName->getName(), $factoryModel, $eloquentFactory);
             });
 
         return $factoryModel;
