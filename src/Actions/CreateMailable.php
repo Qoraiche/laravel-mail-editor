@@ -11,7 +11,7 @@ class CreateMailable
     /**
      * Handle Creating a new mailable.
      *
-     * @param  array $parameters
+     * @param  array  $parameters
      * @return string[]
      */
     public function handle(array $parameters)
@@ -50,7 +50,7 @@ class CreateMailable
     /**
      * Get the parameters for the artisan command.
      *
-     * @param  array $parameters
+     * @param  array  $parameters
      * @return array
      */
     protected function commandParameters(array $parameters)

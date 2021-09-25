@@ -20,9 +20,9 @@ class TemplateSkeletons
     }
 
     /**
-     * @param mixed $type
-     * @param mixed $name
-     * @param mixed $skeleton
+     * @param  mixed  $type
+     * @param  mixed  $name
+     * @param  mixed  $skeleton
      * @return array|void
      */
     public static function get($type, $name, $skeleton)
