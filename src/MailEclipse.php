@@ -960,11 +960,9 @@ class MailEclipse
                             return false;
                         }
 
-                        if($method->hasReturnType()) {
-                            $parents = class_parents($method->getReturnType()->getName());
-                        } else {
-                            $parents = class_parents($factoryModel->$method());
-                        }
+                        $parents = $method->hasReturnType()
+                            ? class_parents($method->getReturnType()->getName())
+                            : class_parents($factoryModel->$method());
 
                         return isset($parents["Illuminate\Database\Eloquent\Relations\Relation"]);
                     },
