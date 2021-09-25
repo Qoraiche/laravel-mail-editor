@@ -939,7 +939,7 @@ class MailEclipse
         }
 
         if (self::$traversed >= 5) {
-            Log::warning('[MailEclipse]: more than 5 calls to relation loader', ['last_model' => get_class($factoryModel) ?? null]);
+            Log::warning('[MailEclipse]: more than 5 calls to relation loader', ['last_model' => get_class($factoryModel) ?? 'model unknown']);
             self::$traversed = 6;
 
             return $factoryModel;
@@ -950,12 +950,21 @@ class MailEclipse
         self::$traversed += 1;
 
         collect((new ReflectionClass($factoryModel))->getMethods())
-            ->pluck('name')
-            ->diff(collect($model->getMethods())->pluck('name'))
-            ->filter(function ($method) use ($factoryModel) {
+            ->each(function(\ReflectionMethod $method) use($model) {
+                return !$model->hasMethod($method->getName());
+            })
+            ->filter(function (\ReflectionMethod $method) use ($factoryModel) {
                 return rescue(
                     function () use ($factoryModel, $method) {
-                        $parents = class_parents($factoryModel->$method());
+                        if ($method->getNumberOfParameters() >= 1) {
+                            return false;
+                        }
+
+                        if($method->hasReturnType()) {
+                            $parents = class_parents($method->getReturnType()->getName());
+                        } else {
+                            $parents = class_parents($factoryModel->$method());
+                        }
 
                         return isset($parents["Illuminate\Database\Eloquent\Relations\Relation"]);
                     },
