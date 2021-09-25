@@ -50,6 +50,7 @@ class MailEclipse
 
     /**
      * @return array
+     *
      * @throws \ReflectionException
      */
     public static function getMailables()
@@ -61,6 +62,7 @@ class MailEclipse
      * @param $key
      * @param $name
      * @return Collection
+     *
      * @throws \ReflectionException
      */
     public static function getMailable($key, $name): Collection
@@ -121,7 +123,7 @@ class MailEclipse
     /**
      * Save templates to templates.json file.
      *
-     * @param Collection $templates
+     * @param  Collection  $templates
      */
     public static function saveTemplates(Collection $templates): void
     {
@@ -315,9 +317,10 @@ class MailEclipse
      * @param $simpleview
      * @param $content
      * @param $viewName
-     * @param bool $template
-     * @param null $namespace
+     * @param  bool  $template
+     * @param  null  $namespace
      * @return bool|string|void
+     *
      * @throws \ReflectionException
      */
     public static function previewMarkdownViewContent($simpleview, $content, $viewName, $template = false, $namespace = null)
@@ -387,7 +390,7 @@ class MailEclipse
     }
 
     /**
-     * @param null $request
+     * @param  null  $request
      * @return JsonResponse
      */
     public static function generateMailable($request = null): JsonResponse
@@ -448,6 +451,7 @@ class MailEclipse
      * Get Mailables list.
      *
      * @return array
+     *
      * @throws \ReflectionException
      */
     protected static function mailablesList()
@@ -550,8 +554,10 @@ class MailEclipse
 
     /**
      * Handle Mailable Constructor arguments and pass the fake ones.
+     *
      * @param $mailable
      * @return object|void
+     *
      * @throws \ReflectionException
      */
     public static function handleMailableViewDataArgs($mailable)
@@ -626,9 +632,8 @@ class MailEclipse
     /**
      * Gets any missing params that may not be collectable in the reflection.
      *
-     * @param string $arg the argument string|array
-     * @param array $params the reflection param list
-     *
+     * @param  string  $arg  the argument string|array
+     * @param  array  $params  the reflection param list
      * @return array|string|\ReeceM\Mocker\Mocked
      */
     private static function getMissingParams($arg, $params)
@@ -645,9 +650,8 @@ class MailEclipse
         $reflection = collect($params)->where('name', $arg)->first()->getType() ?? null;
 
         try {
-
             if (is_null($reflection)) {
-                return new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());;
+                return new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
             }
 
             $type = version_compare(phpversion(), '7.1', '>=')
@@ -666,6 +670,7 @@ class MailEclipse
      * @param $mailable
      * @param $mailable_data
      * @return array|Collection
+     *
      * @throws \ReflectionException
      */
     private static function getMailableViewData($mailable, $mailable_data)
@@ -761,6 +766,7 @@ class MailEclipse
     /**
      * @param $mailable
      * @return mixed|void
+     *
      * @throws \ReflectionException
      */
     protected static function getMarkdownViewName($mailable)
@@ -780,8 +786,9 @@ class MailEclipse
 
     /**
      * @param $instance
-     * @param string $type
+     * @param  string  $type
      * @return mixed
+     *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \ReflectionException
      */
@@ -801,9 +808,10 @@ class MailEclipse
     /**
      * @param $simpleview
      * @param $view
-     * @param bool $template
-     * @param null $instance
+     * @param  bool  $template
+     * @param  null  $instance
      * @return string|void
+     *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \ReflectionException
      */
@@ -901,7 +909,6 @@ class MailEclipse
      *
      * @param $eloquentFactory
      * @param $model
-     *
      * @return null|object
      */
     private static function resolveFactory($eloquentFactory, $model): ?object
@@ -929,9 +936,8 @@ class MailEclipse
      * single level relation resolving for a model.
      * It will load the relations or set to mocked class.
      *
-     * @param mixed $eloquentFactory
-     * @param mixed $factoryModel
-     *
+     * @param  mixed  $eloquentFactory
+     * @param  mixed  $factoryModel
      * @return null|object
      */
     private static function hydrateRelations($eloquentFactory, $factoryModel): ?object
@@ -977,10 +983,9 @@ class MailEclipse
      *
      * @todo Account for the many type relations, link back to parent model for belongsTo
      *
-     * @param mixed $relationName
-     * @param mixed $factoryModel
-     * @param mixed|null $eloquentFactory
-     *
+     * @param  mixed  $relationName
+     * @param  mixed  $factoryModel
+     * @param  mixed|null  $eloquentFactory
      * @return null|object
      */
     public static function loadRelations($relationName, $factoryModel, $eloquentFactory = null): ?object
@@ -1027,8 +1032,9 @@ class MailEclipse
     }
 
     /**
-     * @param string $name
+     * @param  string  $name
      * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     *
      * @throws \ReflectionException
      */
     public static function renderMailable(string $name)
@@ -1051,8 +1057,8 @@ class MailEclipse
     }
 
     /**
-     * @param string $name
-     * @param string $recipient
+     * @param  string  $name
+     * @param  string  $recipient
      */
     public static function sendTest(string $name, string $recipient): void
     {
@@ -1067,7 +1073,7 @@ class MailEclipse
 
     /**
      * @param $mailable
-     * @param string $email
+     * @param  string  $email
      * @return mixed
      */
     public static function setMailableSendTestRecipient($mailable, string $email)
@@ -1082,6 +1088,7 @@ class MailEclipse
     /**
      * @param $mailable
      * @return object|void
+     *
      * @throws \ReflectionException
      */
     private static function resolveMailableInstance($mailable)
