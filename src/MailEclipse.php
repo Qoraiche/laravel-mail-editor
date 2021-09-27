@@ -941,7 +941,7 @@ class MailEclipse
      */
     private static function hydrateRelations($eloquentFactory, $factoryModel): ?object
     {
-        if (config('maileclipse.relations.model', 1) === 0) {
+        if (config('maileclipse.relations.relation_depth', 1) === 0) {
             return $factoryModel;
         }
 
@@ -1003,7 +1003,7 @@ class MailEclipse
                 $related = $factoryModel->$relationName()->getRelated();
                 $relatedFactory = self::resolveFactory($eloquentFactory, get_class($related));
 
-                if (self::$traversed <= config('maileclipse.relation_depth')) {
+                if (self::$traversed <= config('maileclipse.relations.relation_depth')) {
                     if (! $loadIfIterable) {
                         $relatedFactory = self::hydrateRelations($eloquentFactory, $relatedFactory);
                     } else {
