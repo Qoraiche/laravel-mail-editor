@@ -29,7 +29,7 @@ class MailEclipse
 {
     public const VIEW_NAMESPACE = 'maileclipse';
 
-    public const VERSION = '3.4.0';
+    public const VERSION = '3.5.0';
 
     /**
      * Default type examples for being passed to reflected classes.
@@ -941,7 +941,7 @@ class MailEclipse
      */
     private static function hydrateRelations($eloquentFactory, $factoryModel): ?object
     {
-        if (config('maileclipse.relation_depth') === 0) {
+        if (config('maileclipse.relations.model', 1) === 0) {
             return $factoryModel;
         }
 
