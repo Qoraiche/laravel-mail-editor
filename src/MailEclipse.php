@@ -38,9 +38,11 @@ class MailEclipse
      */
     public const TYPES = [
         'int' => 31,
-        // 'string' => 'test_string', // not needed as it can be cast __toString()
+        'string' => null,
         'bool' => false,
         'float' => 3.14159,
+        'iterable' => null,
+        'array' => null,
     ];
 
     public static $traversed = 0;
@@ -642,24 +644,22 @@ class MailEclipse
          * getName() is undocumented alternative to casting to string.
          * https://www.php.net/manual/en/class.reflectiontype.php#124658
          *
-         * @var \ReflectionType $reflection
+         * @var \ReflectionNamedType|null $reflection
          */
-        $reflection = collect($params)->where('name', $arg)->first()->getType();
-
-        if (version_compare(phpversion(), '7.1', '>=')) {
-            $type = ! is_null($reflection)
-                ? self::TYPES[$reflection->getName()]
-                : null;
-        } else {
-            $type = ! is_null($reflection)
-                ? self::TYPES[/** @scrutinizer ignore-deprecated */ $reflection->__toString()]
-                : null;
-        }
+        $reflection = collect($params)->where('name', $arg)->first()->getType() ?? null;
 
         try {
-            return ! is_null($type)
-                    ? $type
-                    : new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
+            if (is_null($reflection)) {
+                return new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
+            }
+
+            $type = version_compare(phpversion(), '7.1', '>=')
+                ? self::TYPES[$reflection->getName()]
+                : self::TYPES[/** @scrutinizer ignore-deprecated */ $reflection->__toString()];
+
+            return is_null($type)
+                ? new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton())
+                : $type;
         } catch (\Exception $e) {
             return $arg;
         }
