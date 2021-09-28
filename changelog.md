@@ -221,3 +221,42 @@ This release will resolve the issue that has been brought up in issue #63 where 
 ## Version 3.4.1
 - Add development env to the allowed environments in the config by default as many using it instead of the local
 
+## Version 3.4.2
+
+### Fixes 
+
+- Fixes issue where package would try to search for `string` type of a parameter and fail. [#178](https://github.com/Qoraiche/laravel-mail-editor/issues/178)
+
+## Version 3.5.0
+
+### Changes
+- The structure of the config file for the relations section. It will fallback to loading one by default.
+
+New Structure: 
+
+```diff
+
++    /*
++    |--------------------------------------------------------------------------
++    | Relationship loading.
++    |--------------------------------------------------------------------------
++    |
++    | This configures how deep the package will search an load relations.
++    | If you set this to 0, relations will not be loaded.
++    |
++    | relation_depth: off = 0, min = 1, max = 5
++    | model: this is the model to use to exclude methods when searching.
++    |
++    | N.B. This does not configure how many many relationship types are loaded.
++    */
+-    'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
++    'relations' => [
++        'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
++
++        'model' => \Illuminate\Foundation\Auth\User::class,
++    ],
+
+```
+### Fixes
+
+- Fixes [#168](https://github.com/Qoraiche/laravel-mail-editor/issues/168)
