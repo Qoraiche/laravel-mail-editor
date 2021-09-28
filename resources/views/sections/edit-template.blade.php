@@ -1,8 +1,12 @@
-@extends('maileclipse::layout.app')
+@extends('layouts.app')
 
 @section('title', 'Edit Template ' . ucfirst($template['name']))
 
 @section('content')
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css">
+<link rel="stylesheet" type="text/css" id="u0" href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.0/skins/ui/oxide/skin.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
      <style type="text/css">
          
@@ -36,13 +40,11 @@
 
      </style>
 
-<div class="col-lg-12 col-md-12">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('templateList') }}">Templates</a></li>
-        <li class="breadcrumb-item active">{{ ucfirst($template['name']) }}</li>
-      </ol>
-    </nav>
+<div class="row  m-0">
+	<div class="col-lg-12">
+        <h2 class="page-heading">{{ ucfirst($template['name']) }} <span class="count-text"></span></h2>
+    </div>
+	<div class="col-lg-12">
         <div class="container">
             <div class="row my-4">
                 <div class="col-12 mb-2 d-block d-lg-none">
@@ -76,7 +78,7 @@
                     <div class="card mb-2">
                         <div class="card-header p-3" style="border-bottom:1px solid #e7e7e7e6;">
                             <button type="button" class="btn btn-success float-right save-template">Update</button>
-                            <button type="button" class="btn btn-secondary float-right preview-toggle mr-2"><i class="far fa-eye"></i> Preview</button>
+                            <button type="button" class="btn btn-secondary float-right preview-toggle mr-2"><i class="fa fa-eye"></i> Preview</button>
                             <button type="button" class="btn btn-light float-right mr-2 save-draft disabled">Save Draft</button>
                         </div>
                     </div>
@@ -89,7 +91,7 @@
                       </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
-                      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                      <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <textarea id="template_editor" cols="30" rows="10">{{ $template['template'] }}</textarea>
                       </div>
                     </div>
@@ -116,15 +118,25 @@
                 </div>
             </div>
         </div>       
+	</div>
  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.0/tinymce.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/display/placeholder.js"></script>
+<script src="https://unpkg.com/notie"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
 <script type="text/javascript">
 
 $(document).ready(function(){
 
-	
-
-	var templateID = "{{ "template_view_".$template['slug'] }}";
+	 var templateID = "{{ "template_view_".$template['slug'] }}";
 
 	 $('.edit-template').click(function(){
 
@@ -213,7 +225,7 @@ $(document).ready(function(){
 	});
 
 	@if ($template['template_type'] === 'markdown')
-	
+
 	var simplemde = new SimpleMDE(
 		{
 		element: $("#template_editor")[0],
@@ -481,9 +493,8 @@ $(document).ready(function(){
 		$(this).toggleClass('active');
 	});
 
-		
 	@else
-		
+
 		tinymce.init({
 	        selector: "textarea#template_editor",
 	        menubar : false,
@@ -499,8 +510,6 @@ $(document).ready(function(){
 	       toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image fullpage table | forecolor backcolor emoticons | preview | code",
 	       fullpage_default_encoding: "UTF-8",
 	       fullpage_default_doctype: "<!DOCTYPE html>",
-		   allow_conditional_comments: true,
-		   allow_html_in_named_anchor: true,
 	       init_instance_callback: function (editor) 
 	       {
 	    		editor.on('Change', function (e) {
@@ -517,8 +526,7 @@ $(document).ready(function(){
 					editor.execCommand("mceRepaint");
 				}, 2000);
 
-	    	},
-			
+	    	}
 	    });
 
 
@@ -564,37 +572,14 @@ $(document).ready(function(){
 		}
 	});
 
-	$('.preview-toggle').click(function(){
+	 $('.preview-toggle').click(function(){
 		tinyMCE.execCommand('mcePreview');return false;
 	});
 
-		
 	@endif
-	
-	@if( !empty( $product_list ) )
-		setTimeout(function(){
-			
-			var url = window.location.href;
-			var to  = url.lastIndexOf('/') +1;
-				x   = url.substring(0,to);
 
-			window.history.pushState('', '', x+'{{$template['slug']}}');
-
-			$("#template_editor_ifr").contents().find(".block-row").empty();
-			var obj = '{{$product_list}}';
-			$.each(JSON.parse(obj.replace(/&quot;/g,'"')), function (index, valueOfElement) { 
-				$("#template_editor_ifr").contents().find(".block-row").append('<div class="block-col"> <div class="block"><div class="image-holder"><img class="" src="'+this.img+'" alt="image-description" /></div><div class="description"><strong class="title">'+this.name+'</strong><div class="price-holder"><strong class="price">'+this.price+'</strong> <strong class="old-price"></strong></div><span class="discount">50% off</span></div></div></div>');
-				
-			});
-			
-			axios.post('{{ route('parseTemplate') }}', {
-				markdown: tinymce.get('template_editor').getContent(), viewpath: "{{ $template['slug'] }}", template: true
-			})
-
-		}, 1000);
-	@endif
 });
-
+                
 </script>
    
 @endsection
