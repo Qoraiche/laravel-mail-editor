@@ -1,19 +1,16 @@
-@extends('maileclipse::layout.app')
+@extends('layouts.app')
 
 @section('title', 'View Mailable')
 
 @section('content')
 
-<div class="col-lg-10 col-md-12">
+<div class="row  m-0">
+	<div class="col-lg-12">
+        <h2 class="page-heading">{{ ucfirst($resource['name']) }} <span class="count-text"></span></h2>
+    </div>
 
-	<nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('mailableList') }}">Mailables</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ $resource['name'] }}</li>
-      </ol>
-    </nav>
-             
-                <div class="card my-4">
+	
+                <div class="col-lg-12">
                     <div class="card-header d-flex align-items-center justify-content-between"><h5>Details</h5>
                     </div>
                     <div class="card-body card-bg-secondary">
@@ -106,7 +103,7 @@
                     </div>
                 </div>
 
-                <div class="card my-4">
+                <div class="col-lg-12">
                     <div class="card-header d-flex align-items-center justify-content-between"><h5>Preview</h5>
                     	@if ( !is_null($resource['view_path']) )
                     		<a class="btn btn-primary" href="{{ route('editMailable', ['name' => $resource['name']]) }}">Edit Template</a>

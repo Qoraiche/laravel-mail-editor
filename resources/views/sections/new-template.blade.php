@@ -1,18 +1,16 @@
-@extends('maileclipse::layout.app')
+@extends('layouts.app')
 
 @section('title', 'New Template')
 
 @section('editor', true)
 
 @section('content')
-
-<div class="col-lg-10 col-md-12">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('templateList') }}">Templates</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Add Template</li>
-      </ol>
-    </nav>
+<div class="row  m-0">
+	<div class="col-lg-12">
+        <h2 class="page-heading"> {{ __('Add Template') }} <span class="count-text"></span></h2>
+    </div>
+<div class="col-lg-12">
+    
                 
 
                 <div class="card mb-3">
@@ -29,7 +27,7 @@
                 <div class="card">
                     <div class="card-body">
                     <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-html" role="tabpanel" aria-labelledby="pills-html-tab">
+                        <div class="tab-pane active" id="pills-html" role="tabpanel" aria-labelledby="pills-html-tab">
                             <div class="card-columns">
 
 @foreach( $skeletons->get('html') as $name => $subskeleton )
@@ -157,6 +155,7 @@
                     </div>
                 </div>
 </div>
+            </div>
             </div>
    
 @endsection
