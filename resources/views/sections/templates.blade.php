@@ -3,14 +3,16 @@
 @section('title', 'Templates')
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 <div class="row  m-0">
 	<div class="col-lg-12">
-        <h2 class="page-heading"> {{ __('Templates') }} <span class="count-text"></span></h2>
+        <h2 class="page-heading"> {{ __('Templates') }} <span class="count-text  pull-right">
+			<a class="btn btn-secondary"  href="{{ route('mailableList') }}">{{ __('Mailables') }}</a></span>
+		</h2>
     </div>
 
 	<div class="col-lg-12">
-			@if (!$templates->isEmpty())
-				<div class="row mb-4">
+			<div class="row mb-4">
 					<div class="col-md-12">
 						<div class="pull-right mt-4">
 							<a class="btn btn-secondary" href="#" onclick="showList('templates_list', 'templates_list_created')"> Template list </a>
@@ -20,8 +22,8 @@
 							</a>
 						</div>
 					</div>
-				</div> 
-			@endif	 
+			</div> 
+			
 
                     @if ($templates->isEmpty())
                     
@@ -123,7 +125,7 @@
                 
     </div>
 </div>
-
+<script src="https://unpkg.com/notie"></script>
 <script type="text/javascript">
 function showList (listIdToShow, listIdToHide) { 
 	$('#'+listIdToShow).show();
