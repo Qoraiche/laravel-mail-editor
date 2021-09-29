@@ -3,12 +3,14 @@
 @section('title', 'Mailables')
 
 @section('content')
-
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 <div class="row  m-0">
 	<div class="col-lg-12">
-        <h2 class="page-heading"> {{ __('Mailables') }} <span class="count-text">@if (!$mailables->isEmpty())
+
+        <h2 class="page-heading"> {{ __('Mailables') }} <span class="count-text pull-right">
                         <a class="btn btn-primary" href="{{ route('createMailable') }}" data-toggle="modal" data-target="#newMailableModal">{{ __('Add Mailable') }}</a>
-                        @endif</span></h2>
+                        <a class="btn btn-primary" href="{{ route('templateList') }}">{{ __('Templates') }}</a>
+                        </span></h2>
     </div>
 	<div class="col-lg-12">
                 
@@ -111,7 +113,7 @@
   </div>
 </div>
             </div>
-
+<script src="https://unpkg.com/notie"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
