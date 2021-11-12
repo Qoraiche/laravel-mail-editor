@@ -27,7 +27,6 @@ Please note that this package is still under active development. We encourage ev
 * Suitable for laravel beginners.
 * Send Test mails
 * Testing mails with fake data
-* and many more... (promise).
 
 ## Requirements
 
