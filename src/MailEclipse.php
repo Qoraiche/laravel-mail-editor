@@ -654,12 +654,12 @@ class MailEclipse
             }
 
             $type = version_compare(phpversion(), '7.1', '>=')
-                ? self::TYPES[$reflection->getName()]
-                : self::TYPES[/** @scrutinizer ignore-deprecated */ $reflection->__toString()];
+                ? $reflection->getName()
+                : /** @scrutinizer ignore-deprecated */ $reflection->__toString();
 
-            return is_null($type)
-                ? new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton())
-                : $type;
+            return array_key_exists($type, self::TYPES)
+                ? self::TYPES[$type]
+                : new Mocked($arg, \ReeceM\Mocker\Utils\VarStore::singleton());
         } catch (\Exception $e) {
             return $arg;
         }
