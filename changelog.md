@@ -260,3 +260,8 @@ New Structure:
 ### Fixes
 
 - Fixes [#168](https://github.com/Qoraiche/laravel-mail-editor/issues/168)
+
+## Version 3.5.1
+
+### Fixes
+- Fixes an issue where in some cases Faker data would cause a issue for the javascript frontend. See #187 and #188 
