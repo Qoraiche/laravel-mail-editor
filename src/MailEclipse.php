@@ -395,6 +395,10 @@ class MailEclipse
     public static function generateMailable($request = null): JsonResponse
     {
         $name = self::generateClassName($request->input('name'));
+        $defaultDirectory = 'Mail';
+
+        $mailableDir = config('maileclipse.mailables_dir');
+        $customPath = substr($mailableDir,strpos($mailableDir,$defaultDirectory) + strlen($defaultDirectory) + 1);
 
         if ($name === false) {
             return response()->json([
@@ -416,6 +420,8 @@ class MailEclipse
                 'message' => 'You cannot use "mailable" as a mailable name',
             ]);
         }
+
+        $name = $customPath ? $customPath.'/'.$name : $name;
 
         $params = collect([
             'name' => $name,
