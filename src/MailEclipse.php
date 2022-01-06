@@ -398,7 +398,7 @@ class MailEclipse
         $defaultDirectory = 'Mail';
 
         $mailableDir = config('maileclipse.mailables_dir');
-        $customPath = substr($mailableDir,strpos($mailableDir,$defaultDirectory) + strlen($defaultDirectory) + 1);
+        $customPath = substr($mailableDir, strpos($mailableDir, $defaultDirectory) + strlen($defaultDirectory) + 1);
 
         if ($name === false) {
             return response()->json([
