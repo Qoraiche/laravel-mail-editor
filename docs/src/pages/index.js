@@ -36,8 +36,7 @@ export default function Home() {
       description="Create, Edit and Format mails with a WYSIWYG editor with Laravel Mailable Editor">
       <HomepageHeader />
       <main>
-        {/* TODO: Remove the homepage features for now */}
-        {/* <HomepageFeatures /> */}
+        <HomepageFeatures />
         <SponsorsList />
       </main>
     </Layout>

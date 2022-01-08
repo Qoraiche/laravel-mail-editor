@@ -5,40 +5,42 @@ import styles from './HomepageFeatures.module.css';
 const FeatureList = [
   {
     title: 'Beginner Friendly',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('../../static/img/undraw_laravel_and_vue_-59-tp.svg').default,
     description: (
       <>
-        A beginner friendly way for editing and creating mailables and editing templates inside a Laravel application.
+        A beginner friendly way for editing and creating Mailables and editing templates inside a Laravel application.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Send Test Emails',
+    Svg: require('../../static/img/undraw_mail_sent_re_0ofv.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        MailEclipse lets you test sending emails before publishing them and using them in production. Get the layout and feel just right.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: 'Full of Templates',
+    Svg: require('../../static/img/template_icon.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        MailEclipse comes with predefined templates for various types of emails based on browser friendly and compatible formats.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, emoji, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+        {Svg ? <Svg className={styles.featureSvg} alt={title} /> : null}
+        {emoji
+          ? <div className={styles.featureSvg}>{ emoji }</div>
+          : null
+        }
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
@@ -52,7 +54,7 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className="row flex-justify-content-between">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
