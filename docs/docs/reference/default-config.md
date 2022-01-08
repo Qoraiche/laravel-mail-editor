@@ -39,18 +39,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Relationship loading depth
+    | Relationship loading.
     |--------------------------------------------------------------------------
     |
     | This configures how deep the package will search an load relations.
     | If you set this to 0, relations will not be loaded.
     |
-    | off = 0, min = 1, max = 5
+    | relation_depth: off = 0, min = 1, max = 5
+    | model: this is the model to use to exclude methods when searching.
     |
     | N.B. This does not configure how many many relationship types are loaded.
     */
+    'relations' => [
+        'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
 
-    'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
+        'model' => \Illuminate\Foundation\Auth\User::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------

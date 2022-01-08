@@ -36,3 +36,7 @@ Below is a list of other details to be aware of when installing the package.
     Qoraiche\\MailEclipse\\MailEclipseServiceProvider::class,
 ],
 ```
+
+## Done
+
+Congratulations you can now start to edit your mail templates and mail messages.
