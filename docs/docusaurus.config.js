@@ -92,7 +92,7 @@ module.exports = {
         prism: {
             theme: lightCodeTheme,
             darkTheme: darkCodeTheme,
-            additionalLanguages: ['php'],
+            additionalLanguages: [ 'php' ],
         },
         colorMode: {
             switchConfig: {
@@ -111,8 +111,8 @@ module.exports = {
                 },
                 blog: {
                     showReadingTime: false,
-                    // editUrl:
-                    //     'https://github.com/Qoraiche/laravel-mail-editor/tree/master/docs/blog',
+                    editUrl:
+                        'https://github.com/Qoraiche/laravel-mail-editor/tree/master/docs/blog',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
