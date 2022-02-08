@@ -30,9 +30,11 @@ Please note that this package is still under active development. We encourage ev
 
 ## Requirements
 
-* Laravel 8.
-
-For Laravel 5.6 to 7 support please see version [v2.2 branch](https://github.com/Qoraiche/laravel-mail-editor/tree/2.x)
+| Laravel Version | Compatible version |
+|-----------------|--------------------|
+| 9               | Current - [v4.x](https://github.com/Qoraiche/laravel-mail-editor/tree/4.x)|
+| 8               | [v3.x](https://github.com/Qoraiche/laravel-mail-editor/tree/3.x)               |
+| 5.6 -> 7        | [v2.x](https://github.com/Qoraiche/laravel-mail-editor/tree/2.x)               |
 
 ## Installation
 
