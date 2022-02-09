@@ -31,7 +31,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('Name') }}</th>
-                                <th scope="col">{{ __('Namespace') }}</th>
+                                <th scope="col">{{ __('Subject') }}</th>
                                 <th scope="col">{{ __('Last edited') }}</th>
                                 <th scope="col"></th>
                             </tr>
@@ -42,7 +42,7 @@
                                 <td class="pr-0">
                                     {{ $mailable['name'] }}
                                 </td>
-                                <td class="text-muted" title="/tee">{{ $mailable['namespace'] }} </td>
+                                <td class="text-muted" title="{{ $mailable['namespace'] }}">{{ $mailable['subject'] }}</td>
 
                                 <td class="table-fit"><span>{{ (\Carbon\Carbon::createFromTimeStamp($mailable['modified']))->diffForHumans() }}</span></td>
 
