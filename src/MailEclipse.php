@@ -29,7 +29,7 @@ class MailEclipse
 {
     public const VIEW_NAMESPACE = 'maileclipse';
 
-    public const VERSION = '3.5.0';
+    public const VERSION = '4.0.1';
 
     /**
      * Default type examples for being passed to reflected classes.
@@ -934,7 +934,9 @@ class MailEclipse
             return $model::factory()->make();
         }
 
-        return null;
+        $action = sprintf('php artisan make:factory %sFactory --model=%s', Str::of($model)->afterLast("\\"), $model);
+
+        throw new \Exception("No Factory found, maileclipse.factory config is true. But there is no Factory. Create using $action");
     }
 
     /**
