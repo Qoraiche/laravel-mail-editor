@@ -265,3 +265,9 @@ New Structure:
 
 ### Fixes
 - Fixes an issue where in some cases Faker data would cause a issue for the javascript frontend. See #187 and #188 
+
+## Version 4.0.0
+
+### Changed
+
+Laravel 9 Support
