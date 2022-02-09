@@ -934,7 +934,7 @@ class MailEclipse
             return $model::factory()->make();
         }
 
-        $action = sprintf('php artisan make:factory %sFactory --model=%s', Str::of($model)->afterLast("\\"), $model);
+        $action = sprintf('php artisan make:factory %sFactory --model=%s', Str::of($model)->afterLast('\\'), $model);
 
         throw new \Exception("No Factory found, maileclipse.factory config is true. But there is no Factory. Create using $action");
     }
