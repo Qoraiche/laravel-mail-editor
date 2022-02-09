@@ -34,6 +34,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Relationship loading.
+    |--------------------------------------------------------------------------
+    |
+    | This configures how deep the package will search an load relations.
+    | If you set this to 0, relations will not be loaded.
+    |
+    | relation_depth: off = 0, min = 1, max = 5
+    | model: this is the model to use to exclude methods when searching.
+    |
+    | N.B. This does not configure how many many relationship types are loaded.
+    */
+    'relations' => [
+        'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
+
+        'model' => \Illuminate\Foundation\Auth\User::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Environment
     |--------------------------------------------------------------------------
     |
@@ -43,7 +62,7 @@ return [
     |
     */
 
-    'allowed_environments' => ['local', 'staging', 'testing'],
+    'allowed_environments' => ['local', 'development', 'staging', 'testing'],
 
     /*
     |--------------------------------------------------------------------------
@@ -59,6 +78,37 @@ return [
         'web',
         //'auth',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Blade Methods
+    |--------------------------------------------------------------------------
+    |
+    | The list of blade methods that need to be replaced when moving between the
+    | editor and the blade file.
+    |
+    */
+    'components' => [
+        'extends',
+        'yield',
+        'parent',
+        'component',
+        'endcomponent',
+        'section',
+        'endsection',
+        'slot',
+        'endslot',
+    ],
+
+    /*
+    | Test Mail
+    |--------------------------------------------------------------------------
+    |
+    | The email you want to send mailable test previews to it
+    |
+    */
+
+    'test_mail' => 'your-test@email.com',
 
     /*
     |--------------------------------------------------------------------------

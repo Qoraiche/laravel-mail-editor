@@ -153,3 +153,115 @@ All notable changes to `laravel-mail-editor` will be documented in this file.
 - Laravel 8 Support
 - Laravel legacy factories for L8 support 
 see #107, #106 
+
+## Version 2.2.0
+
+IMPORTANT: Version 2.2.0 will only support Laravel versions 5, 6 and 7 for future releases.
+
+### Addition
+- Revert Laravel 8 support
+- Console command for installing assets see PR #111, credit: @yogendra-revanna
+
+## Version 3.0.0
+Laravel 8 Support release
+
+## Version 3.0.1
+- PSR standards for console command class name, see #115, credit @ivebe
+
+## Version 3.1.0
+- Improve the sanitization of class names for mailables to align with PHP expectations. credit @ivebe
+
+## Version 3.2.1
+- Add the ability to send test mail with fake factory model data
+- Fix model factories builder not loaded in laravel 8
+- Formatting 
+
+## Addition
+
+- The package now has an install command `php artisan laravel-mail-editor:install` see #111 
+
+## Changes
+
+- Supports only Laravel v8
+- See [#108](https://github.com/Qoraiche/laravel-mail-editor/pull/108)
+- PSR Classnames #112, thank you @yogendra-revanna
+
+## Potential Breaking Change
+
+The name spaces of the package now use PSR classname standards, if you were referencing them before in an application, please update them to reflect everything correctly.
+
+## Version 3.4.0
+
+This release will resolve the issue that has been brought up in issue #63 where relations weren't being loaded and affected the calling of relations inside emails or mailables.
+
+## Fixes
+- Fixes issue [#63](https://github.com/Qoraiche/laravel-mail-editor/issues/63)
+
+## Addition
+- Discovery and loading of relations that have factories
+- New config for depth of searching see below for new addition
+
+**new config value**
+```php
+    /*
+    |--------------------------------------------------------------------------
+    | Relationship loading depth
+    |--------------------------------------------------------------------------
+    |
+    | This configures how deep the package will search an load relations.
+    | If you set this to 0, relations will not be loaded.
+    |
+    | off = 0, min = 1, max = 5
+    |
+    | N.B. This does not configure how many many relationship types are loaded.
+    */
+
+    'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
+```
+## Version 3.4.1
+- Add development env to the allowed environments in the config by default as many using it instead of the local
+
+## Version 3.4.2
+
+### Fixes 
+
+- Fixes issue where package would try to search for `string` type of a parameter and fail. [#178](https://github.com/Qoraiche/laravel-mail-editor/issues/178)
+
+## Version 3.5.0
+
+### Changes
+- The structure of the config file for the relations section. It will fallback to loading one by default.
+
+New Structure: 
+
+```diff
+
++    /*
++    |--------------------------------------------------------------------------
++    | Relationship loading.
++    |--------------------------------------------------------------------------
++    |
++    | This configures how deep the package will search an load relations.
++    | If you set this to 0, relations will not be loaded.
++    |
++    | relation_depth: off = 0, min = 1, max = 5
++    | model: this is the model to use to exclude methods when searching.
++    |
++    | N.B. This does not configure how many many relationship types are loaded.
++    */
+-    'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
++    'relations' => [
++        'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
++
++        'model' => \Illuminate\Foundation\Auth\User::class,
++    ],
+
+```
+### Fixes
+
+- Fixes [#168](https://github.com/Qoraiche/laravel-mail-editor/issues/168)
+
+## Version 3.5.1
+
+### Fixes
+- Fixes an issue where in some cases Faker data would cause a issue for the javascript frontend. See #187 and #188 

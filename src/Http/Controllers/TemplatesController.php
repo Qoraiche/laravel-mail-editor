@@ -1,11 +1,12 @@
 <?php
 
-namespace qoraiche\mailEclipse\Http\Controllers;
+namespace Qoraiche\MailEclipse\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
-use qoraiche\mailEclipse\mailEclipse;
+use Qoraiche\MailEclipse\Facades\MailEclipse;
+use Qoraiche\MailEclipse\Utils\TemplateSkeletons;
 
 class TemplatesController extends Controller
 {
@@ -13,59 +14,55 @@ class TemplatesController extends Controller
     {
         abort_unless(
             App::environment(config('maileclipse.allowed_environments', ['local'])),
-            403
+            403,
+            'Environment Not Allowed'
         );
     }
 
     public function index()
     {
-        $skeletons = mailEclipse::getTemplateSkeletons();
+        $skeletons = TemplateSkeletons::skeletons();
 
-        $templates = mailEclipse::getTemplates();
+        $templates = MailEclipse::getTemplates();
 
-        return View(mailEclipse::$view_namespace.'::sections.templates', compact('skeletons', 'templates'));
+        return View(MailEclipse::VIEW_NAMESPACE.'::sections.templates', compact('skeletons', 'templates'));
     }
 
     public function new($type, $name, $skeleton)
     {
         $type = $type === 'html' ? $type : 'markdown';
 
-        $skeleton = mailEclipse::getTemplateSkeleton($type, $name, $skeleton);
+        $skeleton = TemplateSkeletons::get($type, $name, $skeleton);
 
-        return View(mailEclipse::$view_namespace.'::sections.create-template', compact('skeleton'));
+        return View(MailEclipse::VIEW_NAMESPACE.'::sections.create-template', compact('skeleton'));
     }
 
     public function view($templateslug = null)
     {
-        $template = mailEclipse::getTemplate($templateslug);
+        $template = MailEclipse::getTemplate($templateslug);
 
         if (is_null($template)) {
             return redirect()->route('templateList');
         }
 
-        return View(mailEclipse::$view_namespace.'::sections.edit-template', compact('template'));
+        return View(MailEclipse::VIEW_NAMESPACE.'::sections.edit-template', compact('template'));
     }
 
     public function create(Request $request)
     {
-        return mailEclipse::createTemplate($request);
+        return MailEclipse::createTemplate($request);
     }
 
     public function select(Request $request)
     {
-        $skeletons = mailEclipse::getTemplateSkeletons();
+        $skeletons = TemplateSkeletons::skeletons();
 
-        return View(mailEclipse::$view_namespace.'::sections.new-template', compact('skeletons'));
-    }
-
-    public function previewTemplateMarkdownView(Request $request)
-    {
-        return mailEclipse::previewMarkdownViewContent(false, $request->markdown, $request->name, true);
+        return View(MailEclipse::VIEW_NAMESPACE.'::sections.new-template', compact('skeletons'));
     }
 
     public function delete(Request $request)
     {
-        if (mailEclipse::deleteTemplate($request->templateslug)) {
+        if (MailEclipse::deleteTemplate($request->templateslug)) {
             return response()->json([
                 'status' => 'ok',
             ]);
@@ -78,6 +75,6 @@ class TemplatesController extends Controller
 
     public function update(Request $request)
     {
-        return mailEclipse::updateTemplate($request);
+        return MailEclipse::updateTemplate($request);
     }
 }

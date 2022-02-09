@@ -1,11 +1,12 @@
 <?php
 
-namespace qoraiche\mailEclipse;
+namespace Qoraiche\MailEclipse;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Qoraiche\MailEclipse\Command\VendorPublishCommand;
 
-class mailEclipseServiceProvider extends ServiceProvider
+class MailEclipseServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -46,7 +47,7 @@ class mailEclipseServiceProvider extends ServiceProvider
     private function routeConfiguration()
     {
         return [
-            'namespace' => 'qoraiche\mailEclipse\Http\Controllers',
+            'namespace' => 'Qoraiche\MailEclipse\Http\Controllers',
             'prefix' => config('maileclipse.path'),
             'middleware' => 'maileclipse',
         ];
@@ -63,7 +64,7 @@ class mailEclipseServiceProvider extends ServiceProvider
 
         // Register the service the package provides.
         $this->app->singleton('maileclipse', function ($app) {
-            return new mailEclipse;
+            return new MailEclipse;
         });
     }
 
@@ -96,5 +97,10 @@ class mailEclipseServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views/templates' => $this->app->resourcePath('views/vendor/maileclipse/templates'),
         ], 'maileclipse.templates');
+
+        // Add Artisan publish command
+        $this->commands([
+            VendorPublishCommand::class,
+        ]);
     }
 }

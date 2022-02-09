@@ -8,7 +8,7 @@
 	<div class="container-fluid mt-3">
 
 		<div class="alert alert-warning" role="alert">
-		    {{ $errorMessage }}
+		    {{ $exception->getMessage() }}
 		</div>
 
 	</div>

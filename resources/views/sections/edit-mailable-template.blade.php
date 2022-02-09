@@ -5,7 +5,7 @@
 @section('content')
 
      <style type="text/css">
-         
+
         .CodeMirror {
             height: 400px;
         }
@@ -71,12 +71,16 @@
                         <div class="card-header p-3" style="border-bottom:1px solid #e7e7e7e6;">
                             <button type="button" class="btn btn-success float-right save-template">Update</button>
                             <button type="button" class="btn btn-secondary float-right preview-toggle mr-2"><i class="far fa-eye"></i> Preview</button>
-                            <button type="button" class="btn btn-light float-right mr-2 save-draft disabled">Save Draft</button>
+                            <button type="button" class="btn btn-light mr-2 save-draft disabled">Save Draft</button>
+                            <button type="button" class="btn btn-info float-right mr-2 send-test"><svg fill="#fff" width="20" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m8.75 17.612v4.638c0 .324.208.611.516.713.077.025.156.037.234.037.234 0 .46-.11.604-.306l2.713-3.692z"/>
+                                    <path d="m23.685.139c-.23-.163-.532-.185-.782-.054l-22.5 11.75c-.266.139-.423.423-.401.722.023.3.222.556.505.653l6.255 2.138 13.321-11.39-10.308 12.419 10.483 3.583c.078.026.16.04.242.04.136 0 .271-.037.39-.109.19-.116.319-.311.352-.53l2.75-18.5c.041-.28-.077-.558-.307-.722z"/>
+                                </svg> {{ __('Send Test') }}</button>
                         </div>
                     </div>
 
                     <div class="card">
-                    
+
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
                       <li class="nav-item">
                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Editor</a>
@@ -86,7 +90,7 @@
                       </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
-                        
+
 
                       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="p-3" style="border-top: 1px solid #ccc;">
@@ -107,15 +111,15 @@
                                                 <a class="dropdown-item is-attribute view_data_param" param-parent-key="{{ $param['key'] }}" param-key="{{ $key }}" href="#param">{{ $key }}</a>
                                             @endforeach
 
-                                            @else 
-                                            
+                                            @else
+
                                             <span class="dropdown-item">No attributes found</span>
 
                                         @endif
 
                                       </div>
                                     </div>
-               
+
                                     @elseif(isset($param['data']['type']) && $param['data']['type'] === 'elequent-collection')
 
                                         <button type="button" class="btn btn-info btn-sm view_data_param" maileclipse-data-toggle="tooltip" data-placement="top" title="Elequent Collection" param-key="{{ $param['key'] }}">
@@ -162,12 +166,44 @@
                     </div>
                 </div>
             </div>
-        </div>       
+        </div>
  </div>
 
 <script type="text/javascript">
-    
+
 $(document).ready(function(){
+
+    $('.send-test').click(function(e){
+        e.preventDefault();
+
+        notie.input({
+            text: 'Test email recipient:',
+            type: 'text',
+            placeholder: 'Email',
+            submitCallback: function (email) {
+                sendTestMail(email)
+            },
+        });
+    });
+
+    function sendTestMail(email) {
+        axios.post('{{ route('sendTestMail') }}', {
+            email,
+            name: '{{ $name }}',
+        })
+            .then(function (response) {
+
+                if (response.status === 200) {
+                    notie.alert({type: 'success', text: 'Test email sent', time: 4})
+                } else {
+                    alert(response.data.message);
+                }
+            })
+
+            .catch(function (error) {
+                notie.alert({type: 'error', text: error, time: 4})
+            });
+    }
 
 @if ( isset($templateData['template']) )
 
@@ -305,17 +341,21 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         placeholder: "Write your Beautiful Email",
         previewRender: function(plainText, preview) {
             $.ajax({
-                  method: "POST",
-                  url: "{{ route('previewMarkdownView') }}",
-                  data: { markdown: plainText, namespace: '{{ addslashes($templateData['namespace']) }}', viewdata: "{{ preg_replace("/\r\n/","<br />", serialize($templateData['view_data'])) }}", name: '{{ $name }}' }
-                
+                method: "POST",
+                url: "{{ route('previewMarkdownView') }}",
+                data: {
+                    markdown: plainText,
+                    namespace: '{{ addslashes($templateData['namespace']) }}',
+                    viewdata: "{{ preg_replace("/[\r\n]/","<br />", serialize($templateData['view_data'])) }}",
+                    name: '{{ $name }}'
+                }
             }).done(function( HtmledTemplate ) {
                 preview.innerHTML = HtmledTemplate;
             });
 
             return '';
         },
-        
+
     });
 
     function setButtonComponent(editor) {
@@ -328,7 +368,7 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         output = `
 [component]: # ('mail::button',  ['url' => ''])
 ` + text + `
-[endcomponent]: # 
+[endcomponent]: #
         `;
         cm.replaceSelection(output);
 
@@ -344,7 +384,7 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         output = `
 [component]: # ('mail::promotion')
 ` + text + `
-[endcomponent]: # 
+[endcomponent]: #
         `;
         cm.replaceSelection(output);
 
@@ -360,7 +400,7 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         output = `
 [component]: # ('mail::panel')
 ` + text + `
-[endcomponent]: # 
+[endcomponent]: #
         `;
         cm.replaceSelection(output);
 
@@ -378,7 +418,7 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
 | ------------- |:-------------:| --------:|
 | Col 2 is      | Centered      | $10      |
 | Col 3 is      | Right-Aligned | $20      |
-[endcomponent]: # 
+[endcomponent]: #
         `;
         cm.replaceSelection(output);
 
@@ -428,11 +468,11 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
             markdown: simplemde.codemirror.getValue(),
             viewpath: "{{ base64_encode($templateData['view_path']) }}"
         })
-        
+
     .then(function (response) {
 
         if (response.data.status == 'ok'){
-        
+
             localStorage.removeItem(templateID);
 
             notie.alert({ type: 1, text: 'Template updated', time: 3 })
@@ -441,7 +481,7 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
             notie.alert({ type: 'error', text: 'Template not updated', time: 3 })
         }
 
-        
+
     })
     .catch(function (error) {
         notie.alert({ type: 'error', text: error, time: 2 })
@@ -457,13 +497,13 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         $.ajax({
           method: "POST",
           url: "{{ route('previewMarkdownView') }}",
-          data: { 
-            markdown: plainText, 
-            namespace: '{{ addslashes($templateData['namespace']) }}', 
-            viewdata: "{{ preg_replace("/\r\n/","<br />", serialize($templateData['view_data'])) }}", 
-            name: '{{ $name }}' 
+          data: {
+            markdown: plainText,
+            namespace: '{{ addslashes($templateData['namespace']) }}',
+            viewdata: "{{ preg_replace("/[\r\n]/","<br />", serialize($templateData['view_data'])) }}",
+            name: '{{ $name }}'
           }
-        
+
         }).done(function( HtmledTemplate ) {
             let data = HtmledTemplate;
             console.log(data);
@@ -507,7 +547,7 @@ content_css: "css/content.css",
 toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image fullpage | forecolor backcolor emoticons | preview | code",
 fullpage_default_encoding: "UTF-8",
 fullpage_default_doctype: "<!DOCTYPE html>",
-   init_instance_callback: function (editor) 
+   init_instance_callback: function (editor)
    {
         editor.on('Change', function (e) {
             if ($('.save-draft').hasClass('disabled')){
@@ -519,7 +559,7 @@ fullpage_default_doctype: "<!DOCTYPE html>",
             editor.setContent(localStorage.getItem(templateID));
         }
 
-        setTimeout(function(){ 
+        setTimeout(function(){
             editor.execCommand("mceRepaint");
         }, 2000);
     }
@@ -537,7 +577,7 @@ $('.view_data_param').click(function(){
 
         var output = `\{\{ $` + $(this).attr('param-parent-key') + '->' + param + ` \}\}`;
     }
-    
+
     tinymce.activeEditor.selection.setContent(output);
 });
 
@@ -568,7 +608,7 @@ $('.save-template').click(function(){
     .then(function (response) {
 
         if (response.data.status == 'ok'){
-        
+
             localStorage.removeItem(templateID);
 
             notie.alert({ type: 1, text: 'Template updated', time: 3 })
@@ -577,7 +617,7 @@ $('.save-template').click(function(){
             notie.alert({ type: 'error', text: 'Template not updated', time: 3 })
         }
 
-        
+
     })
     .catch(function (error) {
         notie.alert({ type: 'error', text: error, time: 2 })
@@ -615,7 +655,7 @@ var plaintextEditor = CodeMirror.fromTextArea(document.getElementById("plain_tex
     @endif
 
 });
-                
+
 </script>
-   
+
 @endsection

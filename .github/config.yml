@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+    - name: Request a feature
+      url: https://github.com/qoraiche/laravel-mail-editor/issues/new?template=feature_request.md
+      about: Share ideas for new features
+    - name: Report a bug
+      url: https://github.com/qoraiche/laravel-mail-editor/issues/new?template=bug_report.md
+      about: Report a reproducible bug

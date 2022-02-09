@@ -12,7 +12,7 @@
         <li class="breadcrumb-item active" aria-current="page">{{ $resource['name'] }}</li>
       </ol>
     </nav>
-             
+
                 <div class="card my-4">
                     <div class="card-header d-flex align-items-center justify-content-between"><h5>Details</h5>
                     </div>
@@ -58,7 +58,7 @@
                             					{{ collect($resource['data']->from)->first()['address'] }}
 
                             					@else
-											
+
 												{{ config('mail.from.address') }} (default)
 
                             				@endif
@@ -73,7 +73,7 @@
                             					{{ collect($resource['data']->replyTo)->first()['address'] }}
 
                             					@else
-											
+
 												{{ config('mail.reply_to.address') }} (default)
 
                             				@endif
@@ -107,11 +107,19 @@
                 </div>
 
                 <div class="card my-4">
-                    <div class="card-header d-flex align-items-center justify-content-between"><h5>Preview</h5>
-                    	@if ( !is_null($resource['view_path']) )
-                    		<a class="btn btn-primary" href="{{ route('editMailable', ['name' => $resource['name']]) }}">Edit Template</a>
-                    	@endif
-                    	
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h5>Preview</h5>
+                        <div>
+                            @if ( $resource['view_path'] !== null )
+                            <button type="button" class="btn btn-info send-test"><svg fill="#fff" width="20" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m8.75 17.612v4.638c0 .324.208.611.516.713.077.025.156.037.234.037.234 0 .46-.11.604-.306l2.713-3.692z"/>
+                                    <path d="m23.685.139c-.23-.163-.532-.185-.782-.054l-22.5 11.75c-.266.139-.423.423-.401.722.023.3.222.556.505.653l6.255 2.138 13.321-11.39-10.308 12.419 10.483 3.583c.078.026.16.04.242.04.136 0 .271-.037.39-.109.19-.116.319-.311.352-.53l2.75-18.5c.041-.28-.077-.558-.307-.722z"/>
+                                </svg> {{ __('Send Test') }}</button>
+                                <a class="btn btn-primary"
+                                   href="{{ route('editMailable', ['name' => $resource['name']]) }}">Edit Template</a>
+                            @endif
+                        </div>
+
                     </div>
                     <div class="embed-responsive embed-responsive-16by9">
 					  <iframe class="embed-responsive-item" src="{{ route('previewMailable', [ 'name' => $resource['name'] ]) }}" allowfullscreen></iframe>
@@ -120,8 +128,40 @@
             </div>
 
 <script type="text/javascript">
+    $(document).ready(function(){
+        $('.send-test').click(function(e){
+            e.preventDefault();
 
-                
+            notie.input({
+                text: 'Test email recipient:',
+                type: 'text',
+                placeholder: 'Email',
+                submitCallback: function (email) {
+                    sendTestMail(email)
+                },
+            });
+        });
+
+        function sendTestMail(email) {
+            axios.post('{{ route('sendTestMail') }}', {
+                email,
+                name: '{{ $resource['name'] }}',
+            })
+                .then(function (response) {
+
+                    if (response.status === 200) {
+                        notie.alert({type: 'success', text: 'Test email sent', time: 4})
+                    } else {
+                        alert(response.data.message);
+                    }
+                })
+
+                .catch(function (error) {
+                    notie.alert({type: 'error', text: error, time: 4})
+                });
+        }
+
+    });
 </script>
-   
+
 @endsection
