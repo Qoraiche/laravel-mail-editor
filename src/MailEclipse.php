@@ -514,8 +514,6 @@ class MailEclipse
                         $fqcns[$i]['markdown'] = self::getMarkdownViewName($mailable_data);
                         $fqcns[$i]['name'] = $name;
                         $fqcns[$i]['namespace'] = $mailableClass;
-                        /** @see \Illuminate\Mail\Mailable@buildSubject for the Str Functions, used to keep consistent. */
-                        $fqcns[$i]['subject'] = $mailable_data->subject ?? Str::title(Str::snake(class_basename($mailableClass), ' '));
                         $fqcns[$i]['filename'] = $phpFile->getFilename();
                         $fqcns[$i]['modified'] = $phpFile->getCTime();
                         $fqcns[$i]['viewed'] = $phpFile->getATime();
@@ -526,6 +524,9 @@ class MailEclipse
                         $fqcns[$i]['writable'] = $phpFile->isWritable();
                         $fqcns[$i]['view_path'] = null;
                         $fqcns[$i]['text_view_path'] = null;
+
+                        /** @see \Illuminate\Mail\Mailable@buildSubject for the Str Functions, used to keep consistent. */
+                        $fqcns[$i]['subject'] = $mailable_data->subject ?? Str::title(Str::snake(class_basename($mailableClass), ' '));
 
                         if (! is_null($fqcns[$i]['markdown']) && View::exists($fqcns[$i]['markdown'])) {
                             $fqcns[$i]['view_path'] = View($fqcns[$i]['markdown'])->getPath();
