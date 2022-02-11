@@ -270,4 +270,9 @@ New Structure:
 ## Version 3.5.2
 
 ### Changes
+
 - Adds the subject of the email client to the table instead of the namespace. See #79
+
+### Fixes
+
+- Correct custom Mailable directory usage from config, see PR #190 @Bhagyrajaj
