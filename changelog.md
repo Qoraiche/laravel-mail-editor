@@ -265,3 +265,9 @@ New Structure:
 
 ### Fixes
 - Fixes an issue where in some cases Faker data would cause a issue for the javascript frontend. See #187 and #188 
+
+
+## Version 3.5.2
+
+### Changes
+- Adds the subject of the email client to the table instead of the namespace. See #79
