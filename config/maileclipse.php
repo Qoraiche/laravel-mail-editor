@@ -34,6 +34,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Display Mailable Subject
+    |--------------------------------------------------------------------------
+    |
+    | Set to true this will display the subject of the Mailable instead of Class Name.
+    | When the config setting is false the namespace/class name is shown
+    | options: true / false
+    |
+    */
+    'display_as_subject' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Relationship loading.
     |--------------------------------------------------------------------------
     |

@@ -29,7 +29,7 @@ class MailEclipse
 {
     public const VIEW_NAMESPACE = 'maileclipse';
 
-    public const VERSION = '4.0.1';
+    public const VERSION = '4.0.2';
 
     /**
      * Default type examples for being passed to reflected classes.
@@ -524,6 +524,9 @@ class MailEclipse
                         $fqcns[$i]['writable'] = $phpFile->isWritable();
                         $fqcns[$i]['view_path'] = null;
                         $fqcns[$i]['text_view_path'] = null;
+
+                        /** @see \Illuminate\Mail\Mailable@buildSubject for the Str Functions, used to keep consistent. */
+                        $fqcns[$i]['subject'] = $mailable_data->subject ?? Str::title(Str::snake(class_basename($mailableClass), ' '));
 
                         if (! is_null($fqcns[$i]['markdown']) && View::exists($fqcns[$i]['markdown'])) {
                             $fqcns[$i]['view_path'] = View($fqcns[$i]['markdown'])->getPath();
