@@ -271,3 +271,13 @@ New Structure:
 ### Changed
 
 Laravel 9 Support
+
+## Version 4.0.1
+
+## Added
+- Improve error messages for event when a factory is not found when the setting is on to use them
+
+## Version 4.0.2
+
+## Added
+- Allow the subject to be displayed in the mailables table instead of Namespace values
