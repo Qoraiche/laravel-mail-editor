@@ -42,7 +42,7 @@
                                 <td class="pr-0">
                                     {{ $mailable['name'] }}
                                 </td>
-                                <td class="text-muted" title="{{ $mailable['namespace'] }}">{{ config('maileclipse.display_as_subject') ? $mailable['subject'] ? $mailable['namespace'] }}</td>
+                                <td class="text-muted" title="{{ $mailable['namespace'] }}">{{ config('maileclipse.display_as_subject') ? $mailable['subject'] : $mailable['namespace'] }}</td>
 
                                 <td class="table-fit"><span>{{ (\Carbon\Carbon::createFromTimeStamp($mailable['modified']))->diffForHumans() }}</span></td>
 
