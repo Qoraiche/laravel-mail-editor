@@ -276,3 +276,8 @@ New Structure:
 ### Fixes
 
 - Correct custom Mailable directory usage from config, see PR #190 @Bhagyrajaj
+
+## Version 3.5.3
+
+### Fixes
+- Syntax error in the `mailables.blade.php` file. #199, #200
