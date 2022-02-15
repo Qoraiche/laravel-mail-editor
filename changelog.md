@@ -281,3 +281,8 @@ Laravel 9 Support
 
 ## Added
 - Allow the subject to be displayed in the mailables table instead of Namespace values
+
+## Version 4.0.3
+
+## Fixed
+- Syntax error on the mailables.blade.php file. #199, #200
