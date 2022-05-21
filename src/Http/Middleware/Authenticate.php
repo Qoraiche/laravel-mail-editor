@@ -19,15 +19,15 @@ class Authenticate
      */
     public function handle($request, $next)
     {
-        if (!$request->user()) {
+        if (! $request->user()) {
             throw new AuthenticationException;
         }
 
         if (
-            !app()->runningInConsole()
+            ! app()->runningInConsole()
             && App::environment(config('maileclipse.allowed_environments', ['local']))
         ) {
-            throw new UnauthorizedException("Environment not Allowed. Currently in " . App::environment());
+            throw new UnauthorizedException('Environment not Allowed. Currently in '.App::environment());
         }
 
         if (method_exists($request->user(), 'manageMailables')) {
