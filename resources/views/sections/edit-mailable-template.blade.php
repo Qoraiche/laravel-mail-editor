@@ -341,10 +341,14 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
         placeholder: "Write your Beautiful Email",
         previewRender: function(plainText, preview) {
             $.ajax({
-                  method: "POST",
-                  url: "{{ route('previewMarkdownView') }}",
-                  data: { markdown: plainText, namespace: '{{ addslashes($templateData['namespace']) }}', viewdata: "{{ preg_replace("/\r\n/","<br />", serialize($templateData['view_data'])) }}", name: '{{ $name }}' }
-
+                method: "POST",
+                url: "{{ route('previewMarkdownView') }}",
+                data: {
+                    markdown: plainText,
+                    namespace: '{{ addslashes($templateData['namespace']) }}',
+                    viewdata: "{{ preg_replace("/[\r\n]/","<br />", serialize($templateData['view_data'])) }}",
+                    name: '{{ $name }}'
+                }
             }).done(function( HtmledTemplate ) {
                 preview.innerHTML = HtmledTemplate;
             });
@@ -496,7 +500,7 @@ var templateID = "template_view_{{ $name }}_{{ $templateData['template_name'] }}
           data: {
             markdown: plainText,
             namespace: '{{ addslashes($templateData['namespace']) }}',
-            viewdata: "{{ preg_replace("/\r\n/","<br />", serialize($templateData['view_data'])) }}",
+            viewdata: "{{ preg_replace("/[\r\n]/","<br />", serialize($templateData['view_data'])) }}",
             name: '{{ $name }}'
           }
 

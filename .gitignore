@@ -1,4 +1,4 @@
-/node_modules/*
+node_modules/*
 .DS_Store
 /vendor
 /composer.lock
@@ -10,3 +10,5 @@ resources/views/draft/*
 # exception to the rule
 !resources/views/draft/.gitkeep
 !resources/views/templates/.gitkeep
+
+docs/node_modules

@@ -221,3 +221,68 @@ This release will resolve the issue that has been brought up in issue #63 where 
 ## Version 3.4.1
 - Add development env to the allowed environments in the config by default as many using it instead of the local
 
+## Version 3.4.2
+
+### Fixes 
+
+- Fixes issue where package would try to search for `string` type of a parameter and fail. [#178](https://github.com/Qoraiche/laravel-mail-editor/issues/178)
+
+## Version 3.5.0
+
+### Changes
+- The structure of the config file for the relations section. It will fallback to loading one by default.
+
+New Structure: 
+
+```diff
+
++    /*
++    |--------------------------------------------------------------------------
++    | Relationship loading.
++    |--------------------------------------------------------------------------
++    |
++    | This configures how deep the package will search an load relations.
++    | If you set this to 0, relations will not be loaded.
++    |
++    | relation_depth: off = 0, min = 1, max = 5
++    | model: this is the model to use to exclude methods when searching.
++    |
++    | N.B. This does not configure how many many relationship types are loaded.
++    */
+-    'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
++    'relations' => [
++        'relation_depth' => env('MAILECLIPSE_RELATION_DEPTH', 2),
++
++        'model' => \Illuminate\Foundation\Auth\User::class,
++    ],
+
+```
+### Fixes
+
+- Fixes [#168](https://github.com/Qoraiche/laravel-mail-editor/issues/168)
+
+## Version 3.5.1
+
+### Fixes
+- Fixes an issue where in some cases Faker data would cause a issue for the javascript frontend. See #187 and #188 
+
+## Version 4.0.0
+
+### Changed
+
+Laravel 9 Support
+
+## Version 4.0.1
+
+## Added
+- Improve error messages for event when a factory is not found when the setting is on to use them
+
+## Version 4.0.2
+
+## Added
+- Allow the subject to be displayed in the mailables table instead of Namespace values
+
+## Version 4.0.3
+
+## Fixed
+- Syntax error on the mailables.blade.php file. #199, #200

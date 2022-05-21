@@ -27,13 +27,14 @@ Please note that this package is still under active development. We encourage ev
 * Suitable for laravel beginners.
 * Send Test mails
 * Testing mails with fake data
-* and many more... (promise).
 
 ## Requirements
 
-* Laravel 8.
-
-For Laravel 5.6 to 7 support please see version [v2.2 branch](https://github.com/Qoraiche/laravel-mail-editor/tree/2.x)
+| Laravel Version | Compatible version |
+|-----------------|--------------------|
+| 9               | Latest - [v4.x](https://github.com/Qoraiche/laravel-mail-editor/tree/v4.0.0)|
+| 8               | [v3.x](https://github.com/Qoraiche/laravel-mail-editor/tree/3.x)               |
+| 5.6 -> 7        | [v2.x](https://github.com/Qoraiche/laravel-mail-editor/tree/2.x)               |
 
 ## Installation
 
