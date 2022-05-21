@@ -40,6 +40,6 @@ class MailEclipse extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'maileclipse';
+        return MailEclipseParent::class;
     }
 }
