@@ -88,7 +88,7 @@ return [
 
     'middlewares' => [
         'web',
-        \Qoraiche\MailEclipse\Http\Middleware\Authenticate::class
+        \Qoraiche\MailEclipse\Http\Middleware\Authenticate::class,
     ],
 
     /*
