@@ -21,7 +21,7 @@ php artisan laravel-mail-editor:install
 ```
 
 :::note Registering the Service Provider
-MailEclipse will automatically register itself with the Laravel service container. To do so manually see [Service Provider](#service-provider) Details.
+MailEclipse will automatically register itself with the Laravel service container. To do so manually: see [Service Provider](#service-provider) Details.
 :::
 
 ## Additional Installation Details
@@ -39,4 +39,4 @@ Below is a list of other details to be aware of when installing the package.
 
 ## Done
 
-Congratulations you can now start to edit your mail templates and mail messages.
+Congratulations you can now start to edit your mail templates and mail messages. See the next step.

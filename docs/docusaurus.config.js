@@ -18,7 +18,7 @@ module.exports = {
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
-    favicon: 'img/favicon.ico',
+    favicon: 'img/favicon.png',
     organizationName: 'Qoraiche', // Usually your GitHub org/user name.
     projectName: 'laravel-mail-editor', // Usually your repo name.
     trailingSlash: false,

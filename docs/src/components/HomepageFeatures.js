@@ -23,7 +23,7 @@ const FeatureList = [
   },
   {
     title: 'Full of Templates',
-    Svg: require('../../static/img/template_icon.svg').default,
+    Svg: require('../../static/img/undraw_responsive_re_e1nn.svg').default,
     description: (
       <>
         MailEclipse comes with predefined templates for various types of emails based on browser friendly and compatible formats.
