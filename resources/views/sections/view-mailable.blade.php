@@ -36,7 +36,7 @@
                                     <td class="table-fit font-weight-sixhundred">Subject</td>
                                     @if ( empty($resource['data']->subject) )
                                         <td>
-                                            <span class="text-muted">No Subject Set, The default Namespace will be used. See <a href="https://laravel.com/docs/9.x/notifications#customizing-the-subject">Custom the subject</a></span>
+                                            <span class="text-muted">No Subject Set, The default Namespace will be used. See <a href="https://laravel.com/docs/9.x/notifications#customizing-the-subject">Customize the subject</a></span>
                                         </td>
                                     @else
                                         <td>
