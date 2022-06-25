@@ -60,6 +60,11 @@ class TemplatesController extends Controller
         return View(MailEclipse::VIEW_NAMESPACE.'::sections.new-template', compact('skeletons'));
     }
 
+    public function previewTemplateMarkdownView(Request $request)
+    {
+        return MailEclipse::previewMarkdownViewContent(false, $request->markdown, $request->name, true);
+    }
+
     public function delete(Request $request)
     {
         if (MailEclipse::deleteTemplate($request->templateslug)) {
