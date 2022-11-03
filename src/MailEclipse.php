@@ -802,12 +802,14 @@ class MailEclipse
      */
     public static function buildMailable($instance, $type = 'call')
     {
+        $method = method_exists($instance, 'build') ? 'build' : 'render';
+
         if ($type === 'call') {
             if (self::handleMailableViewDataArgs($instance) !== null) {
-                return app()->call([self::handleMailableViewDataArgs($instance), 'build']);
+                return app()->call([self::handleMailableViewDataArgs($instance), $method]);
             }
 
-            return app()->call([new $instance, 'build']);
+            return app()->call([new $instance, $method]);
         }
 
         return app()->make($instance);
