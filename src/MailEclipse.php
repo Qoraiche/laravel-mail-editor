@@ -713,7 +713,7 @@ class MailEclipse
 
         $classProps = array_diff($allProps, $traitProperties);
 
-        $withFuncData = collect($obj->viewData)->keys();
+        $withFuncData = collect($obj->buildViewData())->keys();
 
         $mailableData = collect($classProps)->merge($withFuncData);
 
@@ -789,6 +789,10 @@ class MailEclipse
 
         $property->setAccessible(true);
 
+        if (method_exists($mailable, 'content')) {
+            return app()->call([new $mailable, 'content'])->markdown;
+        }
+
         return $property->getValue($mailable);
     }
 
@@ -802,11 +806,19 @@ class MailEclipse
      */
     public static function buildMailable($instance, $type = 'call')
     {
-        $method = method_exists($instance, 'build') ? 'build' : 'render';
+        $method = method_exists($instance, 'build') ? 'build' : 'content';
 
         if ($type === 'call') {
             if (self::handleMailableViewDataArgs($instance) !== null) {
                 return app()->call([self::handleMailableViewDataArgs($instance), $method]);
+            }
+
+            if ($method == 'content') {
+                /** @var \Illuminate\Mail\Mailable */
+                $class = new $instance;
+                $class->view(app()->call([new $instance, 'content'])->view);
+
+                return $class;
             }
 
             return app()->call([new $instance, $method]);
@@ -833,7 +845,7 @@ class MailEclipse
 
         if (! $template) {
             $obj = self::buildMailable($instance);
-            $viewData = $obj->viewData;
+            $viewData = $obj->buildViewData();
             $_data = array_merge($instance->buildViewData(), $viewData);
 
             foreach ($_data as $key => $value) {
