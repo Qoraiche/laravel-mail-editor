@@ -553,7 +553,10 @@ class MailEclipse
             $collection = collect($fqcns)->map(function ($mailable) {
                 return $mailable;
             })->reject(function ($object) {
-                return ! method_exists($object['namespace'], 'build');
+                return ! array_search(
+                    'Illuminate\Contracts\Mail\Mailable',
+                    class_implements($object['namespace']
+                ));
             });
 
             return $collection;
@@ -810,7 +813,7 @@ class MailEclipse
 
         if ($type === 'call') {
             if (self::handleMailableViewDataArgs($instance) !== null) {
-                return app()->call([self::handleMailableViewDataArgs($instance), $method]);
+                return self::handleMailableViewDataArgs($instance);
             }
 
             if ($method == 'content') {
