@@ -553,7 +553,10 @@ class MailEclipse
             $collection = collect($fqcns)->map(function ($mailable) {
                 return $mailable;
             })->reject(function ($object) {
-                return ! method_exists($object['namespace'], 'build');
+                return ! array_search(
+                    'Illuminate\Contracts\Mail\Mailable',
+                    class_implements($object['namespace']
+                ));
             });
 
             return $collection;
@@ -713,7 +716,7 @@ class MailEclipse
 
         $classProps = array_diff($allProps, $traitProperties);
 
-        $withFuncData = collect($obj->viewData)->keys();
+        $withFuncData = collect($obj->buildViewData())->keys();
 
         $mailableData = collect($classProps)->merge($withFuncData);
 
@@ -789,6 +792,10 @@ class MailEclipse
 
         $property->setAccessible(true);
 
+        if (method_exists($mailable, 'content')) {
+            return app()->call([new $mailable, 'content'])->markdown;
+        }
+
         return $property->getValue($mailable);
     }
 
@@ -802,12 +809,22 @@ class MailEclipse
      */
     public static function buildMailable($instance, $type = 'call')
     {
+        $method = method_exists($instance, 'build') ? 'build' : 'content';
+
         if ($type === 'call') {
             if (self::handleMailableViewDataArgs($instance) !== null) {
-                return app()->call([self::handleMailableViewDataArgs($instance), 'build']);
+                return self::handleMailableViewDataArgs($instance);
             }
 
-            return app()->call([new $instance, 'build']);
+            if ($method == 'content') {
+                /** @var \Illuminate\Mail\Mailable */
+                $class = new $instance;
+                $class->view(app()->call([new $instance, 'content'])->view);
+
+                return $class;
+            }
+
+            return app()->call([new $instance, $method]);
         }
 
         return app()->make($instance);
@@ -831,7 +848,7 @@ class MailEclipse
 
         if (! $template) {
             $obj = self::buildMailable($instance);
-            $viewData = $obj->viewData;
+            $viewData = $obj->buildViewData();
             $_data = array_merge($instance->buildViewData(), $viewData);
 
             foreach ($_data as $key => $value) {
