@@ -286,3 +286,8 @@ Laravel 9 Support
 
 ## Fixed
 - Syntax error on the mailables.blade.php file. #199, #200
+
+## Version 4.0.4
+
+## Fixed
+- Laravel 9 mailables compatibility #218 and #219
