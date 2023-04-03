@@ -15,7 +15,7 @@ class MailablesController extends Controller
             App::environment(config('maileclipse.allowed_environments', ['local'])),
             403,
             'Environment Not Allowed'
-      );
+        );
     }
 
     public function toMailablesList()
