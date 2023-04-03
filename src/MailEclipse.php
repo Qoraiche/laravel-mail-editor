@@ -556,7 +556,7 @@ class MailEclipse
                 return ! array_search(
                     'Illuminate\Contracts\Mail\Mailable',
                     class_implements($object['namespace']
-                ));
+                    ));
             });
 
             return $collection;
@@ -1082,7 +1082,7 @@ class MailEclipse
         $view = $mailable['markdown'] ?? $mailable['data']->view;
 
         if (view()->exists($view)) {
-            return ($mailableInstance)->render();
+            return $mailableInstance->render();
         }
 
         return view(self::VIEW_NAMESPACE.'::previewerror', ['errorMessage' => 'No template associated with this mailable.']);
