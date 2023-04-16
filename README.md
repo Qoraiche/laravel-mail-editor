@@ -41,7 +41,7 @@ Please note that this package is still under active development. We encourage ev
 Via Composer
 
 ``` bash
-$ composer require qoraiche/laravel-mail-editor
+composer require qoraiche/laravel-mail-editor
 ```
 
 The package will automatically register itself.
