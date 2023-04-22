@@ -1,2 +1,5 @@
 resources/* linguist-vendored
 public/* linguist-vendored
+/docs export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
