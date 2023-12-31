@@ -58,8 +58,8 @@ class MailEclipse
     }
 
     /**
-     * @param $key
-     * @param $name
+     * @param  $key
+     * @param  $name
      * @return Collection
      *
      * @throws \ReflectionException
@@ -70,7 +70,7 @@ class MailEclipse
     }
 
     /**
-     * @param $templateSlug
+     * @param  $templateSlug
      * @return bool
      */
     public static function deleteTemplate($templateSlug): bool
@@ -130,7 +130,7 @@ class MailEclipse
     }
 
     /**
-     * @param $request
+     * @param  $request
      * @return JsonResponse|null
      */
     public static function updateTemplate($request): ?JsonResponse
@@ -193,7 +193,7 @@ class MailEclipse
     }
 
     /**
-     * @param $templateSlug
+     * @param  $templateSlug
      * @return Collection|null
      */
     public static function getTemplate($templateSlug): ?Collection
@@ -236,7 +236,7 @@ class MailEclipse
     }
 
     /**
-     * @param $request
+     * @param  $request
      * @return JsonResponse
      */
     public static function createTemplate($request): JsonResponse
@@ -313,9 +313,9 @@ class MailEclipse
     }
 
     /**
-     * @param $simpleview
-     * @param $content
-     * @param $viewName
+     * @param  $simpleview
+     * @param  $content
+     * @param  $viewName
      * @param  bool  $template
      * @param  null  $namespace
      * @return bool|string|void
@@ -346,8 +346,8 @@ class MailEclipse
     }
 
     /**
-     * @param $instance
-     * @param $view
+     * @param  $instance
+     * @param  $view
      * @return string|void
      */
     public static function previewMarkdownHtml($instance, $view)
@@ -356,7 +356,7 @@ class MailEclipse
     }
 
     /**
-     * @param $mailableName
+     * @param  $mailableName
      * @return array|bool
      */
     public static function getMailableTemplateData($mailableName)
@@ -566,7 +566,7 @@ class MailEclipse
     /**
      * Handle Mailable Constructor arguments and pass the fake ones.
      *
-     * @param $mailable
+     * @param  $mailable
      * @return object|void
      *
      * @throws \ReflectionException
@@ -678,8 +678,8 @@ class MailEclipse
     }
 
     /**
-     * @param $mailable
-     * @param $mailable_data
+     * @param  $mailable
+     * @param  $mailable_data
      * @return array|Collection
      *
      * @throws \ReflectionException
@@ -732,7 +732,7 @@ class MailEclipse
     }
 
     /**
-     * @param $param
+     * @param  $param
      * @return array
      */
     protected static function viewDataInspect($param): ?array
@@ -762,7 +762,7 @@ class MailEclipse
     }
 
     /**
-     * @param $mailable
+     * @param  $mailable
      * @return bool
      */
     protected static function mailable_exists($mailable): bool
@@ -775,7 +775,7 @@ class MailEclipse
     }
 
     /**
-     * @param $mailable
+     * @param  $mailable
      * @return mixed|void
      *
      * @throws \ReflectionException
@@ -800,7 +800,7 @@ class MailEclipse
     }
 
     /**
-     * @param $instance
+     * @param  $instance
      * @param  string  $type
      * @return mixed
      *
@@ -831,8 +831,8 @@ class MailEclipse
     }
 
     /**
-     * @param $simpleview
-     * @param $view
+     * @param  $simpleview
+     * @param  $view
      * @param  bool  $template
      * @param  null  $instance
      * @return string|void
@@ -893,7 +893,7 @@ class MailEclipse
      * https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class
      * https://www.php.net/manual/en/reserved.keywords.php
      *
-     * @param $input
+     * @param  $input
      * @return string|false class name or false on failure
      */
     public static function generateClassName($input)
@@ -932,8 +932,8 @@ class MailEclipse
      *
      * @todo Allow the values for the Make command to be passed down by the pkg.
      *
-     * @param $eloquentFactory
-     * @param $model
+     * @param  $eloquentFactory
+     * @param  $model
      * @return null|object
      */
     private static function resolveFactory($eloquentFactory, $model): ?object
@@ -1104,7 +1104,7 @@ class MailEclipse
     }
 
     /**
-     * @param $mailable
+     * @param  $mailable
      * @param  string  $email
      * @return mixed
      */
@@ -1118,7 +1118,7 @@ class MailEclipse
     }
 
     /**
-     * @param $mailable
+     * @param  $mailable
      * @return object|void
      *
      * @throws \ReflectionException
