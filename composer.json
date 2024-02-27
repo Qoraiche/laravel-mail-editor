@@ -20,14 +20,14 @@
         "markdown"
     ],
     "require": {
-        "illuminate/support": "^9.0|^10.0",
+        "illuminate/support": "^9.0|^10.0|^11.0",
         "reecem/mocker": "^1.1",
         "laravel/legacy-factories": "^1.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5.10",
+        "phpunit/phpunit": "^9.5.10|^10.5",
         "mockery/mockery": "^1.4.4",
-        "orchestra/testbench": "^7.0",
+        "orchestra/testbench": "^7.0|^9.0",
         "sempro/phpunit-pretty-print": "^1.0"
     },
     "autoload": {
