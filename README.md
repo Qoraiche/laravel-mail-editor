@@ -14,9 +14,31 @@
 
 MailEclipse is a mailable editor package for your Laravel applications to create and manage mailables using a web UI. You can use this package to develop mailables without using the command line, and edit templates associated with mailables using a WYSIWYG editor, among other features.
 
-## WORK IN PROGRESS
+## Project Archived
 
-Please note that this package is still under active development. We encourage everyone to try it and give feedback.
+### Important Notice
+
+As of **06/03/2024**, this project has been archived and is no longer actively maintained. Thank you to everyone who contributed, used, and supported this project throughout its lifecycle.
+
+### Reason for Archiving
+
+I am unable to dedicate the necessary time to maintain this project.
+
+If you think you can continue to contribute to Maileclipse, please get in touch with me at: qoraicheofficiel[at]hotmail[dot]com
+
+### Accessing the Archived Project
+
+You can still browse the source code, issues, and pull requests in a read-only state. Feel free to fork the repository if you wish to continue development independently.
+
+### Acknowledgements
+
+I would like to extend my heartfelt thanks to all contributors, users, and community members who have supported this project. Your contributions have been invaluable.
+
+Thank you for your understanding and support.
+
+Yassine Qoraiche
+
+---
 
 ## Features
 
