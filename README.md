@@ -74,22 +74,6 @@ Publish configuration file and public assets:
 php artisan laravel-mail-editor:install
 ```
 
-## Documentation
-
-### !!NOTE!! Maileclipse website is currently down, please check this youtube video (from author) for usage:
-
-https://www.youtube.com/watch?v=QFgEGNBY3FI&t=135s
-
-
-Documentation for Maileclipse can be found on the [Official website](https://maileclipse.io).
-
-## Community
-
-You can reach us at:
-
-- Spectrum chat: https://spectrum.chat/maileclipse
-- Slack: https://maileclipse.slack.com/
-
 
 ## Change log
 
@@ -110,14 +94,6 @@ MIT license. Please see the [license file](LICENSE) for more information.
 ![maileclipse-templates](https://i.imgur.com/siqxWVa.png)
 
 ![maileclipse-templates-create](https://i.imgur.com/8OQrEIS.png)
-
-## TODO
-
-__Contributions are welcome__
-
-* Frontend enhancement (jquery to vue.js).
-* Add more email templates (HTML/Markdown).
-* Expand documentation pages.
 
 ## Credits
 
