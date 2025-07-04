@@ -17,7 +17,9 @@ MailEclipse is a mailable editor package for your Laravel applications to create
 ## Want to build your SaaS app in days instead of months?
 Meet SleekSaaS – the modern Laravel + Inertia **starter kit** + **Advanced Admin Panel** built for developers and founders who want to launch faster.
 
+<a href="https://sleeksaas.com/" target="_blank">
 <img width="2549" height="1552" alt="Image" src="https://github.com/user-attachments/assets/ce96e405-99ae-4e9c-8346-bd7469c4fb64" />
+</a>
 
 👉 Start building your SaaS today: [View Demo](https://demo.sleeksaas.com/) | [Buy Now](https://sleeksaas.com/)
 
