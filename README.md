@@ -14,31 +14,16 @@
 
 MailEclipse is a mailable editor package for your Laravel applications to create and manage mailables using a web UI. You can use this package to develop mailables without using the command line, and edit templates associated with mailables using a WYSIWYG editor, among other features.
 
-## Project Archived
+## Want to build your SaaS app in days instead of months?
+Meet SleekSaaS – the modern Laravel + Inertia **starter kit** + **Advanced Admin Panel** built for developers and founders who want to launch faster.
 
-### Important Notice
+<img width="2549" height="1552" alt="Image" src="https://github.com/user-attachments/assets/ce96e405-99ae-4e9c-8346-bd7469c4fb64" />
 
-As of **06/03/2024**, this project has been archived and is no longer actively maintained. Thank you to everyone who contributed, used, and supported this project throughout its lifecycle.
+👉 Start building your SaaS today: [View Demo](https://demo.sleeksaas.com/) | [Buy Now](https://sleeksaas.com/)
 
-### Reason for Archiving
+▶️ Watch SleekSaaS Presentation Video: [Watch Video](https://www.youtube.com/watch?v=cd6hk6e-FmA)
 
-I am unable to dedicate the necessary time to maintain this project.
-
-If you think you can continue to contribute to Maileclipse, please get in touch with me at: qoraicheofficiel[at]hotmail[dot]com
-
-### Accessing the Archived Project
-
-You can still browse the source code, issues, and pull requests in a read-only state. Feel free to fork the repository if you wish to continue development independently.
-
-### Acknowledgements
-
-I would like to extend my heartfelt thanks to all contributors, users, and community members who have supported this project. Your contributions have been invaluable.
-
-Thank you for your understanding and support.
-
-Yassine Qoraiche
-
----
+💸 Launch Offer: Use code **SLEEKLAUNCH25** to get **20% OFF**
 
 ## Features
 
